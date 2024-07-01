@@ -31,6 +31,24 @@
                 <span class="pcoded-mtext">{{ __('Latest News & Highlights') }}</span>
             </a>
         </li>
+        <li class="">
+            <a href="{{ route('information.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Other Useful Information') }}</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ route('placement.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Placement Service') }}</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ route('hostelfacility.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Hostel Facility') }}</span>
+            </a>
+        </li>
 
             <li class="">
                 <a href="{{ route('contact.index') }}">

@@ -9,12 +9,16 @@
 				</div>
 				<div class="abt_instut">
 					<h2>Placement Services</h2>
-					<p>As a measure to diversify its work areas, the RICEM has now undertaken to provide placernent services from the year 2020-21. To cater to the need of manpower, on contractual basis or job basis to central and state government departments, public undertakings, autonomous bodies, Boards corporations and cooperative institutions. For this purpose we are registered with Registrar Institutions, Employee State Insurance Corporation, Provident fund, Goods & Service tax Department, Labour Department and Income Tax Department.</p>
+                    @foreach (\App\Models\Placementservice::all() as $placementService)
+                    <p>{{ $placementService->brief_description }}</p>
+                @endforeach
 					<a href="#" class="btn">View More > </a>
 				</div>
 				<div class="abt_instut">
 					<h2>Hostel Facility</h2>
-					<p>To facilitate we, at RICEM, also offering stay facilities to central and state government departments, public undertakings, autonomous bodies, Boards corporations and cooperative institutions and their referrals on reasonable charges.</p>
+                    @foreach (\App\Models\Hostelservice::all() as $hostelService)
+                    <p>{{ $hostelService->brief_description }}</p>
+                @endforeach
 					<a href="#" class="btn">View More > </a>
 				</div>
 			</div>
