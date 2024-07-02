@@ -1,16 +1,18 @@
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/lightbox.css">
-<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
-<link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" type="text/css" href="css/custom.css">
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/lightbox.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/custom.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/lightbox-plus-jquery.min.js"></script>
-<script src="js/owl.carousel.js"></script>
+
+<script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
+<script src="{{ asset('frontend/js/popper.min.js') }}"></script>
+<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontend/js/lightbox-plus-jquery.min.js') }}"></script>
+<script src="{{ asset('frontend/js/owl.carousel.js') }}"></script>
+
 
 
 <script>

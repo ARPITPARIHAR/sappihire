@@ -26,9 +26,15 @@
             </a>
         </li>
         <li class="">
-            <a href="{{ route('news.index') }}">
+          <a href="{{ route('news.index') }}">
                 <span class="pcoded-micon"><i class="feather icon-file"></i></span>
                 <span class="pcoded-mtext">{{ __('Latest News & Highlights') }}</span>
+            </a>
+        </li>
+        <li class="">
+          <a href="{{ route('upcoming.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __(' Upcoming Training Programmers') }}</span>
             </a>
         </li>
         <li class="">
@@ -47,6 +53,12 @@
             <a href="{{ route('hostelfacility.index') }}">
                 <span class="pcoded-micon"><i class="feather icon-file"></i></span>
                 <span class="pcoded-mtext">{{ __('Hostel Facility') }}</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ route('banner.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Banner') }}</span>
             </a>
         </li>
 

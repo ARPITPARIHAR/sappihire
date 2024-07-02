@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\BoardController;
-use App\Http\Controllers\Backend\HostelserviceController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\TrainingController;
@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PlacementController;
 use App\Http\Controllers\Backend\TeammemberController;
 use App\Http\Controllers\Backend\InformationController;
+use App\Http\Controllers\Backend\HostelserviceController;
 
 // Dashboard routes
 Route::controller(DashboardController::class)->group(function () {
@@ -138,6 +139,29 @@ Route::controller(HostelserviceController::class)->group(function () {
         Route::get('{id}/delete', 'destroy')->name('delete');
     });
 });
+
+Route::controller(BannerController::class)->group(function () {
+    Route::group(['prefix' => 'banner', 'as' => 'banner.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+Route::controller(UpcomingController::class)->group(function () {
+    Route::group(['prefix' => 'upcoming', 'as' => 'upcoming.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+
+
 
 // Contact routes
 Route::controller(ContactController::class)->group(function () {

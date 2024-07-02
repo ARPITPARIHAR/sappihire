@@ -108,97 +108,63 @@
                 </div>
 
 			</div>
-			<div class="col-md-8">
-				<div class="upcmng_trng">
-					<div class="head">
-						<h3>Upcoming Training Programmers/Events at RICEM</h3>
-					</div>
-					<div class="table-responsive">
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-								  <th>S.No.</th>
-								  <th>Title</th>
-								  <th>From Date|To Date</th>
-								  <th>Venue</th>
-								  <th>Know More</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-								  <td>1</td>
-								  <td>Programme on Dairy Development through Cooperative Business Model</td>
-								  <td>26-02-2024|29-02-2024</td>
-								  <td>Vamnicom</td>
-								  <td><a href="#"><img src="images/pdf.png" alt="pdf"></a></td>
-								</tr>
-								<tr>
-								  <td>2</td>
-								  <td>Programme on Orientation programme for Compliance Officer (CO) of  Coopratived Banks</td>
-								  <td>26-02-2024|29-02-2024</td>
-								  <td>Vamnicom</td>
-								  <td><a href="#"><img src="images/pdf.png" alt="pdf"></a></td>
-								</tr>
-								<tr>
-								  <td>3</td>
-								  <td>Programme on Dairy Development through Cooperative Business Model</td>
-								  <td>26-02-2024|29-02-2024</td>
-								  <td>Vamnicom</td>
-								  <td><a href="#"><img src="images/pdf.png" alt="pdf"></a></td>
-								</tr>
-								<tr>
-								  <td>4</td>
-								  <td>Programme on Orientation programme for Compliance Officer (CO) of  Coopratived Banks</td>
-								  <td>26-02-2024|29-02-2024</td>
-								  <td>Vamnicom</td>
-								  <td><a href="#"><img src="images/pdf.png" alt="pdf"></a></td>
-								</tr>
-								<tr>
-								  <td>5</td>
-								  <td>Programme on Dairy Development through Cooperative Business Model</td>
-								  <td>26-02-2024|29-02-2024</td>
-								  <td>Vamnicom</td>
-								  <td><a href="#"><img src="images/pdf.png" alt="pdf"></a></td>
-								</tr>
-								<tr>
-								  <td>6</td>
-								  <td>Programme on Orientation programme for Compliance Officer (CO) of  Coopratived Banks</td>
-								  <td>26-02-2024|29-02-2024</td>
-								  <td>Vamnicom</td>
-								  <td><a href="#"><img src="images/pdf.png" alt="pdf"></a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="col-md-8">
+                <div class="upcmng_trng">
+                    <div class="head">
+                        <h3>Upcoming Training Programmes/Events at RICEM</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Title</th>
+                                    <th>From Date | To Date</th>
+                                    <th>Venue</th>
+                                    <th>Know More</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $upcomings = \App\Models\Upcoming::all();
+                                @endphp
+                                @foreach ($upcomings as $upcoming)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $upcoming->title }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($upcoming->from_date)) }} | {{ date('d-m-Y', strtotime($upcoming->to_date)) }}</td>
+                                    <td>{{ $upcoming->venue }}</td>
+                                    <td><a href="#"><img src="{{ asset('images/pdf.png') }}" alt="pdf"></a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
 </section>
 
 <section class="usfulweb">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="head">
-					<h2>Training & Events Held</h2>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="web_box"><img src="images/web001.jpg" alt="web"></div>
-			</div>
-			<div class="col-md-4">
-				<div class="web_box"><img src="images/web002.jpg" alt="web"></div>
-			</div>
-			<div class="col-md-4">
-				<div class="web_box"><img src="images/web001.jpg" alt="web"></div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="head">
+                    <h2>Training & Events Held</h2>
+                </div>
+            </div>
+            @foreach (\App\Models\Training::all() as $training)
+                <div class="col-md-4">
+                    <div class="web_box">
+                        <img src="{{ asset($training->image) }}" alt="web">
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </section>
-
-
-
 <section class="othr_logo">
 	<div class="container-fluid">
 		<div class="row">
@@ -206,15 +172,13 @@
 				<div class="head">
 					<h2>Other Useful Information</h2>
 				</div>
-				<div class="othr_slide owl-carousel owl-theme">
-					<div class="item"><img src="images/othr_logo001.jpg" alt="othr_logo"></div>
-					<div class="item"><img src="images/othr_logo002.jpg" alt="othr_logo"></div>
-					<div class="item"><img src="images/othr_logo003.jpg" alt="othr_logo"></div>
-					<div class="item"><img src="images/othr_logo004.jpg" alt="othr_logo"></div>
-					<div class="item"><img src="images/othr_logo005.jpg" alt="othr_logo"></div>
-					<div class="item"><img src="images/othr_logo006.jpg" alt="othr_logo"></div>
-					<div class="item"><img src="images/othr_logo007.jpg" alt="othr_logo"></div>
-				</div>
+                <div class="othr_slide owl-carousel owl-theme">
+                    @foreach (\App\Models\Information::all() as $info)
+                        <div class="item">
+                            <img src="{{ asset( $info->image) }}" alt="othr_logo">
+                        </div>
+                    @endforeach
+                </div>
 			</div>
 		</div>
 	</div>
@@ -224,9 +188,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12 no_padding">
+                @foreach (\App\Models\Banner::all() as $banner)
 				<div class="crtfct_bnr">
-					<img src="images/crtifct_bg.jpg" alt="crtifct_bg">
+                    <img src="{{ asset( $info->banner) }}" alt="banner">
 				</div>
+                @endforeach
 			</div>
 		</div>
 	</div>
