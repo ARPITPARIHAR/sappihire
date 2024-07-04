@@ -23,7 +23,7 @@
 							<div class="cr_tm_txt">
 								<h3><strong>{{ $boardMember->title }}</strong> {{ $boardMember->name }}</h3>
 								<span>{{ $boardMember->designation }}</span>
-								<p>{{ $boardMembers->brief_description }}</p>
+								<p>{{ $boardMember->brief_description }}</p>
 							</div>
 						</div>
 					</div>
