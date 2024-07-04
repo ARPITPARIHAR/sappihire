@@ -158,7 +158,7 @@
             @foreach (\App\Models\Training::all() as $training)
                 <div class="col-md-4">
                     <div class="web_box">
-                        <img src="{{ asset($training->image) }}" alt="web">
+                        <img src="{{asset($training->image)}}" alt="web">
                     </div>
                 </div>
             @endforeach
@@ -175,7 +175,7 @@
                 <div class="othr_slide owl-carousel owl-theme">
                     @foreach (\App\Models\Information::all() as $info)
                         <div class="item">
-                            <img src="{{ asset( $info->image) }}" alt="othr_logo">
+                            <img src="{{asset($info->image)}}" alt="othr_logo">
                         </div>
                     @endforeach
                 </div>
@@ -190,7 +190,7 @@
 			<div class="col-md-12 no_padding">
                 @foreach (\App\Models\Banner::all() as $banner)
 				<div class="crtfct_bnr">
-                    <img src="{{ asset( $banner->banner) }}" alt="banner">
+                    <img src="{{asset($banner->banner)}}" alt="banner">
 				</div>
                 @endforeach
 			</div>
