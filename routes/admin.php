@@ -59,7 +59,7 @@ Route::controller(TeammemberController::class)->group(function () {
 });
 
 
-
+// Teammember routes
 Route::controller(TrainingController::class)->group(function () {
     Route::group(['prefix' => 'training', 'as' => 'training.'], function () {
         Route::get('/', 'index')->name('index');
@@ -71,6 +71,7 @@ Route::controller(TrainingController::class)->group(function () {
     });
 });
 
+// Teammember routes
 Route::controller(NewsController::class)->group(function () {
     Route::group(['prefix' => 'news', 'as' => 'news.'], function () {
         Route::get('/', 'index')->name('index');
@@ -83,18 +84,9 @@ Route::controller(NewsController::class)->group(function () {
 });
 
 
-Route::controller(InformationController::class)->group(function () {
-    Route::group(['prefix' => 'information', 'as' => 'information.'], function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('create', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
-        Route::get('{id}/edit', 'edit')->name('edit');
-        Route::post('{id}/edit', 'update')->name('update');
-        Route::get('{id}/delete', 'destroy')->name('delete');
-    });
-});
 
 
+// Teammember routes
 Route::controller(UpcomingController::class)->group(function () {
     Route::group(['prefix' => 'upcoming', 'as' => 'upcoming.'], function () {
         Route::get('/', 'index')->name('index');
@@ -106,7 +98,7 @@ Route::controller(UpcomingController::class)->group(function () {
     });
 });
 
-
+// Information routes
 Route::controller(InformationController::class)->group(function () {
     Route::group(['prefix' => 'information', 'as' => 'information.'], function () {
         Route::get('/', 'index')->name('index');
@@ -118,6 +110,8 @@ Route::controller(InformationController::class)->group(function () {
     });
 });
 
+
+// placement routes
 Route::controller(PlacementController::class)->group(function () {
     Route::group(['prefix' => 'placement', 'as' => 'placement.'], function () {
         Route::get('/', 'index')->name('index');
@@ -129,6 +123,8 @@ Route::controller(PlacementController::class)->group(function () {
     });
 });
 
+
+// Hotelservice routes
 Route::controller(HostelserviceController::class)->group(function () {
     Route::group(['prefix' => 'hostelfacility', 'as' => 'hostelfacility.'], function () {
         Route::get('/', 'index')->name('index');
@@ -140,6 +136,9 @@ Route::controller(HostelserviceController::class)->group(function () {
     });
 });
 
+
+// Banner routes
+
 Route::controller(BannerController::class)->group(function () {
     Route::group(['prefix' => 'banner', 'as' => 'banner.'], function () {
         Route::get('/', 'index')->name('index');
@@ -150,6 +149,9 @@ Route::controller(BannerController::class)->group(function () {
         Route::get('{id}/delete', 'destroy')->name('delete');
     });
 });
+
+
+// Upcomimg routes
 Route::controller(UpcomingController::class)->group(function () {
     Route::group(['prefix' => 'upcoming', 'as' => 'upcoming.'], function () {
         Route::get('/', 'index')->name('index');

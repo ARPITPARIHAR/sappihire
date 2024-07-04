@@ -41,7 +41,7 @@ class SliderController extends Controller
         if ($request->hasFile('image')) {
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/sliders', $fileName, 'public');
-            $slider->image = '/storage/public/' . $filePath;
+            $slider->image = '/public/storage/' . $filePath;
         }
         $slider->save();
         Artisan::call('cache:clear');
@@ -66,7 +66,7 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-           
+
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $slider = Slider::findOrFail(decrypt($id));

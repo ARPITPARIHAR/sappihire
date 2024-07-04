@@ -16,7 +16,7 @@
 					<div class="row align-items-center justify-content-center">
 						<div class="col-md-3">
 							<div class="cr_tm_imag">
-								<img src="{{ asset('images/' . $boardMember->image) }}" alt="cr_tm">
+                                <img src="{{ asset($boardMember->image) }}" alt="cr_tm">
 							</div>
 						</div>
 						<div class="col-md-9">

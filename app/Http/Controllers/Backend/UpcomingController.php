@@ -49,7 +49,7 @@ class UpcomingController extends Controller
         if ($request->hasFile('image')) {
             $fileName = time() . '-upcoming-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/upcomings', $fileName, 'public');
-            $upcoming->image = '/storage/public/' . $filePath;
+            $upcoming->image = '/public/storage/' . $filePath;
         }
         $upcoming->save();
         Artisan::call('cache:clear');
