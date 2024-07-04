@@ -190,7 +190,7 @@
 			<div class="col-md-12 no_padding">
                 @foreach (\App\Models\Banner::all() as $banner)
 				<div class="crtfct_bnr">
-                    <img src="{{asset($banner->banner)}}" alt="banner">
+                    <img src="{{asset($banner->thumbnail_img)}}" alt="banner">
 				</div>
                 @endforeach
 			</div>
