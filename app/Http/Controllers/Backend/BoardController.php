@@ -48,7 +48,7 @@ class BoardController extends Controller
         if ($request->hasFile('thumbnail_img')) {
             $fileName = time() . '-board-' . $request->file('thumbnail_img')->getClientOriginalName();
             $filePath = $request->file('thumbnail_img')->storeAs('uploads/boards', $fileName, 'public');
-            $board->image = '/public/storage/' . $filePath;
+            $board->thumbnail_img = '/public/storage/' . $filePath;
         }
 
         // Debugging: Stop the execution and dump the data
@@ -97,7 +97,7 @@ class BoardController extends Controller
         if ($request->hasFile('thumbnail_img')) {
             $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
             $filePath = $request->file('thumbnail_img')->storeAs('uploads/boards', $fileName, 'public');
-            $board->image = '/public/storage/' . $filePath;
+            $board->thumbnail_img = '/public/storage/' . $filePath;
         }
         $board->update();
         Artisan::call('cache:clear');

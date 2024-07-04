@@ -38,8 +38,8 @@
                             @foreach ($banners as $key=>$banner)
                             <tr>
                                 <td>{{ ($key+1) + ($banners->currentPage() - 1)*$banners->perPage() }}</td>
-
-                                <td><img src="{{ asset($banner->logo) }}" width="90"></td>
+                                <td><img src="{{ asset($banner->thumbnail_img) }}" width="90"></td>
+                                
 
                                 <td>{{ date('d-m-Y h:iA',strtotime($banner->updated_at)) }}</td>
                                 <td>

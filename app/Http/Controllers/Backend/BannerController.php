@@ -41,7 +41,7 @@ class BannerController extends Controller
         if ($request->hasFile('logo')) {
             $fileName = time() . '-logo-' . $request->file('logo')->getClientOriginalName();
             $filePath = $request->file('logo')->storeAs('uploads/banners', $fileName, 'public');
-            $banners->image = '/public/storage/' . $filePath;
+            $banners->thumbnail_img = '/public/storage/' . $filePath;
         }
         $banners->save();
         Artisan::call('cache:clear');
@@ -80,7 +80,7 @@ class BannerController extends Controller
         if ($request->hasFile('logo')) {
             $fileName = time() . '-logo-' . $request->file('logo')->getClientOriginalName();
             $filePath = $request->file('logo')->storeAs('uploads/banners', $fileName, 'public');
-            $banners->image = '/public/storage/' . $filePath;
+            $banners->thumbnail_img = '/public/storage/' . $filePath;
         }
         $banners->save();
         Artisan::call('cache:clear');

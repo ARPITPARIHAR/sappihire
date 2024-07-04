@@ -41,12 +41,14 @@ class SliderController extends Controller
         if ($request->hasFile('image')) {
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/sliders', $fileName, 'public');
-            $slider->image = '/public/storage/' . $filePath;
+            $slider->thumbnail_img = '/public/storage/' . $filePath;
         }
         $slider->save();
         Artisan::call('cache:clear');
         return back()->with('success', 'Slider added successfully.');
     }
+
+
 
     public function show($id)
     {
@@ -74,7 +76,7 @@ class SliderController extends Controller
         if ($request->hasFile('image')) {
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/sliders', $fileName, 'public');
-            $slider->image = '/public/storage/' . $filePath;
+            $slider->thumbnail_img = '/public/storage/' . $filePath;
         }
         $slider->update();
         Artisan::call('cache:clear');
