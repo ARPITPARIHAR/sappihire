@@ -1,5 +1,5 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/ricem/demo.ricem.org/
+    - export DEPLOYPATH=/home2/ricem/demo.ricem.org/
     - /bin/cp -r * $DEPLOYPATH
 
