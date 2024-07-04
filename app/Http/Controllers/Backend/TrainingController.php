@@ -87,6 +87,6 @@ class TrainingController extends Controller
     {
         Training::findOrFail(decrypt($id))->delete();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Page deleted successfully.');
+        return back()->with('success', 'training deleted successfully.');
     }
 }
