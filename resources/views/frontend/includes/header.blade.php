@@ -175,7 +175,7 @@
                 <div class="othr_slide owl-carousel owl-theme">
                     @foreach (\App\Models\Information::all() as $info)
                         <div class="item">
-                            <img src="{{asset($info->thumbnail_img)}}" alt="othr_logo">
+                            <img src="{{asset($info->logo)}}" alt="othr_logo">
                         </div>
                     @endforeach
                 </div>

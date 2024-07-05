@@ -40,7 +40,7 @@ class TrainingController extends Controller
         if ($request->hasFile('image')) {
             $fileName = time() . '-training-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/training', $fileName, 'public');
-            $training->thumbnail_img = '/storage/public/' . $filePath;
+            $training->thumbnail_img = '/public/storage/' . $filePath;
         }
         $training->save();
         Artisan::call('cache:clear');

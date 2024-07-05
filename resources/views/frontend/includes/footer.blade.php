@@ -3,8 +3,11 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="ftr_box frst">
-					<div class="ftr_logo"><img src="images/logo.png" alt="logo"></div>
-					<span>Visitors 18061</span>
+				<!-- Header Logo -->
+         <div class="ftr_logo">
+         <img src="{{ asset(businessSetting(1)->header_logo) }}" alt="Logo">
+         </div>
+                <span>Visitors 18061</span>
 					<p>Add:  {{ businessSetting(1)->address }}</p>
 					<p>Call: {{ businessSetting(1)->contact_numbers }}</p>
 					<p> Email: {{ businessSetting(1)->email }}</p>

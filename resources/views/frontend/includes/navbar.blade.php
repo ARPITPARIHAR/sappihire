@@ -7,13 +7,13 @@
 						<ul>
                             <li>
                                 <a href="tel:{{ businessSetting(1)->phone }}">
-                                    <img src="{{ asset('images/phone.png') }}" alt="phone"> Call: {{ businessSetting(1)->contact_numbers }}
+                                    <img src="images/phone.png" alt="Phone Icon"> Call: {{ businessSetting(1)->contact_numbers }}
                                 </a>
                             </li>
 
 							<li>
                                 <a href="mailto:{{ businessSetting(1)->email }}">
-                                    <img src="{{ asset('images/mail.png') }}" alt="mail"> Email: {{ businessSetting(1)->email }}
+                                    <img src="images/mail.png" alt="Phone Icon"> Email: {{ businessSetting(1)->email }}
                                 </a>
                             </li>
 
@@ -32,7 +32,7 @@
 					<div class="col-lg-2 col-md-3">
 						<div class="logo">
                             <a href="{{ url('/') }}">
-                                <img src="{{ asset(businessSetting(1)->logo) }}" alt="logo">
+                                <img src="{{ asset(businessSetting(1)->header_logo) }}" alt="logo">
                             </a>
                         </div>
 
