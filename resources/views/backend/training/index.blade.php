@@ -39,7 +39,7 @@
                             <tr>
                                 <td>{{ ($key+1) + ($trainings->currentPage() - 1)*$trainings->perPage() }}</td>
 
-                                <td><img src="{{ asset($training->image) }}" width="150"></td>
+                                <td><img src="{{ asset($training->thumbnail_img) }}" width="150"></td>
 
                                 <td>{{ date('d-m-Y h:iA',strtotime($training->updated_at)) }}</td>
                                 <td>
