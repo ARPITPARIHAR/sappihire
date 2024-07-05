@@ -39,7 +39,7 @@ class TrainingController extends Controller
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-training-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/training', $fileName, 'public');
+            $filePath = $request->file('image')->storeAs('uploads/trainings', $fileName, 'public');
             $training->thumbnail_img = '/public/storage/' . $filePath;
         }
         $training->save();
@@ -72,7 +72,7 @@ class TrainingController extends Controller
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-training-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/training', $fileName, 'public');
+            $filePath = $request->file('image')->storeAs('uploads/trainings', $fileName, 'public');
             $training->thumbnail_img = '/public/storage/' . $filePath;
         }
         $training->update();
