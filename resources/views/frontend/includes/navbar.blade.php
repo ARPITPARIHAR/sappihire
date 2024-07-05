@@ -5,8 +5,18 @@
 				<div class="topbar">
 					<div class="cllml">
 						<ul>
-							<li><a href="#"> <img src="images/phone.png" alt="phone"> Call: 0141-2710072</a></li>
-							<li><a href="#"> <img src="images/mail.png" alt="mail"> Email: jaipurricem@gmail.com</a></li>
+                            <li>
+                                <a href="tel:{{ businessSetting(1)->phone }}">
+                                    <img src="{{ asset('images/phone.png') }}" alt="phone"> Call: {{ businessSetting(1)->contact_numbers }}
+                                </a>
+                            </li>
+
+							<li>
+                                <a href="mailto:{{ businessSetting(1)->email }}">
+                                    <img src="{{ asset('images/mail.png') }}" alt="mail"> Email: {{ businessSetting(1)->email }}
+                                </a>
+                            </li>
+
 						</ul>
 					</div>
 					<div class="azd_logo">
@@ -21,8 +31,11 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-3">
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
-						</div>
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset(businessSetting(1)->logo) }}" alt="logo">
+                            </a>
+                        </div>
+
 					</div>
 					<div class="col-lg-10 col-md-9">
 						<div class="desk_menus">

@@ -5,6 +5,13 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/clear', function () {
+    Artisan::call('storage:link');
+    dd('Done');
+});
+
 
 
 Route::controller(PageController::class)->group(function () {

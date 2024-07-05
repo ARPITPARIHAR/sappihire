@@ -5,9 +5,11 @@
 				<div class="ftr_box frst">
 					<div class="ftr_logo"><img src="images/logo.png" alt="logo"></div>
 					<span>Visitors 18061</span>
-					<p>Add: 10-B, Jhalana Industrial Area, Jaipur-302004</p>
-					<p>Call: 0141-2710072, 27098027</p>
-					<p>Email: ricem@rediffmail.com</p>
+					<p>Add:  {{ businessSetting(1)->address }}</p>
+					<p>Call: {{ businessSetting(1)->contact_numbers }}</p>
+					<p> Email: {{ businessSetting(1)->email }}</p>
+
+
 				</div>
 			</div>
 			<div class="col-md-3">

@@ -14,21 +14,21 @@
 				<div class="cntct_box">
 					<span><img src="images/adrs.png" alt="adrs"></span>
 					<h4>Adress</h4>
-					<p>10-B, Jhalana Institutional Area, Jaipur-302004</p>
+					<p> {{ businessSetting(1)->address }}</p>
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="cntct_box">
 					<span><img src="images/phone.png" alt="phone"></span>
 					<h4>Phone Number</h4>
-					<p>0141-2710072, 2709827</p>
+					<p> {{ businessSetting(1)->contact_numbers }}</p>
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="cntct_box">
 					<span><img src="images/mail.png" alt="mail"></span>
 					<h4>Email ID</h4>
-					<p>ricem@rediffmail.com, jaipurricem@gmail.com</p>
+					<p>{{ businessSetting(1)->address }}</p>
 				</div>
 			</div>
 		</div>
