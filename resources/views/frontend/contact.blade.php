@@ -40,7 +40,12 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="cntct_frm">
-
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
 					<form action="{{ route('contact.store') }}" method="POST">
                         @csrf
 						<div class="head">

@@ -56,11 +56,11 @@ class LoginController extends Controller
         }
     }
     public function logout(){
-        $user_type =auth()->user()->user_type;
+    
         Auth::logout();
-       
+
         if ( $user_type='admin') {
-            return redirect()->route('backend.login');
+            return redirect()->route('home');
 
         }
     }
