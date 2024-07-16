@@ -134,7 +134,17 @@
                                     <td>{{ $upcoming->title }}</td>
                                     <td>{{ date('d-m-Y', strtotime($upcoming->from_date)) }} | {{ date('d-m-Y', strtotime($upcoming->to_date)) }}</td>
                                     <td>{{ $upcoming->venue }}</td>
-                                    <td><a href="#"><img src="{{ asset('images/pdf.png') }}" alt="pdf"></a></td>
+                                    <td>
+                                        @if ($upcoming->pdf_file)
+                                        <a href="{{ asset('storage/upcomings/' . $upcoming->pdf_file) }}" download="{{ $upcoming->title }}.pdf">
+                                            <img src="{{ asset('images/pdf.png') }}" alt="pdf">
+                                        </a>
+                                    @else
+                                        No PDF available
+                                    @endif
+
+
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

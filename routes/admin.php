@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\BoardController;
 use App\Http\Controllers\Backend\BannerController;
@@ -12,16 +13,18 @@ use App\Http\Controllers\Backend\PlacementController;
 use App\Http\Controllers\Backend\TeammemberController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\HostelserviceController;
+use App\Http\Middleware\IsAdmin;
 
 // Dashboard routes
-Route::controller(DashboardController::class)->group(function () {
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
-    Route::get('business-info', 'businessSettings')->name('business-setting');
-    Route::post('business-info', 'businessSettingsUpdate')->name('business-setting-update');
-    Route::get('profile', 'profile')->name('profile');
-    Route::post('profile', 'profileUpdate')->name('profile.update');
-});
-
+// Route::middleware(['auth', 'IsAdmin'])->group(function () {
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('business-info', 'businessSettings')->name('business-setting');
+        Route::post('business-info', 'businessSettingsUpdate')->name('business-setting-update');
+        Route::get('profile', 'profile')->name('profile');
+        Route::post('profile', 'profileUpdate')->name('profile.update');
+    });
+// });
 // Slider routes
 Route::controller(SliderController::class)->group(function () {
     Route::group(['prefix' => 'sliders', 'as' => 'sliders.'], function () {

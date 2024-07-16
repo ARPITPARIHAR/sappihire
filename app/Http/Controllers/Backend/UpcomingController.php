@@ -38,7 +38,7 @@ class UpcomingController extends Controller
             'venue' => 'required|string',
             'from_date' => 'required|date',
             'to_date' => 'required|date|after_or_equal:from_date',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'file' => 'required|file|mimes:pdf|max:2048',
         ]);
         $upcoming = new Upcoming;
         $upcoming->title = $request->title;
@@ -46,10 +46,10 @@ class UpcomingController extends Controller
         $upcoming->to_date = $request->to_date;
         $upcoming->venue = $request->venue;
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-upcoming-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/upcomings', $fileName, 'public');
-            $upcoming->thumbnail_img = '/public/storage/' . $filePath;
+        if ($request->hasFile('file')) {
+            $fileName = time() . '-upcoming-' . $request->file('file')->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads/upcomings', $fileName, 'public');
+            $upcoming->pdf_file = '/public/storage/' . $filePath;
         }
         $upcoming->save();
         Artisan::call('cache:clear');
@@ -83,7 +83,7 @@ class UpcomingController extends Controller
             'venue' => 'required|string',
             'from_date' => 'required|date',
             'to_date' => 'required|date|after_or_equal:from_date',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'file' => 'required|file|mimes:pdf|max:2048',
         ]);
         $upcoming = Upcoming::findOrFail(decrypt($id));
         $upcoming->title = $request->title;
@@ -91,10 +91,10 @@ class UpcomingController extends Controller
         $upcoming->to_date = $request->to_date;
         $upcoming->venue = $request->venue;
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-upcoming-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/upcomings', $fileName, 'public');
-            $upcoming->image = '/public/storage/' . $filePath;
+        if ($request->hasFile('file')) {
+            $fileName = time() . '-upcoming-' . $request->file('file')->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads/upcomings', $fileName, 'public');
+            $upcoming->pdf_file = '/public/storage/' . $filePath;
         }
         $upcoming->update();
         Artisan::call('cache:clear');

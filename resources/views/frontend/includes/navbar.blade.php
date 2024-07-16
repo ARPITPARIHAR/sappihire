@@ -56,7 +56,7 @@
 												<li><a class="dropdown-item" href="#">Mision</a></li>
 											</ul>
 										</li>
-										<li class="nav-item"><a class="nav-link" href="#">Infrastructure</a></li>
+										{{-- <li class="nav-item"><a class="nav-link" href="#">Infrastructure</a></li> --}}
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												Our Team
@@ -67,7 +67,7 @@
 											</ul>
 										</li>
 										<li class="nav-item"><a class="nav-link" href="{{route('traningprogramme')}}">Training</a></li>
-										<li class="nav-item"><a class="nav-link" href="#">Rooms</a></li>
+										{{-- <li class="nav-item"><a class="nav-link" href="#">Rooms</a></li> --}}
 										<li class="nav-item"><a class="nav-link" href="{{route('gallery')}}">Photo Gallery</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('placementservice')}}">Placement Services</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('contact-us')}}">Contact Us</a></li>

@@ -27,7 +27,7 @@
             <div class="card-block">
                 <form action="{{ route('teammembers.update', encrypt($team->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT') {{-- Assuming you are using PUT method for update --}}
+                 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                         <div class="col-sm-10">

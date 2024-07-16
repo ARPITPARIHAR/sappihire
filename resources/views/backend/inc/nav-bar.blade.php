@@ -6,7 +6,7 @@
                 <i class="feather icon-menu"></i>
             </a>
             <a href="{{ route('home') }}">
-                  <img class="img-fluid" src="{{businessSetting(1)->admin_logo}}" width="150" alt="Theme-Logo">  
+                  <img class="img-fluid" src="{{businessSetting(1)->admin_logo}}" width="150" alt="Theme-Logo">
             </a>
             <a class="mobile-options">
                 <i class="feather icon-more-horizontal"></i>
@@ -79,7 +79,7 @@
                                 </a>
                             </li>
                             <li>
-                                {{-- <a href="{{ route('logout') }}"> --}}
+                                 <a href="{{ route('logout') }}"> 
                                     <i class="feather icon-log-out"></i> Logout
                                 </a>
                             </li>
