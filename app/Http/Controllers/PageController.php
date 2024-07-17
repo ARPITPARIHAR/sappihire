@@ -11,6 +11,16 @@ class PageController extends Controller
         return view('frontend.home');
     }
 
+    public function vision(Request $request)
+    {
+        return view('frontend.vision');
+    }
+    public function mission(Request $request)
+    {
+        return view('frontend.mission');
+    }
+
+
     public function contact_us(Request $request)
     {
         return view('frontend.contact');

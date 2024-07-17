@@ -1,13 +1,14 @@
 <?php
 
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Middleware\IsAdmin;
 
 
 Route::get('/clear', function () {
@@ -19,6 +20,8 @@ Route::get('/clear', function () {
 
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'home')->name('home');
+    Route::get('vision', 'vision')->name('vision');
+    Route::get('mission', 'mission')->name('mission');
     Route::get('contact-us', 'contact_us')->name('contact-us');
     Route::get('gallery', 'gallery')->name('gallery');
     Route::get('placementservice', 'placementservice')->name('placementservice');
@@ -37,5 +40,6 @@ Route::post('/logins', [LoginController::class, 'login'])->name('login.submit');
 
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 
+Route::get('/training-events', [EventController::class, 'index'])->name('training.search');
 
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');

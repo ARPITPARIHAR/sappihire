@@ -52,8 +52,8 @@
 												About us
 											</a>
 											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-												<li><a class="dropdown-item" href="#">Vision</a></li>
-												<li><a class="dropdown-item" href="#">Mision</a></li>
+												<li><a class="dropdown-item" href="{{route('vision')}}">Vision</a></li>
+												<li><a class="dropdown-item" href="{{route('mission')}}">Mision</a></li>
 											</ul>
 										</li>
 										{{-- <li class="nav-item"><a class="nav-link" href="#">Infrastructure</a></li> --}}

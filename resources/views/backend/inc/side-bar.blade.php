@@ -18,7 +18,23 @@
                    <span class="pcoded-mtext">{{ __('Training & Events Held') }}</span>
                </a>
            </li> --}}
-
+           <li class="pcoded-hasmenu active pcoded-trigger">
+            <a href="javascript:void(0)">
+                <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+                <span class="pcoded-mtext">{{ __('About') }}</span>
+            </a>
+            <ul class="pcoded-submenu">
+                <li class="active">
+                     <a href="{{ route('vision.index') }}">
+                        <span class="pcoded-mtext">{{ __('Vision') }}</span>
+                    </a>
+                </li>
+                <li class="">
+                     <a href="{{ route('mission.index') }}">
+                        <span class="pcoded-mtext">{{ __('Mission') }}</span>
+                    </a>
+                </li>
+            </ul>
            <li class="">
             <a href="{{ route('training.index') }}">
                 <span class="pcoded-micon"><i class="feather icon-file"></i></span>
@@ -61,7 +77,12 @@
                 <span class="pcoded-mtext">{{ __('Banner') }}</span>
             </a>
         </li>
-
+        <li class="">
+            <a href="{{ route('trainingevent.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Training Programme') }}</span>
+            </a>
+        </li>
             <li class="">
                 <a href="{{ route('contact.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-users"></i></span>
