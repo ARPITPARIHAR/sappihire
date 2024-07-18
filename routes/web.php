@@ -43,3 +43,6 @@ Route::post('/register', [LoginController::class, 'register'])->name('register')
 Route::get('/training-events', [EventController::class, 'index'])->name('training.search');
 
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+
+
