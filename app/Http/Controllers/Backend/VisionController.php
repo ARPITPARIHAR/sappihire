@@ -82,13 +82,11 @@ class VisionController extends Controller
 
         $detail = Vision::findOrFail(decrypt($id));
 
-        if ($request->hasFile('image')) {
-            // Process image upload
-            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/visions', $fileName, 'public');
-            $detail->thumbnail_img = '/public/storage/' . $filePath; // Adjust path as per your storage configuration
+        if ($request->hasFile('thumbnail_img')) {
+            $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
+            $filePath = $request->file('thumbnail_img')->storeAs('uploads/visions', $fileName, 'public');
+            $team->thumbnail_img = '/public/storage/' . $filePath;
         }
-
         $detail->title = $request->title;
         $detail->save();
 

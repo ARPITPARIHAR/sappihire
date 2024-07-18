@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-header row">
                 <div class="col-sm-2">
-                    <a href="{{ route('infa.create') }}" class="btn btn-sm btn-primary">{{ __('Add Mission Detail') }}</a>
+                    <a href="{{ route('infa.create') }}" class="btn btn-sm btn-primary">{{ __('Add Infastructure Detail') }}</a>
                 </div>
             </div>
             <div class="card-block">
@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
                                 <td>{{ $detail->title }}</td>
-                                <td><img src="{{ asset($slider->thumbnail_img) }}" width="150"></td>
+                                <td><img src="{{ asset($detail->thumbnail_img) }}" width="150"></td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
 
                                 <td>

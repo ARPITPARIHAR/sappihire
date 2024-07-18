@@ -29,10 +29,10 @@
 
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Thumbnail Img') }}</label>
                         <div class="col-sm-10">
-                            <input type="file" name="image" id="image" class="form-control @error('image') form-control-danger @enderror">
-                            @error('image')
+                            <input type="file" name="thumbnail_img" id="thumbnail_img" class="form-control @error('thumbnail_img') form-control-danger @enderror">
+                            @error('thumbnail_img')
                                 <p class="text-danger error">{{ $message }}</p>
                             @else
                                 <p class="text-muted">{{ __('') }}</p>
