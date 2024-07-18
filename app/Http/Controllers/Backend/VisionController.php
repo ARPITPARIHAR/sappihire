@@ -34,16 +34,17 @@ class VisionController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
 
         $detail = new Vision;
 
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/visions', $fileName, 'public');
+        if ($request->hasFile('thumbnail_img')) {
+            $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
+            $filePath = $request->file('thumbnail_img')->storeAs('uploads/visions', $fileName, 'public');
             $detail->thumbnail_img = '/public/storage/' . $filePath;
         }
         $detail->title = $request->title;
@@ -77,7 +78,8 @@ class VisionController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $detail = Vision::findOrFail(decrypt($id));
@@ -85,7 +87,7 @@ class VisionController extends Controller
         if ($request->hasFile('thumbnail_img')) {
             $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
             $filePath = $request->file('thumbnail_img')->storeAs('uploads/visions', $fileName, 'public');
-            $team->thumbnail_img = '/public/storage/' . $filePath;
+            $detail->thumbnail_img = '/public/storage/' . $filePath;
         }
         $detail->title = $request->title;
         $detail->save();

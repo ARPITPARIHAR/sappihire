@@ -34,18 +34,20 @@ class RoomController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
 
         $detail = new Room;
 
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/missions', $fileName, 'public');
+        if ($request->hasFile('thumbnail_img')) {
+            $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
+            $filePath = $request->file('thumbnail_img')->storeAs('uploads/rooms', $fileName, 'public');
             $detail->thumbnail_img = '/public/storage/' . $filePath;
         }
+
 
         $detail->title = $request->title;
         $detail->save();
@@ -78,16 +80,19 @@ class RoomController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
         $detail = Room::findOrFail(decrypt($id));
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/missions', $fileName, 'public');
+
+        if ($request->hasFile('thumbnail_img')) {
+            $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
+            $filePath = $request->file('thumbnail_img')->storeAs('uploads/rooms', $fileName, 'public');
             $detail->thumbnail_img = '/public/storage/' . $filePath;
         }
+
         $detail->title= $request->title;
         $detail->update();
         Artisan::call('cache:clear');

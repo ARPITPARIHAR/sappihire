@@ -34,19 +34,20 @@ class InfastructureController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
 
         $detail = new Infastructure;
 
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/missions', $fileName, 'public');
+
+        if ($request->hasFile('thumbnail_img')) {
+            $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
+            $filePath = $request->file('thumbnail_img')->storeAs('uploads/infastructures', $fileName, 'public');
             $detail->thumbnail_img = '/public/storage/' . $filePath;
         }
-
         $detail->title = $request->title;
         $detail->save();
         Artisan::call('cache:clear');
@@ -78,14 +79,15 @@ class InfastructureController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
         $detail = Infastructure::findOrFail(decrypt($id));
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('uploads/missions', $fileName, 'public');
+        if ($request->hasFile('thumbnail_img')) {
+            $fileName = time() . '-team-' . $request->file('thumbnail_img')->getClientOriginalName();
+            $filePath = $request->file('thumbnail_img')->storeAs('uploads/infastructures', $fileName, 'public');
             $detail->thumbnail_img = '/public/storage/' . $filePath;
         }
         $detail->title= $request->title;
