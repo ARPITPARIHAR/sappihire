@@ -15,11 +15,19 @@ class PageController extends Controller
     {
         return view('frontend.vision');
     }
+    public function room(Request $request)
+    {
+        return view('frontend.room');
+    }
+    public function infastructure(Request $request)
+    {
+        return view('frontend.infastructure');
+    }
+
     public function mission(Request $request)
     {
         return view('frontend.mission');
     }
-
 
     public function contact_us(Request $request)
     {

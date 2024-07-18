@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Vision'))
+@section('meta_title',__('Edit Vision'))
 
-@section('page_name',__('Vision'))
+@section('page_name',__('Edit Vision'))
 
-@section('page_description',__('Vision'))
+@section('page_description',__('Edit Vision'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
     </li>
-    <li class="breadcrumb-item"><a href="#!">{{ __('Vision') }}</a>
+    <li class="breadcrumb-item"><a href="#!">{{ __('Edit Vision') }}</a>
     </li>
 @endsection
 @section('content')
@@ -18,18 +18,31 @@
         <div class="card">
             <div class="card-header">
                @session('success')
-               <h5 class="text-success">{{ session('success') }}</h5>
+                    <h5 class="text-success">{{ session('success') }}</h5>
                @else
-                <h5>@yield('page_name')</h5>
+                    <h5>@yield('page_name')</h5>
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('vision.store') }}" method="POST" >
+                <form action="{{ route('visions.update',encrypt($detail->id)) }}" method="POST" >
                     @csrf
-                  <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Detail') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="file" name="image" id="image" class="form-control @error('image') form-control-danger @enderror">
+                            @error('image')
+                                <p class="text-danger error">{{ $message }}</p>
+                            @else
+                                <p class="text-muted">{{ __('') }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __(' Detail') }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
                            <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -40,7 +53,7 @@
                         </div>
                     </div>
 
-                <div class="form-group row">
+                    <div class="form-group row">
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">

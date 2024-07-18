@@ -16,7 +16,7 @@ class VisionController extends Controller
     public function index()
     {
         $details = Vision::paginate(15);
-        return view('backend.vision.index', compact('details'));
+        return view('backend.visions.index', compact('details'));
     }
 
     /**
@@ -24,7 +24,7 @@ class VisionController extends Controller
      */
     public function create()
     {
-        return view('backend.vision.create');
+        return view('backend.visions.create');
     }
 
     /**
@@ -39,6 +39,12 @@ class VisionController extends Controller
 
         $detail = new Vision;
 
+
+        if ($request->hasFile('image')) {
+            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('uploads/visions', $fileName, 'public');
+            $detail->thumbnail_img = '/public/storage/' . $filePath;
+        }
         $detail->title = $request->title;
         $detail->save();
         Artisan::call('cache:clear');
@@ -50,7 +56,7 @@ class VisionController extends Controller
      */
     public function show($id)
     {
-        return view('backend.vision.show');
+        return view('backend.visions.show');
     }
 
     /**
@@ -60,7 +66,7 @@ class VisionController extends Controller
     {
 
         $detail = Vision::findOrFail(decrypt($id));
-        return view('backend.vision.edit', compact('detail'));
+        return view('backend.visions.edit', compact('detail'));
     }
 
     /**
@@ -73,6 +79,12 @@ class VisionController extends Controller
 
         ]);
         $detail = Vision::findOrFail(decrypt($id));
+
+        if ($request->hasFile('image')) {
+            $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('uploads/visions', $fileName, 'public');
+            $detail->thumbnail_img = '/public/storage/' . $filePath;
+        }
         $detail->title= $request->title;
         $detail->update();
         Artisan::call('cache:clear');

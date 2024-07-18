@@ -3,6 +3,8 @@ use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\RoomController;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BoardController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Backend\PlacementController;
 use App\Http\Controllers\Backend\TeammemberController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\HostelserviceController;
+use App\Http\Controllers\Backend\InfastructureController;
 use App\Http\Controllers\Backend\Trainingeventcontroller;
 
 // Dashboard routes
@@ -182,7 +185,7 @@ Route::controller(Trainingeventcontroller::class)->group(function () {
 });
 
 Route::controller(VisionController::class)->group(function () {
-    Route::group(['prefix' => 'vision', 'as' => 'vision.'], function () {
+    Route::group(['prefix' => 'visions', 'as' => 'visions.'], function () {
         Route::get('/', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -193,7 +196,39 @@ Route::controller(VisionController::class)->group(function () {
 });
 
 Route::controller(MissionController::class)->group(function () {
-    Route::group(['prefix' => 'mission', 'as' => 'mission.'], function () {
+    Route::group(['prefix' => 'missions', 'as' => 'missions.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+Route::controller(AboutController::class)->group(function () {
+    Route::group(['prefix' => 'about', 'as' => 'about.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+
+Route::controller(RoomController::class)->group(function () {
+    Route::group(['prefix' => 'rooms', 'as' => 'rooms.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+
+Route::controller(InfastructureController::class)->group(function () {
+    Route::group(['prefix' => 'infa', 'as' => 'infa.'], function () {
         Route::get('/', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');

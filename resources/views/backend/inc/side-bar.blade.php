@@ -18,23 +18,40 @@
                    <span class="pcoded-mtext">{{ __('Training & Events Held') }}</span>
                </a>
            </li> --}}
-           <li class="pcoded-hasmenu active pcoded-trigger">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+           <li class="">
+            <a href="{{ route('about.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
                 <span class="pcoded-mtext">{{ __('About') }}</span>
             </a>
-            <ul class="pcoded-submenu">
-                <li class="active">
-                     <a href="{{ route('vision.index') }}">
-                        <span class="pcoded-mtext">{{ __('Vision') }}</span>
-                    </a>
-                </li>
-                <li class="">
-                     <a href="{{ route('mission.index') }}">
-                        <span class="pcoded-mtext">{{ __('Mission') }}</span>
-                    </a>
-                </li>
-            </ul>
+        </li>
+
+        <li class="">
+            <a href="{{ route('visions.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+               <span class="pcoded-mtext">{{ __('Our Vision') }}</span>
+           </a>
+       </li>
+       <li class="">
+            <a href="{{ route('missions.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+               <span class="pcoded-mtext">{{ __(' Our Mission') }}</span>
+           </a>
+       </li>
+
+        <li class="">
+            <a href="{{ route('infa.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Infastructures') }}</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ route('rooms.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                <span class="pcoded-mtext">{{ __('Rooms') }}</span>
+            </a>
+        </li>
+
+
            <li class="">
             <a href="{{ route('training.index') }}">
                 <span class="pcoded-micon"><i class="feather icon-file"></i></span>

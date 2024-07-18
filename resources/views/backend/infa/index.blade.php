@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Mission'))
+@section('meta_title',__('Infastructure'))
 
-@section('page_name',__('Mission'))
+@section('page_name',__('Infastructure'))
 
-@section('page_description',__('MIssion'))
+@section('page_description',__('Infastructure'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
     </li>
-    <li class="breadcrumb-item"><a href="#!">{{ __('Mission') }}</a>
+    <li class="breadcrumb-item"><a href="#!">{{ __('Infastructure') }}</a>
     </li>
 @endsection
 @section('content')
@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-header row">
                 <div class="col-sm-2">
-                    <a href="{{ route('mission.create') }}" class="btn btn-sm btn-primary">{{ __('Add Mission Detail') }}</a>
+                    <a href="{{ route('infa.create') }}" class="btn btn-sm btn-primary">{{ __('Add Mission Detail') }}</a>
                 </div>
             </div>
             <div class="card-block">
@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>{{ __('Image') }}</th>
                                 <th>{{ __('Details') }}</th>
                                  <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
@@ -37,11 +38,12 @@
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
                                 <td>{{ $detail->title }}</td>
+                                <td><img src="{{ asset($slider->thumbnail_img) }}" width="150"></td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
 
                                 <td>
-                                    <a href="{{ route('mission.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
-                                    <a href="{{ route('mission.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
+                                    <a href="{{ route('infa.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
+                                    <a href="{{ route('infa.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -49,6 +51,7 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
+                                <th>{{ __('Image') }}</th>
                                 <th>{{ __('Details') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>

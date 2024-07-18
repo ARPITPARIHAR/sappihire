@@ -4,7 +4,9 @@
 			<div class="col-md-12">
 				<div class="abt_instut">
 					<h2>About Institute</h2>
-					<p>Rajasthan Institute of Co-operative Education and Management (RICEM) is a premier training institute promoted by the Government of Rajasthan and cooperative institutions with a view to develop human resources mainly in the cooperative sector, equipping them with techniques of professional and modem management. The Institute was registered in 1990 as a Society under Rajasthan Societies Registration Act, 1958.</p>
+                    @foreach (\App\Models\About::all() as $aboutService)
+                    <p>{{ $aboutService->brief_description }}</p>
+                @endforeach
 					<a href="#" class="btn">View More > </a>
 				</div>
 				<div class="abt_instut">

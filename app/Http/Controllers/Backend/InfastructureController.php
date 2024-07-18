@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mission;
+use App\Models\Infastructure;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
-class MissionController extends Controller
+class InfastructureController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $details = Mission::paginate(15);
-        return view('backend.missions.index', compact('details'));
+        $details = Infastructure::paginate(15);
+        return view('backend.infa.index', compact('details'));
     }
 
     /**
@@ -24,7 +24,7 @@ class MissionController extends Controller
      */
     public function create()
     {
-        return view('backend.missions.create');
+        return view('backend.infa.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class MissionController extends Controller
 
         ]);
 
-        $detail = new Mission;
+        $detail = new Infastructure;
 
 
         if ($request->hasFile('image')) {
@@ -57,7 +57,7 @@ class MissionController extends Controller
      */
     public function show($id)
     {
-        return view('backend.missions.show');
+        return view('backend.infa.show');
     }
 
     /**
@@ -66,8 +66,8 @@ class MissionController extends Controller
     public function edit($id)
     {
 
-        $detail =Mission::findOrFail(decrypt($id));
-        return view('backend.missions.edit', compact('detail'));
+        $detail =Infastructure::findOrFail(decrypt($id));
+        return view('backend.infa.edit', compact('detail'));
     }
 
     /**
@@ -79,7 +79,7 @@ class MissionController extends Controller
             'title' => 'required|string',
 
         ]);
-        $detail = Mission::findOrFail(decrypt($id));
+        $detail = Infastructure::findOrFail(decrypt($id));
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
@@ -97,7 +97,7 @@ class MissionController extends Controller
      */
     public function destroy($id)
     {
-        Mission::findOrFail(decrypt($id))->delete();
+        Infastructure::findOrFail(decrypt($id))->delete();
         Artisan::call('cache:clear');
         return back()->with('success', 'Detail deleted successfully.');
     }

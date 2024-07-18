@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12 no_padding">
                 <div class="inr_bnr">
-                    @foreach (\App\Models\MisSion::all() as $aboutService)
+                    @foreach (\App\Models\Room::all() as $aboutService)
                         <img src="{{ asset($aboutService->thumbnail_img) }}" alt="{{ $aboutService->banner_alt }}">
                     @endforeach
                 </div>
@@ -23,8 +23,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="head">
-                    <h2>Mission</h2>
-                    @foreach (\App\Models\Mission::all() as $aboutService)
+                    <h2>Room</h2>
+                    @foreach (\App\Models\Room::all() as $aboutService)
                         <p>{{ $aboutService->brief_description }}</p>
 
                     @endforeach
@@ -34,6 +34,10 @@
     </div>
 </section>
 @endsection
+
+
+
+
 
 
 
