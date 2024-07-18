@@ -2,8 +2,6 @@
 @section('meta_title','rcem')
 @include('frontend.includes.navbar')
 
-
-@section('content')
 <section class="inner_banner">
     <div class="container-fluid">
         <div class="row">
@@ -33,7 +31,7 @@
         </div>
     </div>
 </section>
-@endsection
+
 
 
 
