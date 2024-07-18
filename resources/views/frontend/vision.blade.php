@@ -3,9 +3,8 @@
 @include('frontend.includes.navbar')
 
 
-@extends('layouts.app')
 
-@section('content')
+)
 <section class="inner_banner">
     <div class="container-fluid">
         <div class="row">
@@ -28,14 +27,14 @@
                     <h2>Vision</h2>
                     @foreach (\App\Models\Vision::all() as $aboutService)
                         <p>{{ $aboutService->brief_description }}</p>
-                       
+
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
 </section>
-@endsection
+
 
 
 

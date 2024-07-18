@@ -3,13 +3,13 @@
 @include('frontend.includes.navbar')
 
 
-@section('content')
+
 <section class="inner_banner">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 no_padding">
                 <div class="inr_bnr">
-                    @foreach (\App\Models\MisSion::all() as $aboutService)
+                    @foreach (\App\Models\Mission::all() as $aboutService)
                         <img src="{{ asset($aboutService->thumbnail_img) }}" alt="{{ $aboutService->banner_alt }}">
                     @endforeach
                 </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
 </section>
-@endsection
+
 
 
 

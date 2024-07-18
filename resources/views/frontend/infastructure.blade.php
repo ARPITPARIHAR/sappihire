@@ -4,7 +4,7 @@
 
 
 
-@section('content')
+
 <section class="inner_banner">
     <div class="container-fluid">
         <div class="row">
@@ -34,7 +34,7 @@
         </div>
     </div>
 </section>
-@endsection
+
 
 
 
