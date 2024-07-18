@@ -25,7 +25,7 @@
                 <div class="head">
                     <h2>Room</h2>
                     @foreach (\App\Models\Room::all() as $aboutService)
-                        <p>{{ $aboutService->brief_description }}</p>
+                        <p>{{ $aboutService->title }}</p>
 
                     @endforeach
                 </div>

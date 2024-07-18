@@ -78,21 +78,25 @@ class VisionController extends Controller
         $request->validate([
             'title' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-
         ]);
+
         $detail = Vision::findOrFail(decrypt($id));
 
         if ($request->hasFile('image')) {
+            // Process image upload
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/visions', $fileName, 'public');
-            $detail->thumbnail_img = '/public/storage/' . $filePath;
+            $detail->thumbnail_img = '/public/storage/' . $filePath; // Adjust path as per your storage configuration
         }
-        $detail->title= $request->title;
-        $detail->update();
+
+        $detail->title = $request->title;
+        $detail->save();
+
+        // Optionally clear cache
         Artisan::call('cache:clear');
+
         return back()->with('success', 'Detail updated successfully.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
