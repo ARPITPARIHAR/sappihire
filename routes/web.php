@@ -22,7 +22,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('vision', 'vision')->name('visions');
     Route::get('mission', 'mission')->name('missions');
-    Route::get('rooms', 'room')->name('room');
+    Route::get('room', 'room')->name('room');
     Route::get('infastructure', 'infastructure')->name('infastructure');
     Route::get('contact-us', 'contact_us')->name('contact-us');
     Route::get('gallery', 'gallery')->name('gallery');
