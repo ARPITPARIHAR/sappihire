@@ -28,7 +28,7 @@
 				<div class="cntct_box">
 					<span><img src="images/mail.png" alt="mail"></span>
 					<h4>Email ID</h4>
-					<p>{{ businessSetting(1)->address }}</p>
+					<p>{{ businessSetting(1)->email }}</p>
 				</div>
 			</div>
 		</div>
@@ -53,18 +53,33 @@
 						</div>
 						<div class="form_group">
 							<input class="fotm_control" type="text" name="first_name" value="" placeholder="First Name" required>
+							@error('first_name')
+								<span class="text-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form_group">
 							<input class="fotm_control" type="text" name="last_name" value="" placeholder="Last Name" required>
+							@error('last_name')
+								<span class="text-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form_group">
 							<input class="fotm_control" type="number" name="phone_number" value="" placeholder="Phone Number" required>
+							@error('phone_number')
+								<span class="text-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form_group">
 							<input class="fotm_control" type="mail" name="email" value="" placeholder="Email" required>
+							@error('email')
+								<span class="text-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form_group">
 							<textarea class="fotm_control" name="message" placeholder="Message" required ></textarea>
+							@error('message')
+								<span class="text-danger">{{$message}}</span>
+							@enderror
 						</div>
                         <div class="form_group">
                             <button type="submit" class="btn">Submit</button>
