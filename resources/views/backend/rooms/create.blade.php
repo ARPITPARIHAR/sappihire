@@ -24,7 +24,7 @@
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('rooms.store') }}" method="POST" >
+                <form action="{{ route('rooms.store') }}" method="POST"  enctype="multipart/form-data>
                     @csrf
 
 
