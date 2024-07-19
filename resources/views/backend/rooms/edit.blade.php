@@ -24,7 +24,7 @@
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('rooms.update',encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data >
+                <form action="{{ route('rooms.update',encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Image') }}</label>

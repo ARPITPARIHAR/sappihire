@@ -24,10 +24,8 @@
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('visions.store') }}" method="POST"  enctype="multipart/form-data>
+                <form action="{{ route('visions.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
-
-
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Img') }}</label>
                         <div class="col-sm-10">

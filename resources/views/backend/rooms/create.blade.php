@@ -24,11 +24,9 @@
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('rooms.store') }}" method="POST"  enctype="multipart/form-data>
+                <form action="{{ route('rooms.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
-
-
-                    <div class="form-group row">
+                 <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Img') }}</label>
                         <div class="col-sm-10">
                             <input type="file" name="thumbnail_img" id="thumbnail_img" class="form-control @error('thumbnail_img') form-control-danger @enderror">
