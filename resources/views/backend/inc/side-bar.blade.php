@@ -50,7 +50,12 @@
                 <span class="pcoded-mtext">{{ __('Rooms') }}</span>
             </a>
         </li>
-
+        <li class="">
+            <a href="{{ route('galleries.index') }}">
+                <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+               <span class="pcoded-mtext">{{ __('Gallery') }}</span>
+           </a>
+       </li>
 
            <li class="">
             <a href="{{ route('training.index') }}">
