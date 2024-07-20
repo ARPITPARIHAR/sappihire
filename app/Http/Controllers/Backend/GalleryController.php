@@ -30,35 +30,37 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate multiple images
-        ]);
 
-        $detail = new Gallery;
-        $detail->title = $request->title;
+     public function store(Request $request)
+     {
+         $request->validate([
+             'title' => 'required|string',
+             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate multiple images
+         ]);
 
-        // Handle multiple images
-        if ($request->hasFile('images')) {
-            $imagePaths = [];
-            foreach ($request->file('images') as $image) {
-                // Generate a unique file name
-                $fileName = time() . '-' . $image->getClientOriginalName();
-                // Store the image
-                $filePath = $image->storeAs('uploads/images', $fileName, 'public');
-                // Save the image path
-                $imagePaths[] = '/public/storage/' . $filePath;
-            }
-            // Store the image paths in the database (as JSON)
-            $detail->image_paths = json_encode($imagePaths);
-        }
+         $detail = new Gallery;
+         $detail->title = $request->title;
 
-        $detail->save();
-        Artisan::call('cache:clear');
-        return back()->with('success', 'Details added successfully.');
-    }
+         // Handle multiple images
+         if ($request->hasFile('images')) {
+             $imagePaths = [];
+             foreach ($request->file('images') as $image) {
+                 // Generate a unique file name
+                 $fileName = time() . '-' . $image->getClientOriginalName();
+                 // Store the image
+                 $filePath = $image->storeAs('uploads/images', $fileName, 'public');
+                 // Save the image path
+                 $imagePaths[] = '/public/storage/' . $filePath;
+             }
+             // Store the image paths in the database (as JSON)
+             $detail->image_paths = json_encode($imagePaths);
+         }
+
+         $detail->save();
+         Artisan::call('cache:clear');
+         return back()->with('success', 'Details added successfully.');
+     }
+
 
     /**
      * Display the specified resource.

@@ -30,6 +30,9 @@ Route::controller(PageController::class)->group(function () {
     Route::get('board-of-directory', 'boardofdirectory')->name('boardofdirectory');
     Route::get('team-member', 'teamofmember')->name('teamofmember');
     Route::get('traning-programme', 'traningprogramme')->name('traningprogramme');
+    Route::get('studymaterial', 'studymaterial')->name('studymaterial');
+    Route::get('relivingorders', 'relivingorders')->name('relivingorders');
+    Route::get('feedback', 'feedback')->name('feedback');
     Route::get('login-register', 'login_register')->name('login-register');
 });
 

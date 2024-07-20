@@ -37,12 +37,12 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __(' Detail') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
+                            <!-- Replace the input with a textarea for CKEditor -->
+                            <textarea name="title" id="title" placeholder="{{ __('Enter Detail') }}" class="form-control @error('title') form-control-danger @enderror">{{ old('title') }}</textarea>
+                            <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @else
@@ -85,3 +85,4 @@
 @section('styles')
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote.css') }}">
 @endsection
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>

@@ -66,7 +66,18 @@
 												<li><a class="dropdown-item" href="{{route('teamofmember')}}">Team Member</a></li>
 											</ul>
 										</li>
-										<li class="nav-item"><a class="nav-link" href="{{route('traningprogramme')}}">Training</a></li>
+                                        <li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Training
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+												<li><a class="dropdown-item" href="{{route('traningprogramme')}}">Training Calender</a></li>
+												<li><a class="dropdown-item" href="{{route('studymaterial')}}">Study Material</a></li>
+                                                <li><a class="dropdown-item" href="{{route('relivingorders')}}">Reliving Orders</a></li>
+                                                <li><a class="dropdown-item" href="{{route('feedback')}}">Feedback/Suggestions</a></li>
+											</ul>
+										</li>
+
 										 <li class="nav-item"><a class="nav-link" href="/room">Rooms</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('gallery')}}">Photo Gallery</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('placementservice')}}">Placement Services</a></li>

@@ -6,12 +6,15 @@ use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BoardController;
+use App\Http\Controllers\Backend\StudyController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\VisionController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\MissionController;
+use App\Http\Controllers\Backend\FeedbackController;
+use App\Http\Controllers\Backend\RelivingController;
 use App\Http\Controllers\Backend\TrainingController;
 use App\Http\Controllers\Backend\UpcomingController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -249,7 +252,38 @@ Route::controller(GalleryController::class)->group(function () {
         Route::get('{id}/delete', 'destroy')->name('delete');
     });
 });
+Route::controller(RelivingController::class)->group(function () {
+    Route::group(['prefix' => 'relieve', 'as' => 'relieve.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
 
+Route::controller(StudyController::class)->group(function () {
+    Route::group(['prefix' => 'study', 'as' => 'study.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+
+Route::controller(FeedbackController::class)->group(function () {
+    Route::group(['prefix' => 'feedbacking', 'as' => 'feedbacking.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
 
 
 // Contact routes

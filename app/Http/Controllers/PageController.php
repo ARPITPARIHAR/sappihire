@@ -54,5 +54,21 @@ class PageController extends Controller
     {
         return view('frontend.traningprogramme');
     }
+    public function studymaterial(Request $request)
+    {
+        return view('frontend.studymaterial');
+    }
+    public function relivingorders(Request $request)
+    {
+        return view('frontend.relivingorders');
+    }
+    public function feedback(Request $request)
+    {
+        return view('frontend.feedback');
+    }
+
+
+
+
 
 }
