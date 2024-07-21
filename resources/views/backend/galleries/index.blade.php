@@ -42,8 +42,8 @@
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
 
                                 <td>
-                                    <a href="{{ route('visions.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
-                                    <a href="{{ route('visions.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
+                                    <a href="{{ route('galleries.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
+                                    <a href="{{ route('galleries.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach
