@@ -10,17 +10,24 @@
             </div>
 
             @foreach(\App\Models\Gallery::all() as $item)
-                <div class="col-lg-3">
-                    <div class="glry_box">
-                        <a class="example-image-link" href="{{ asset($item->image_paths) }}" data-lightbox="example-set">
-                            <div class="glry_imag">
-                                <img class="example-image" src="{{ asset($item->image_paths) }}" alt="{{ $item->title }}" />
-                            </div>
-                            <h4>{{ $item->title }}</h4>
-                        </a>
-                    </div>
+            <div class="col-lg-3">
+                <div class="glry_box">
+                    @php
+                        $images = json_decode($item->image_paths);
+                    @endphp
+                    @if($images)
+                        @foreach($images as $image)
+                            <a class="example-image-link" href="{{ asset($image) }}" data-lightbox="example-set">
+                                <div class="glry_imag">
+                                    <img class="example-image" src="{{ asset($image) }}" alt="{{ $item->title }}" />
+                                </div>
+                            </a>
+                        @endforeach
+                    @endif
+                    <h4>{{ $item->title }}</h4>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
         </div>
     </div>
 </section>
