@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Hostel Facility'))
+@section('meta_title',__('Edit About'))
 
-@section('page_name',__('Hostel Facility'))
+@section('page_name',__('Edit About'))
 
-@section('page_description',__('Hostel Facility'))
+@section('page_description',__('Edit About'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
     </li>
-    <li class="breadcrumb-item"><a href="#!">{{ __('Hostel Facility') }}</a>
+    <li class="breadcrumb-item"><a href="#!">{{ __('Edit About') }}</a>
     </li>
 @endsection
 @section('content')
@@ -17,29 +17,17 @@
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
-               <h5 class="text-success">{{ session('success') }}</h5>
-               @else
-                <h5>@yield('page_name')</h5>
-               @endsession
+                @if(session('success'))
+                    <h5 class="text-success">{{ session('success') }}</h5>
+                @else
+                    <h5>@yield('page_name')</h5>
+                @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('about.update',encrypt($abouts->id)) }}" method="POST" >
+                <form action="{{ route('about.update',encrypt($abouts->id)) }}" method="POST">
                     @csrf
-                    {{-- <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title') ?? $slider->title }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
-                                @error('title')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @else
-                                    <p class="text-muted">{{ __('') }}</p>
-                                @enderror
-                            </span>
-                        </div>
-                    </div> --}}
-                     <div class="form-group row">
+                    @method('PUT')
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
                         <div class="col-sm-10">
                             <textarea name="brief_description" id="brief_description" rows="5" placeholder="{{ __('Enter Brief Description') }}" class="form-control @error('brief_description') form-control-danger @enderror">{{ old('brief_description') ?? $hostels->brief_description }}</textarea>
@@ -50,20 +38,8 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="image" id="image" class="form-control @error('image') form-control-danger @enderror">
-                            @error('image')
-                                <p class="text-danger error">{{ $message }}</p>
-                            @else
-                                <p class="text-muted">{{ __('') }}</p>
-                            @enderror
-                        </div>
-                    </div> --}}
                     <div class="form-group row">
-                        <div class="col-sm-4">
-                        </div>
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-8">
                             <div>
                                 <button type="submit" class="btn btn-primary float-sm-right">{{ __('Update') }}</button>
@@ -87,7 +63,7 @@
     <script type="text/javascript" src="{{ asset('backend/plugins/summernote/summernote.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#description').summernote();
+            $('#brief_description').summernote();
         });
     </script>
 @endsection

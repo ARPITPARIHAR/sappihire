@@ -1,9 +1,9 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Edit Mission'))
+@section('meta_title', __('Edit Mission'))
 
-@section('page_name',__('Edit Mission'))
+@section('page_name', __('Edit Mission'))
 
-@section('page_description',__('Edit Mission'))
+@section('page_description', __('Edit Mission'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
@@ -17,14 +17,14 @@
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
+               @if(session('success'))
                     <h5 class="text-success">{{ session('success') }}</h5>
                @else
                     <h5>@yield('page_name')</h5>
-               @endsession
+               @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('missions.update',encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('missions.update', encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Image') }}</label>
@@ -39,11 +39,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __(' Detail') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
-                                @error('title')
+                            <textarea name="detail" id="detail" placeholder="{{ __('Enter Detail') }}" class="form-control @error('detail') form-control-danger @enderror">{{ old('detail') ?? $detail->detail }}</textarea>
+                            <span class="messages">
+                                @error('detail')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @else
                                     <p class="text-muted">{{ __('') }}</p>
@@ -53,8 +53,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-4">
-                        </div>
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-8">
                             <div>
                                 <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
@@ -78,7 +77,7 @@
     <script type="text/javascript" src="{{ asset('backend/plugins/summernote/summernote.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#description').summernote();
+            $('#detail').summernote();
         });
     </script>
 @endsection

@@ -17,11 +17,11 @@
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
-               <h5 class="text-success">{{ session('success') }}</h5>
-               @else
-                <h5>@yield('page_name')</h5>
-               @endsession
+                @if(session('success'))
+                    <h5 class="text-success">{{ session('success') }}</h5>
+                @else
+                    <h5>@yield('page_name')</h5>
+                @endif
             </div>
             <div class="card-block">
                 <form action="{{ route('galleries.store') }}" method="POST" enctype="multipart/form-data">
@@ -35,18 +35,21 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Images') }}</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="images[]" id="images" multiple class="form-control @error('images') form-control-danger @enderror">
-                            @error('images')
-                                <p class="text-danger error">{{ $message }}</p>
-                            @enderror
+                    <div id="image-fields">
+                        <div class="form-group row image-field">
+                            <label class="col-sm-2 col-form-label">{{ __('Images') }}</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="images[]" class="form-control @error('images') form-control-danger @enderror">
+                                @error('images')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-8">
+                            <button type="button" id="add-more" class="btn btn-secondary">{{ __('Add More') }}</button>
                             <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
                         </div>
                     </div>
@@ -69,6 +72,13 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote();
+
+            // Add more image fields
+            $('#add-more').click(function() {
+                var newField = $('.image-field').first().clone();
+                newField.find('input').val('');
+                newField.appendTo('#image-fields');
+            });
         });
     </script>
 @endsection

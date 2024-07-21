@@ -1,9 +1,9 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Edit Vision'))
+@section('meta_title', __('Edit Vision'))
 
-@section('page_name',__('Edit Vision'))
+@section('page_name', __('Edit Vision'))
 
-@section('page_description',__('Edit Vision'))
+@section('page_description', __('Edit Vision'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
@@ -17,15 +17,16 @@
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
+               @if(session('success'))
                     <h5 class="text-success">{{ session('success') }}</h5>
                @else
                     <h5>@yield('page_name')</h5>
-               @endsession
+               @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('visions.update',encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('visions.update', encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Image') }}</label>
                         <div class="col-sm-10">
@@ -40,10 +41,10 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
                         <div class="col-sm-10">
-                            <!-- Replace the input with a textarea for CKEditor -->
-                            <textarea name="title" id="title" placeholder="{{ __('Enter Detail') }}" class="form-control @error('title') form-control-danger @enderror">{{ old('title') }}</textarea>
+                            <!-- Replace the input with a textarea for Summernote -->
+                            <textarea name="detail" id="detail" placeholder="{{ __('Enter Detail') }}" class="form-control @error('detail') form-control-danger @enderror">{{ old('detail', $detail->detail) }}</textarea>
                             <span class="messages">
-                                @error('title')
+                                @error('detail')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @else
                                     <p class="text-muted">{{ __('') }}</p>
@@ -53,8 +54,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-4">
-                        </div>
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-8">
                             <div>
                                 <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
@@ -78,11 +78,10 @@
     <script type="text/javascript" src="{{ asset('backend/plugins/summernote/summernote.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#description').summernote();
+            $('#detail').summernote();
         });
     </script>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote.css') }}">
 @endsection
-<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
