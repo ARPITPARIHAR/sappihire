@@ -33,6 +33,19 @@ class PageController extends Controller
     {
         return view('frontend.contact');
     }
+
+    public function hostel_facility(Request $request)
+    {
+        return view('frontend.hostel');
+    }
+
+    public function about(Request $request)
+    {
+        return view('frontend.about');
+    }
+
+
+
     public function gallery(Request $request)
     {
         return view('frontend.gallery');

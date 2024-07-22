@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
@@ -13,7 +14,6 @@ class TrainingController extends Controller
      */
     public function index()
     {
-
         $trainings = Training::paginate(15);
         return view('backend.training.index', compact('trainings'));
     }
@@ -32,27 +32,29 @@ class TrainingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'hyperlink' => 'nullable|url', // Validate the hyperlink
         ]);
+
         $training = new Training;
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-training-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/trainings', $fileName, 'public');
-            $training->thumbnail_img = '/public/storage/' . $filePath;
+            $training->thumbnail_img = '/public/storage/' . $filePath; // Updated to use storage path
         }
+
+        $training->hyperlink = $request->input('hyperlink'); // Store the hyperlink
         $training->save();
+
         Artisan::call('cache:clear');
-        return back()->with('success', 'training added successfully.');
+
+        return back()->with('success', 'Training added successfully.');
     }
 
-    public function show($id)
-    {
-        return view('backend.training.show');
-    }
-
-
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit($id)
     {
         $training = Training::findOrFail(decrypt($id));
@@ -65,19 +67,24 @@ class TrainingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'hyperlink' => 'nullable|url', // Validate the hyperlink
         ]);
+
         $training = Training::findOrFail(decrypt($id));
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-training-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/trainings', $fileName, 'public');
-            $training->thumbnail_img = '/public/storage/' . $filePath;
+            $training->thumbnail_img = '/public/storage/' . $filePath; // Updated to use storage path
         }
-        $training->update();
+
+        $training->hyperlink = $request->input('hyperlink'); // Update the hyperlink
+        $training->save();
+
         Artisan::call('cache:clear');
-        return back()->with('success', 'training updated successfully.');
+
+        return back()->with('success', 'Training updated successfully.');
     }
 
     /**
@@ -87,6 +94,6 @@ class TrainingController extends Controller
     {
         Training::findOrFail(decrypt($id))->delete();
         Artisan::call('cache:clear');
-        return back()->with('success', 'training deleted successfully.');
+        return back()->with('success', 'Training deleted successfully.');
     }
 }

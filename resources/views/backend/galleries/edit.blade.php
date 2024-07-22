@@ -17,15 +17,16 @@
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
+                @if(session('success'))
                     <h5 class="text-success">{{ session('success') }}</h5>
-               @else
+                @else
                     <h5>@yield('page_name')</h5>
-               @endsession
+                @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('galleries.update',encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('galleries.update', encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Image') }}</label>
                         <div class="col-sm-10">
@@ -39,26 +40,50 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __(' Title') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
-                                @error('title')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @else
-                                    <p class="text-muted">{{ __('') }}</p>
-                                @enderror
-                            </span>
+                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
+                            @error('title')
+                                <p class="text-danger error">{{ $message }}</p>
+                            @else
+                                <p class="text-muted">{{ __('') }}</p>
+                            @enderror
                         </div>
                     </div>
 
+                    <div id="image-fields">
+                        @php
+                            $images = json_decode($detail->image_paths);
+                        @endphp
+                        @if($images)
+                            @foreach($images as $image)
+                                <div class="form-group row image-field">
+                                    <label class="col-sm-2 col-form-label">{{ __('Existing Image') }}</label>
+                                    <div class="col-sm-8">
+                                        <img src="{{ asset($image) }}" alt="{{ $detail->title }}" class="img-thumbnail" width="150">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn btn-danger remove-image">{{ __('Remove') }}</button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                        <div class="form-group row image-field">
+                            <label class="col-sm-2 col-form-label">{{ __('Add New Images') }}</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="images[]" class="form-control @error('images') form-control-danger @enderror">
+                                @error('images')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">
-                            <div>
-                                <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
-                            </div>
+                            <button type="button" id="add-more" class="btn btn-secondary">{{ __('Add More') }}</button>
+                            <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -79,6 +104,18 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote();
+
+            // Add more image fields
+            $('#add-more').click(function() {
+                var newField = $('.image-field').last().clone();
+                newField.find('input').val('');
+                newField.appendTo('#image-fields');
+            });
+
+            // Remove existing image
+            $(document).on('click', '.remove-image', function() {
+                $(this).closest('.image-field').remove();
+            });
         });
     </script>
 @endsection

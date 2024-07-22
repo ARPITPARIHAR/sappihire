@@ -1,15 +1,14 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Slider'))
+@section('meta_title', __('Slider'))
 
-@section('page_name',__('Training'))
+@section('page_name', __('Training'))
 
-@section('page_description',__('Training'))
+@section('page_description', __('Training'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
     </li>
-    <li class="breadcrumb-item"><a href="#!">{{ __('Training') }}</a>
-    </li>
+    <li class="breadcrumb-item"><a href="#!">{{ __('Training') }}</a></li>
 @endsection
 @section('content')
 <div class="row">
@@ -27,9 +26,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-
                                 <th>{{ __('Image') }}</th>
-
+                                <th>{{ __('Hyperlink') }}</th> <!-- New Column Header -->
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -41,10 +39,18 @@
 
                                 <td><img src="{{ asset($training->thumbnail_img) }}" width="150"></td>
 
-                                <td>{{ date('d-m-Y h:iA',strtotime($training->updated_at)) }}</td>
                                 <td>
-                                    <a href="{{ route('training.edit',encrypt($training->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
-                                    <a href="{{ route('training.delete',encrypt($training->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
+                                    @if($training->hyperlink)
+                                        <a href="{{ $training->hyperlink }}" target="_blank">{{ __('View Link') }}</a>
+                                    @else
+                                        {{ __('No Link') }}
+                                    @endif
+                                </td>
+
+                                <td>{{ date('d-m-Y h:iA', strtotime($training->updated_at)) }}</td>
+                                <td>
+                                    <a href="{{ route('training.edit', encrypt($training->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
+                                    <a href="{{ route('training.delete', encrypt($training->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -52,9 +58,8 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-
                                 <th>{{ __('Image') }}</th>
-
+                                <th>{{ __('Hyperlink') }}</th> <!-- New Column Footer -->
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -75,7 +80,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 @section('modal')
 

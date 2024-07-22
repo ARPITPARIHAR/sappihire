@@ -14,7 +14,6 @@ class SliderController extends Controller
      */
     public function index()
     {
-
         $sliders = Slider::paginate(15);
         return view('backend.sliders.index', compact('sliders'));
     }
@@ -33,29 +32,28 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'hyperlink' => 'nullable|url', // Validate the hyperlink
         ]);
+
         $slider = new Slider;
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/sliders', $fileName, 'public');
-            $slider->thumbnail_img = '/public/storage/' . $filePath;
+            $slider->thumbnail_img = '/public/storage/' . $filePath; // Fixed path
         }
+
+        $slider->hyperlink = $request->input('hyperlink'); // Save the hyperlink
+
         $slider->save();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Slider added successfully.');
+        return redirect()->route('sliders.index')->with('success', 'Slider added successfully.');
     }
 
-
-
-    public function show($id)
-    {
-        return view('backend.sliders.show');
-    }
-
-
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit($id)
     {
         $slider = Slider::findOrFail(decrypt($id));
@@ -68,19 +66,23 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'hyperlink' => 'nullable|url', // Validate the hyperlink
         ]);
+
         $slider = Slider::findOrFail(decrypt($id));
 
         if ($request->hasFile('image')) {
             $fileName = time() . '-slider-' . $request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('uploads/sliders', $fileName, 'public');
-            $slider->thumbnail_img = '/public/storage/' . $filePath;
+            $slider->thumbnail_img = '/public/storage/' . $filePath; // Fixed path
         }
-        $slider->update();
+
+        $slider->hyperlink = $request->input('hyperlink'); // Update the hyperlink
+
+        $slider->save(); // Save the updated model
         Artisan::call('cache:clear');
-        return back()->with('success', 'Slider updated successfully.');
+        return redirect()->route('sliders.index')->with('success', 'Slider updated successfully.');
     }
 
     /**
@@ -88,8 +90,9 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        Slider::findOrFail(decrypt($id))->delete();
+        $slider = Slider::findOrFail(decrypt($id));
+        $slider->delete();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Page deleted successfully.');
+        return redirect()->route('sliders.index')->with('success', 'Slider deleted successfully.');
     }
 }

@@ -2,27 +2,40 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="abt_instut">
-					<h2>About Institute</h2>
+                <div class="abt_instut">
+                    <h2>About Institute</h2>
                     @foreach (\App\Models\About::all() as $aboutService)
-                    <p>{{ $aboutService->brief_description }}</p>
+                        @php
+                            $brief_description = Str::limit($aboutService->brief_description, 250, '...');
+                        @endphp
+                        <p>{{ $brief_description }}</p>
+                    @endforeach
+                    <a href="{{ route('abouts') }}" class="btn">View More ></a>
+                </div>
+            </div>
+
+            <div class="abt_instut">
+                <h2>Placement Services</h2>
+                @foreach (\App\Models\Placementservice::all() as $placementService)
+                    @php
+                        $brief_description = Str::limit($placementService->brief_description, 250, '...');
+                    @endphp
+                    <p>{{ $brief_description }}</p>
                 @endforeach
-					<a href="#" class="btn">View More > </a>
-				</div>
-				<div class="abt_instut">
-					<h2>Placement Services</h2>
-                    @foreach (\App\Models\Placementservice::all() as $placementService)
-                    <p>{{ $placementService->brief_description }}</p>
+                <a href="{{ route('placementservice') }}" class="btn">View More ></a>
+            </div>
+
+            <div class="abt_instut">
+                <h2>Hostel Facility</h2>
+                @foreach (\App\Models\Hostelservice::all() as $hostelService)
+                    @php
+                        $brief_description = Str::limit($hostelService->brief_description, 250, '...');
+                    @endphp
+                    <p>{{ $brief_description }}</p>
                 @endforeach
-					<a href="#" class="btn">View More > </a>
-				</div>
-				<div class="abt_instut">
-					<h2>Hostel Facility</h2>
-                    @foreach (\App\Models\Hostelservice::all() as $hostelService)
-                    <p>{{ $hostelService->brief_description }}</p>
-                @endforeach
-					<a href="#" class="btn">View More > </a>
-				</div>
+                <a href="{{ route('hostelservice') }}" class="btn">View More ></a>
+            </div>
+
 			</div>
 		</div>
 	</div>
@@ -101,10 +114,14 @@
 				<div class="head">
 					<h3>Latest News & Highlights</h3>
 				</div>
-				<div class="nws_evnt">
+
+                <div class="nws_evnt">
                     <ul class="marquee">
                         @foreach (\App\Models\News::all() as $newsItem)
-                            <li>{{ $newsItem->news_description }}</li>
+
+                             <a href="{{ $newsItem->hyperlink }}" target="_blank">
+                                <li>{{ $newsItem->news_description }}</li>
+                            </a>
                         @endforeach
                     </ul>
                 </div>
@@ -138,7 +155,7 @@
                                     <td>{{ $upcoming->venue }}</td>
                                     <td>
                                         @if ($upcoming->pdf_file)
-                                        <a href="{{ asset('storage/upcomings/' . $upcoming->pdf_file) }}" download="{{ $upcoming->title }}.pdf">
+                                        <a href="{{ asset('/public/storage/upcomings/' . $upcoming->pdf_file) }}" download="{{ $upcoming->title }}.pdf">
                                             <img src="{{ asset('images/pdf.png') }}" alt="pdf">
                                         </a>
                                     @else
@@ -168,11 +185,14 @@
                 </div>
             </div>
             @foreach (\App\Models\Training::all() as $training)
-                <div class="col-md-4">
-                    <div class="web_box">
-                        <img src="{{asset($training->thumbnail_img)}}" alt="web">
-                    </div>
+            <div class="col-md-4">
+                <div class="web_box">
+                    <a href="{{ $training->hyperlink }}" target="_blank">
+                        <img src="{{ asset($training->thumbnail_img) }}" alt="web">
+                    </a>
                 </div>
+            </div>
+
             @endforeach
         </div>
     </div>

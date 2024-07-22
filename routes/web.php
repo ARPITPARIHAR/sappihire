@@ -27,6 +27,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('contact-us', 'contact_us')->name('contact-us');
     Route::get('gallery', 'gallery')->name('gallery');
     Route::get('placement-service', 'placementservice')->name('placementservice');
+    Route::get('abouts', 'about')->name('abouts');
+    Route::get('hostel-facility', 'hostel_facility')->name('hostelservice');
     Route::get('board-of-directory', 'boardofdirectory')->name('boardofdirectory');
     Route::get('team-member', 'teamofmember')->name('teamofmember');
     Route::get('traning-programme', 'traningprogramme')->name('traningprogramme');

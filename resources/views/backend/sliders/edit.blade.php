@@ -17,28 +17,30 @@
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
-               <h5 class="text-success">{{ session('success') }}</h5>
-               @else
-                <h5>@yield('page_name')</h5>
-               @endsession
+                @if(session('success'))
+                    <h5 class="text-success">{{ session('success') }}</h5>
+                @else
+                    <h5>@yield('page_name')</h5>
+                @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('sliders.update',encrypt($slider->id)) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('sliders.update', encrypt($slider->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
+                    {{-- Uncomment if Title is needed --}}
                     {{-- <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
                             <input type="text" name="title" id="title" value="{{ old('title') ?? $slider->title }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
-                                @error('title')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @else
-                                    <p class="text-muted">{{ __('') }}</p>
-                                @enderror
-                            </span>
+                            @error('title')
+                                <p class="text-danger error">{{ $message }}</p>
+                            @else
+                                <p class="text-muted">{{ __('') }}</p>
+                            @enderror
                         </div>
                     </div> --}}
+
+                    {{-- Uncomment if Brief Description is needed --}}
                     {{-- <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
                         <div class="col-sm-10">
@@ -50,6 +52,7 @@
                             @enderror
                         </div>
                     </div> --}}
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>
                         <div class="col-sm-10">
@@ -61,6 +64,19 @@
                             @enderror
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Hyperlink') }}</label>
+                        <div class="col-sm-10">
+                            <input type="url" name="hyperlink" id="hyperlink" value="{{ old('hyperlink') ?? $slider->hyperlink }}" placeholder="{{ __('Enter Hyperlink') }}" class="form-control @error('hyperlink') form-control-danger @enderror">
+                            @error('hyperlink')
+                                <p class="text-danger error">{{ $message }}</p>
+                            @else
+                                <p class="text-muted">{{ __('') }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <div class="col-sm-4">
                         </div>
