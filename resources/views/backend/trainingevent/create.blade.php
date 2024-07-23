@@ -1,16 +1,15 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Training'))
+@section('meta_title', __('Training'))
 
-@section('page_name',__('Training'))
+@section('page_name', __('Training'))
 
-@section('page_description',__('Training'))
+@section('page_description', __('Training'))
 
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
     </li>
-    <li class="breadcrumb-item"><a href="#!">{{ __('Training') }}</a>
-    </li>
+    <li class="breadcrumb-item"><a href="#!">{{ __('Training') }}</a></li>
 @endsection
 
 @section('content')
@@ -50,6 +49,7 @@
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
+
                             <span class="messages">
                                 @error('category_id')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -71,8 +71,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-4">
-                        </div>
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
                         </div>
