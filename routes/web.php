@@ -41,6 +41,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('login-register', 'login_register')->name('login-register');
     Route::get('/training/{id}',  'training_show')->name('training.show');
     Route::get('/reliving-show/{id}',  'reliving_show')->name('reliving.show');
+    Route::get('/stidy-show/{id}',  'study_show')->name('studymaterial.show');
 });
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');

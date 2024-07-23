@@ -83,8 +83,6 @@ class PageController extends Controller
     }
 
 
-
-
     public function training_show($id)
     {
 
@@ -101,10 +99,21 @@ class PageController extends Controller
 
         $relatedPDFs = Relive::where('id', $id)->get();
 
-     
+
         return view('frontend.relivingshow', compact('trainingEvent', 'relatedPDFs'));
     }
 
+
+    public function study_show($id)
+    {
+        $trainingEvent = Relive::findOrFail($id);
+
+
+        $relatedPDFs = Relive::where('id', $id)->get();
+
+
+        return view('frontend.studyshow', compact('trainingEvent', 'relatedPDFs'));
+    }
 
 
 }

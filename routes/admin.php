@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\VisionController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\MissionController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\RelivingController;
 use App\Http\Controllers\Backend\TrainingController;
@@ -298,6 +299,10 @@ Route::controller(ManagementController::class)->group(function () {
         Route::get('{id}/delete', 'destroy')->name('delete');
     });
 });
+
+
+
+
 
 
 // Contact routes

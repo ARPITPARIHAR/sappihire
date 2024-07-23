@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Trainingevent;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use Illuminate\Support\Facades\Artisan;
 
 class TrainingeventController extends Controller
@@ -36,13 +37,21 @@ class TrainingeventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string',
-
+            'title' => 'nullable|required_without:pdf_file|string', // Title is required only if pdf_file is provided
+        'category_id' => 'nullable|exists:categories,id',
+        'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
         $detail = new Trainingevent;
 
         $detail->title = $request->title;
+        $detail->category_id = $request->category_id;
+        if ($request->hasFile('pdf_file')) {
+          $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+          $filePath = $request->file('pdf_file')->storeAs('uploads/trainingevents', $fileName, 'public');
+          $detail->pdf_file = '/public/storage/' . $filePath;
+
+        }
         $detail->save();
         Artisan::call('cache:clear');
         return back()->with('success', 'Details added successfully.');

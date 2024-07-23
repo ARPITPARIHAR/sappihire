@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Relive;
+use App\Models\Study;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 
 class StudyController extends Controller
@@ -15,7 +16,7 @@ class StudyController extends Controller
     public function index()
     {
         $details = Study::paginate(15);
-        return view('backend.relieve.index', compact('details'));
+        return view('backend.study.index', compact('details'));
     }
 
     /**
@@ -23,7 +24,7 @@ class StudyController extends Controller
      */
     public function create()
     {
-        return view('backend.relieve.create');
+        return view('backend.study.create');
     }
 
     /**
@@ -41,7 +42,7 @@ class StudyController extends Controller
         $detail->title = $request->title;
         $detail->save();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Details added successfully.');
+        return back()->with('success', 'Study Material added successfully.');
     }
 
     /**
@@ -49,7 +50,7 @@ class StudyController extends Controller
      */
     public function show($id)
     {
-        return view('backend.trainingevent.show');
+        return view('backend.study.show');
     }
 
     /**
@@ -59,7 +60,7 @@ class StudyController extends Controller
     {
 
         $detail = Study::findOrFail(decrypt($id));
-        return view('backend.relieve.edit', compact('detail'));
+        return view('backend.study.edit', compact('detail'));
     }
 
     /**
@@ -75,7 +76,7 @@ class StudyController extends Controller
         $detail->title= $request->title;
         $detail->update();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Detail updated successfully.');
+        return back()->with('success', 'Study Material updated successfully.');
     }
 
     /**

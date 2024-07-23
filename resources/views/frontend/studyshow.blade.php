@@ -17,7 +17,7 @@
                                 <thead>
                                     <tr>
                                         <th>S.No.</th> <!-- Add a column for serial numbers -->
-                                        <th>Title</th>
+                                        <th>Topics</th>
                                         <th>View</th>
                                     </tr>
                                 </thead>
