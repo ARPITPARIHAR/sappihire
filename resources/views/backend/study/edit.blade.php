@@ -29,7 +29,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __(' Topics') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Topic') }}" class="form-control @error('title') form-control-danger @enderror">
                            <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>

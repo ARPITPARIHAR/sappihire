@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Study;
 use App\Models\Relive;
 use Illuminate\Http\Request;
 use App\Models\Trainingevent;
@@ -106,10 +106,10 @@ class PageController extends Controller
 
     public function study_show($id)
     {
-        $trainingEvent = Relive::findOrFail($id);
+        $trainingEvent = Study::findOrFail($id);
 
 
-        $relatedPDFs = Relive::where('id', $id)->get();
+        $relatedPDFs = Study::where('id', $id)->get();
 
 
         return view('frontend.studyshow', compact('trainingEvent', 'relatedPDFs'));
