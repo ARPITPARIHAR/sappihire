@@ -4,7 +4,7 @@
 
 @include('frontend.includes.navbar')
 
-<section>
+<section style="margin-top: 30px; margin-bottom: 30px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
