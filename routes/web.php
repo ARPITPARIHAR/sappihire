@@ -3,9 +3,12 @@
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FileDownloadController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -36,6 +39,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('relivingorders', 'relivingorders')->name('relivingorders');
     Route::get('feedback', 'feedback')->name('feedback');
     Route::get('login-register', 'login_register')->name('login-register');
+    Route::get('/training/{id}',  'training_show')->name('training.show');
+    Route::get('/reliving-show/{id}',  'reliving_show')->name('reliving.show');
 });
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
@@ -49,3 +54,7 @@ Route::post('/register', [LoginController::class, 'register'])->name('register')
 Route::get('/training-events', [EventController::class, 'index'])->name('training.search');
 
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+
+Route::get('/download/{fileName}', [FileDownloadController::class, 'download'])->name('document.download');
+

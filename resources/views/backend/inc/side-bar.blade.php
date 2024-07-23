@@ -56,6 +56,12 @@
                <span class="pcoded-mtext">{{ __('Gallery') }}</span>
            </a>
        </li>
+       <li class="">
+        <a href="{{ route('management.index') }}">
+            <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+           <span class="pcoded-mtext">{{ __('Management Desk') }}</span>
+       </a>
+   </li>
 
        <li class="pcoded-hasmenu active pcoded-trigger">
         <a href="javascript:void(0)">

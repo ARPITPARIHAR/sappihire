@@ -27,7 +27,7 @@
                 <form action="{{ route('trainingevent.update',encrypt($detail->id)) }}" method="POST" >
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __(' Detail') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __(' Title') }}</label>
                         <div class="col-sm-10">
                             <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
                            <span class="messages">

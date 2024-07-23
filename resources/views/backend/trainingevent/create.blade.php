@@ -24,13 +24,13 @@
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('trainingevent.store') }}" method="POST" >
+                <form action="{{ route('trainingevent.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                  <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
                             <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Detail') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
+                            <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @else
@@ -40,7 +40,40 @@
                         </div>
                     </div>
 
-                <div class="form-group row">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                        <div class="col-sm-10">
+                            <select name="category_id" class="form-control @error('category_id') form-control-danger @enderror">
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="messages">
+                                @error('category_id')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @else
+                                    <p class="text-muted">{{ __('') }}</p>
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Upload PDF') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pdf_file" id="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('pdf_file')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @else
+                                    <p class="text-muted">{{ __('') }}</p>
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-8">
@@ -50,6 +83,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

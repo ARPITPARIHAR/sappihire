@@ -23,7 +23,11 @@ class TrainingeventController extends Controller
      */
     public function create()
     {
-        return view('backend.trainingevent.create');
+
+        $categories =Trainingevent::all();
+
+        // Pass categories to the view
+        return view('backend.trainingevent.create', compact('categories'));
     }
 
     /**
@@ -48,9 +52,12 @@ class TrainingeventController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-    {
-        return view('backend.trainingevent.show');
-    }
+{
+    $trainingEvent = Trainingevent::findOrFail($id);
+    $relatedPDFs = $trainingEvent->pdfs; // Assuming you have a relation or a method to fetch related PDFs
+
+    return view('frontend.training.show', compact('trainingEvent', 'relatedPDFs'));
+}
 
     /**
      * Show the form for editing the specified resource.

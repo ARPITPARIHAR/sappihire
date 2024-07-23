@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Relive;
 use Illuminate\Http\Request;
+use App\Models\Trainingevent;
 
 class PageController extends Controller
 {
@@ -81,6 +83,27 @@ class PageController extends Controller
     }
 
 
+
+
+    public function training_show($id)
+    {
+
+        $trainingEvent = \App\Models\Trainingevent::findOrFail($id);
+
+
+        $relatedPDFs = \App\Models\Trainingevent::where('id', $id)->get();
+        return view('frontend.show', compact('trainingEvent', 'relatedPDFs'));
+    }
+    public function reliving_show($id)
+    {
+        $trainingEvent = Relive::findOrFail($id);
+
+
+        $relatedPDFs = Relive::where('id', $id)->get();
+
+     
+        return view('frontend.relivingshow', compact('trainingEvent', 'relatedPDFs'));
+    }
 
 
 

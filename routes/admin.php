@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\TrainingController;
 use App\Http\Controllers\Backend\UpcomingController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PlacementController;
+use App\Http\Controllers\Backend\ManagementController;
 use App\Http\Controllers\Backend\TeammemberController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\HostelserviceController;
@@ -276,6 +277,19 @@ Route::controller(StudyController::class)->group(function () {
 
 Route::controller(FeedbackController::class)->group(function () {
     Route::group(['prefix' => 'feedbacking', 'as' => 'feedbacking.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
+
+
+
+Route::controller(ManagementController::class)->group(function () {
+    Route::group(['prefix' => 'management', 'as' => 'management.'], function () {
         Route::get('/', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');

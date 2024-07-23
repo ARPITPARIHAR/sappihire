@@ -42,65 +42,70 @@
 </section>
 
 <section class="hm_team">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="head">
-					<h2>The Management Desk</h2>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="team_box">
-					<div class="team_imag"><img src="images/team001.jpg" alt="team"></div>
-					<div class="team_txt">
-				 		<h3><strong>Smt. Shuchi Tyagi</strong> Chairman's</h3>
-						<span>Secretary, Cooperatives</span>
-						<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-						<a href="#" class="btn">Read More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="team_box">
-					<div class="team_imag"><img src="images/team001.jpg" alt="team"></div>
-					<div class="team_txt">
-						<h3><strong>Smt. Archana Singh</strong> Vice Chairman's</h3>
-						<span>Registrar, Cooperative Societies</span>
-						<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-						<a href="#" class="btn">Read More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="team_box">
-					<div class="team_imag"><img src="images/team001.jpg" alt="team"></div>
-					<div class="team_txt">
-						<h3><strong>Smt. Shuchi Tyagi</strong> Director's</h3>
-						<span>Secretary, Cooperatives</span>
-						<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-						<a href="#" class="btn">Read More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="head">
+                    <h2>The Management Desk</h2>
+                </div>
+            </div>
+
+            @php
+                $managements = \App\Models\Management::all();
+            @endphp
+
+            @foreach ($managements as $member)
+                <div class="col-md-4">
+                    <div class="team_box">
+                        <div class="team_imag">
+                            <img src="{{ asset($member->thumbnail_img) }}" alt="team">
+                        </div>
+                        <div class="team_txt">
+                            <h3><strong>{{ $member->name }}</strong> {{ $member->designation }}</h3>
+                            <span>{{ $member->sub_designation }}</span>
+                            <p>{{ $member->brief_description }}</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
 </section>
+
 
 <section class="vsn_msn">
 	<div class="container-fluid">
 		<div class="row align-items-center">
 			<div class="col-md-6 no_padding">
+
+
 				<div class="vision">
 					<div class="vision_txt">
 						<h3>Vision</h3>
-						<p>To strengthen cooperative movement in Rajasthan 	through education, training and research.</p>
+
+                        @foreach (\App\Models\Vision::all() as $aboutService)
+                        @php
+                            $title = Str::limit($aboutService->title, 150, '...');
+                        @endphp
+                        <p>{{  $title}}</p>
+
+                    @endforeach
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6 no_padding">
 				<div class="mision">
 					<h3>Mision</h3>
-					<p>To provide need based training programme and facilitate the process of human resource development in coopratives.</p>
+                    @foreach (\App\Models\Mission::all() as $aboutService)
+                    @php
+                    $title = Str::limit($aboutService->title, 150, '...');
+                @endphp
+                <p>{{ $title}}</p>
+
+            @endforeach
+
 				</div>
 			</div>
 		</div>
@@ -155,14 +160,15 @@
                                     <td>{{ $upcoming->venue }}</td>
                                     <td>
                                         @if ($upcoming->pdf_file)
-                                        <a href="{{ asset('/public/storage/upcomings/' . $upcoming->pdf_file) }}" download="{{ $upcoming->title }}.pdf">
+                                        <a href="{{ route('document.download', $upcoming->pdf_file) }}" download="{{ $upcoming->title }}.pdf">
                                             <img src="{{ asset('images/pdf.png') }}" alt="pdf">
                                         </a>
-                                    @else
+
+
+
+                                        @else
                                         No PDF available
-                                    @endif
-
-
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

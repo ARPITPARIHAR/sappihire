@@ -49,10 +49,9 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $trainingevent->title }}</td>
                                         <td>
-                                            <img src="images/view.png" alt="view"></a>
-
-
-
+                                            <a href="{{ route('training.show', ['id' => $trainingevent->id]) }}">
+                                                <img src="{{ asset('images/view.png') }}" alt="view">
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
