@@ -44,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (\App\Models\Trainingevent::all() as $key => $trainingevent)
+                                @foreach (\App\Models\Study::all() as $key => $trainingevent)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $trainingevent->title }}</td>
