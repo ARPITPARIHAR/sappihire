@@ -27,20 +27,19 @@ class TrainingeventController extends Controller
 
         $categories =Trainingevent::all();
 
-        // Pass categories to the view
+
         return view('backend.trainingevent.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'nullable|required_without:pdf_file|string', // Title is required only if pdf_file is provided
-        'category_id' => 'nullable|exists:categories,id',
-        'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
+            'title' => 'nullable|required_without:pdf_file|string', 
+            'category_id' => 'nullable',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
         ]);
+
 
         $detail = new Trainingevent;
 

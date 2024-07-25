@@ -62,7 +62,7 @@
            <span class="pcoded-mtext">{{ __('Management Desk') }}</span>
        </a>
    </li>
- 
+
 
        <li class="pcoded-hasmenu active pcoded-trigger">
         <a href="javascript:void(0)">
@@ -86,11 +86,11 @@
                    <span class="pcoded-mtext">{{ __('Reliving Orders') }}</span>
                </a>
            </li>
-           <li class="">
+           {{-- <li class="">
             <a href="{{ route('feedbacking.index') }}">
                <span class="pcoded-mtext">{{ __('Feedback') }}</span>
            </a>
-       </li>
+       </li> --}}
         </ul>
 
            <li class="">

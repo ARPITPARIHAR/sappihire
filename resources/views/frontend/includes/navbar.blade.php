@@ -7,13 +7,14 @@
 						<ul>
                             <li>
                                 <a href="tel:{{ businessSetting(1)->phone }}">
-                                    <img src="images/phone.png" alt="Phone Icon"> Call: {{ businessSetting(1)->contact_numbers }}
+
+                                    <img src="{{ asset('images/phone.png') }}" alt="Phone Icon"> Call: {{ businessSetting(1)->contact_numbers }}
                                 </a>
                             </li>
 
 							<li>
                                 <a href="mailto:{{ businessSetting(1)->email }}">
-                                    <img src="images/mail.png" alt="Phone Icon"> Email: {{ businessSetting(1)->email }}
+                                    <img src="{{ asset('images/mail.png') }}" alt="Phone Icon"> Email: {{ businessSetting(1)->email }}
                                 </a>
                             </li>
 
@@ -21,8 +22,8 @@
 					</div>
 					<div class="azd_logo">
 						<ul>
-							<li><a href="#"><img src="images/g20.png" alt="g20"></a></li>
-							<li><a href="#"><img src="images/azadi.png" alt="azadi"></a></li>
+							<li><a href="#"><img src="{{ asset('images/g20.png') }}" alt="g20"></a></li>
+							<li><a href="#"><img src="{{ asset('images/azadi.png') }}" alt="azadi"></a></li>
 						</ul>
 					</div>
 				</div>
