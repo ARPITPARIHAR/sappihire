@@ -9,11 +9,7 @@ class Trainingevent extends Model
 {
     protected $fillable = ['title', 'category_id', 'pdf_file'];
 
-    // Define the relationship with the Category model
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+
 }
 
 

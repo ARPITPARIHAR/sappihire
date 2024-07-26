@@ -86,33 +86,26 @@ class PageController extends Controller
     public function training_show($id)
     {
 
-        $trainingEvent = \App\Models\Trainingevent::findOrFail($id);
-
-
-        $relatedPDFs = \App\Models\Trainingevent::where('id', $id)->get();
-        return view('frontend.show', compact('trainingEvent', 'relatedPDFs'));
+        $trainingEvents = Trainingevent::where('category_id',$id)->get();
+        return view('frontend.show', compact('trainingEvents'));
     }
     public function reliving_show($id)
     {
-        $trainingEvent = Relive::findOrFail($id);
+
+        $trainingEvents = Relive::where('category_id',$id)->get();
+        return view('frontend.relivingshow', compact('trainingEvents'));
 
 
-        $relatedPDFs = Relive::where('id', $id)->get();
-
-
-        return view('frontend.relivingshow', compact('trainingEvent', 'relatedPDFs'));
     }
 
 
     public function study_show($id)
     {
-        $trainingEvent = Study::findOrFail($id);
+
+        $trainingEvents = Study::where('category_id',$id)->get();
+        return view('frontend.studyshow', compact('trainingEvents'));
 
 
-        $relatedPDFs = Study::where('id', $id)->get();
-
-
-        return view('frontend.studyshow', compact('trainingEvent', 'relatedPDFs'));
     }
 
 

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title', $trainingEvent->title)
+@section('meta_title', '')
 
 @include('frontend.includes.navbar')
 
@@ -11,23 +11,23 @@
                 <div class="ordr_list">
                  <!-- Display the title of the training event -->
 
-                    @if ($relatedPDFs->isNotEmpty())
+
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>S.No.</th> <!-- Add a column for serial numbers -->
+                                        <th>S.No.</th>
                                         <th>Title</th>
                                         <th>View</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($relatedPDFs as $pdf)
+                                    @foreach ($trainingEvents as $key=>$trainingEvent)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td> <!-- Use $loop->iteration for the serial number -->
-                                            <td>{{ $pdf->title ?: 'Untitled' }}</td>
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $trainingEvent->title ?: 'Untitled' }}</td>
                                             <td>
-                                                <a href="{{ asset('storage/' . $pdf->pdf_file) }}" target="_blank">
+                                                <a href="{{  asset($trainingEvent->pdf_file) }}" download >
                                                     View PDF
                                                 </a>
                                             </td>
@@ -36,9 +36,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    @else
-                        <p>No related PDFs available.</p>
-                    @endif
 
                 </div>
             </div>

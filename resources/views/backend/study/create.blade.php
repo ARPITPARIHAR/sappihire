@@ -41,7 +41,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Detail Category') }}</label>
                         <div class="col-sm-10">
                             <select name="category_id" class="form-control @error('category_id') form-control-danger @enderror">
@@ -50,6 +50,7 @@
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
+
                             <span class="messages">
                                 @error('category_id')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -68,7 +69,8 @@
                                 @enderror
                             </span>
                         </div>
-                    </div> --}}
+                    </div>
+
 
                     <div class="form-group row">
                         <div class="col-sm-4">

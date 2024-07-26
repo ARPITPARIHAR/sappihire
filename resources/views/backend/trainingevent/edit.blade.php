@@ -1,52 +1,74 @@
 @extends('backend.layouts.app')
-@section('meta_title',__('Edit Training'))
+@section('meta_title', __('Edit Training'))
 
-@section('page_name',__('Edit Training'))
+@section('page_name', __('Edit Training'))
 
-@section('page_description',__('Edit Training'))
+@section('page_description', __('Edit Training'))
 @section('name')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
     </li>
-    <li class="breadcrumb-item"><a href="#!">{{ __('Edit Training') }}</a>
-    </li>
+    <li class="breadcrumb-item"><a href="#!">{{ __('Edit Training') }}</a></li>
 @endsection
+
 @section('content')
 <div class="row">
     <div class="col-sm-12">
         <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
-               @session('success')
+                @if(session('success'))
                     <h5 class="text-success">{{ session('success') }}</h5>
-               @else
+                @else
                     <h5>@yield('page_name')</h5>
-               @endsession
+                @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('trainingevent.update',encrypt($detail->id)) }}" method="POST" >
+                <form action="{{ route('trainingevent.update', $detail->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
+
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __(' Title') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title') ?? $detail->title }}" placeholder="{{ __('Enter  Detail') }}" class="form-control @error('title') form-control-danger @enderror">
-                           <span class="messages">
+                            <input type="text" name="title" id="title" value="{{ old('title', $detail->title) }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
-                                @else
-                                    <p class="text-muted">{{ __('') }}</p>
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Example of category input if category is part of TrainingEvent -->
+                    {{-- <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="category" id="category" value="{{ old('category', $detail->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('category')
+                                    <p class="text-danger error">{{ $message }}</p>
                                 @enderror
                             </span>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-4">
+                        <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('pdf_file')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </span>
                         </div>
+                    </div> --}}
+
+                    <div class="form-group row">
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-8">
-                            <div>
-                                <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -55,9 +77,10 @@
     </div>
 </div>
 @endsection
-@section('modal')
 
+@section('modal')
 @endsection
+
 @section('scripts')
     <script type="text/javascript" src="{{ asset('backend/plugins/i18next/js/i18next.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('backend/plugins/i18next-xhr-backend/js/i18nextXHRBackend.min.js') }}"></script>
@@ -70,6 +93,7 @@
         });
     </script>
 @endsection
+
 @section('styles')
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote.css') }}">
 @endsection

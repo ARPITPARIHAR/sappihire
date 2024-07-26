@@ -22,9 +22,21 @@ class StudyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+
+
+
+
     public function create()
     {
-        return view('backend.study.create');
+
+
+        $c =Study::all();
+
+
+        return view('backend.study.create', compact('categories'));
+
+
     }
 
     /**
@@ -34,12 +46,25 @@ class StudyController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
+             'category_id' => 'nullable|integer',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:2048'
 
         ]);
 
         $detail = new Study;
-
         $detail->title = $request->title;
+        if ($request->category_id) {
+            $detail->category_id = $request->category_id;
+        }else{
+            $detail->category_id = 0;
+        }
+        if ($request->hasFile('pdf_file')) {
+          $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+          $filePath = $request->file('pdf_file')->storeAs('uploads/studymaterials', $fileName, 'public');
+          $detail->pdf_file = '/public/storage/' . $filePath;
+
+        }
+
         $detail->save();
         Artisan::call('cache:clear');
         return back()->with('success', 'Study Material added successfully.');
@@ -58,10 +83,11 @@ class StudyController extends Controller
      */
     public function edit($id)
     {
-
-        $detail = Study::findOrFail(decrypt($id));
-        return view('backend.study.edit', compact('detail'));
+        $detail = Study::findOrFail($id);
+        $categories = Study::select('category_id', 'category_name')->distinct()->get();
+        return view('backend.study.edit', compact('detail', 'categories'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -70,10 +96,22 @@ class StudyController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
+            'category_id' => 'nullable|integer',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
 
         ]);
         $detail = Study::findOrFail(decrypt($id));
         $detail->title= $request->title;
+        if ($request->category_id) {
+            $detail->category_id = $request->category_id;
+        }else{
+            $detail->category_id = 0;
+        }
+        if ($request->hasFile('pdf_file')) {
+            $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+            $filePath = $request->file('pdf_file')->storeAs('uploads/trainingevents', $fileName, 'public');
+            $detail->pdf_file = '/public/storage/' . $filePath;
+        }
         $detail->update();
         Artisan::call('cache:clear');
         return back()->with('success', 'Study Material updated successfully.');

@@ -9,38 +9,34 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ordr_list">
-                 <!-- Display the title of the training event -->
+               
 
-                    @if ($relatedPDFs->isNotEmpty())
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>S.No.</th> <!-- Add a column for serial numbers -->
-                                        <th>Title</th>
-                                        <th>View</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($relatedPDFs as $pdf)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td> <!-- Use $loop->iteration for the serial number -->
-                                            <td>{{ $pdf->title ?: 'Untitled' }}</td>
-                                            <td>
-                                                <a href="{{ asset('storage/pdfs/' . $pdf->filename) }}" download>
-                                                    Download PDF
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p>No related PDFs available.</p>
-                    @endif
 
+                 <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Title</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($trainingEvents as $key=>$trainingEvent)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $trainingEvent->title ?: 'Untitled' }}</td>
+                                    <td>
+                                        <a href="{{  asset($trainingEvent->pdf_file) }}" download >
+                                            View PDF
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
     </div>

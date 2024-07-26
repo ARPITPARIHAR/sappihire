@@ -27,7 +27,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('Details') }}</th>
+                                <th>{{ __('Category') }}</th>
+                                <th>{{ __('pdf') }}</th>
                                  <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
                                 <td>{{ $detail->title }}</td>
+                                <td>{{ $detail->pdf_file }}</td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
 
                                 <td>
@@ -49,7 +51,8 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('Details') }}</th>
+                                <th>{{ __('Category') }}</th>
+                                <th>{{ __('pdf') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>

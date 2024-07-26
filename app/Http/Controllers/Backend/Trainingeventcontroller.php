@@ -35,16 +35,19 @@ class TrainingeventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'nullable|required_without:pdf_file|string', 
-            'category_id' => 'nullable',
+            'title' => 'required|string|max:255',
+            'category_id' => 'nullable|integer',
             'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
         ]);
-
 
         $detail = new Trainingevent;
 
         $detail->title = $request->title;
-        $detail->category_id = $request->category_id;
+        if ($request->category_id) {
+            $detail->category_id = $request->category_id;
+        }else{
+            $detail->category_id = 0;
+        }
         if ($request->hasFile('pdf_file')) {
           $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
           $filePath = $request->file('pdf_file')->storeAs('uploads/trainingevents', $fileName, 'public');
@@ -53,7 +56,7 @@ class TrainingeventController extends Controller
         }
         $detail->save();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Details added successfully.');
+        return back()->with('success', 'Category added successfully.');
     }
 
     /**
@@ -61,10 +64,10 @@ class TrainingeventController extends Controller
      */
     public function show($id)
 {
-    $trainingEvent = Trainingevent::findOrFail($id);
-    $relatedPDFs = $trainingEvent->pdfs; // Assuming you have a relation or a method to fetch related PDFs
+    $trainingEvents = Trainingevent::where('category_id',$id)->get();
 
-    return view('frontend.training.show', compact('trainingEvent', 'relatedPDFs'));
+   dd($trainingEvents);
+    return view('frontend.show', compact('trainingEvents'));
 }
 
     /**
@@ -73,24 +76,39 @@ class TrainingeventController extends Controller
     public function edit($id)
     {
 
-        $detail = Trainingevent::findOrFail(decrypt($id));
+        $detail = TrainingEvent::findOrFail($id);
+
+
         return view('backend.trainingevent.edit', compact('detail'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
+
+
+
     public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required|string',
+            'category_id' => 'nullable|integer',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
 
         ]);
         $detail = Trainingevent::findOrFail(decrypt($id));
         $detail->title= $request->title;
+        $detail->category_id = $request->category_id ?? 0;
+        if ($request->hasFile('pdf_file')) {
+            $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+            $filePath = $request->file('pdf_file')->storeAs('uploads/trainingevents', $fileName, 'public');
+            $detail->pdf_file = '/public/storage/' . $filePath;
+        }
+        $detail->title= $request->title;
         $detail->update();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Detail updated successfully.');
+        return back()->with('success', 'Category updated successfully.');
     }
 
     /**

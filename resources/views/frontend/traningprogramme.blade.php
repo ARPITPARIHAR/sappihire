@@ -44,12 +44,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (\App\Models\Trainingevent::all() as $key => $trainingevent)
+                                @foreach (\App\Models\Trainingevent::where('category_id',0)->get() as $key => $category)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $trainingevent->title }}</td>
+                                        <td>{{ $category->title }}</td>
                                         <td>
-                                            <a href="{{ route('training.show', ['id' => $trainingevent->id]) }}">
+                                            <a href="{{ route('training.show', ['id' => $category->id]) }}">
                                                 <img src="{{ asset('images/view.png') }}" alt="view">
                                             </a>
                                         </td>
