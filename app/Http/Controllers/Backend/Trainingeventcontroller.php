@@ -24,11 +24,10 @@ class TrainingeventController extends Controller
      */
     public function create()
     {
+        $details =Trainingevent::all();
 
-        $categories =Trainingevent::all();
 
-
-        return view('backend.trainingevent.create', compact('categories'));
+        return view('backend.trainingevent.create', compact('details'));
     }
 
 

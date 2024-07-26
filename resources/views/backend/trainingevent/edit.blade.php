@@ -40,11 +40,11 @@
                         </div>
                     </div>
 
-                    <!-- Example of category input if category is part of TrainingEvent -->
-                    {{-- <div class="form-group row">
+
+                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="category" id="category" value="{{ old('category', $detail->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
+                            <input type="text" name="category" id="category" value="{{ old('category', $details->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
                             <span class="messages">
                                 @error('category')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -63,7 +63,7 @@
                                 @enderror
                             </span>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <div class="form-group row">
                         <div class="col-sm-4"></div>

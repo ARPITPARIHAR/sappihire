@@ -27,17 +27,13 @@ class StudyController extends Controller
 
 
 
-    public function create()
-    {
+     public function create()
+     {
+         $details =Study::all();
 
 
-        $c =Study::all();
-
-
-        return view('backend.study.create', compact('categories'));
-
-
-    }
+         return view('backend.trainingevent.create', compact('details'));
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -84,8 +80,8 @@ class StudyController extends Controller
     public function edit($id)
     {
         $detail = Study::findOrFail($id);
-        $categories = Study::select('category_id', 'category_name')->distinct()->get();
-        return view('backend.study.edit', compact('detail', 'categories'));
+
+        return view('backend.study.edit', compact('detail' ));
     }
 
 

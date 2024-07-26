@@ -25,14 +25,13 @@
                @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('trainingevent.update', encrypt($categories->id)) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('trainingevent.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title', $categories->title) }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Category') }}" class="form-control @error('title') form-control-danger @enderror">
                             <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -42,16 +41,15 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Detail Category') }}</label>
                         <div class="col-sm-10">
                             <select name="category_id" class="form-control @error('category_id') form-control-danger @enderror">
-                                <option value="" disabled>Select Category</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $category->id == $categories->category_id ? 'selected' : '' }}>
-                                        {{ $category->title }}
-                                    </option>
+                                <option value="" disabled selected>Select Category</option>
+                                @foreach($details as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
+
                             <span class="messages">
                                 @error('category_id')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -69,12 +67,17 @@
                                     <p class="text-danger error">{{ $message }}</p>
                                 @enderror
                             </span>
-                            @if($categories->pdf_file)
-                                <p>Current File: <a href="{{ asset('storage/' . $categories->pdf_file) }}" target="_blank">{{ $categories->pdf_file }}</a></p>
-                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
+            </div>
         </div>
     </div>
 </div>
