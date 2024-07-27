@@ -24,10 +24,9 @@
                 @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('trainingevent.update', $details->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('tenderservice.update', $details->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                  <!-- Ensure to use PUT method for updates -->
-                  <div class="form-group row">
+               <div class="form-group row">
                     <label class="col-sm-2 col-form-label">{{ __('Header Image') }}</label>
                     <div class="col-sm-10">
                         <input type="file" name="header_image" class="form-control @error('header_image') form-control-danger @enderror">
