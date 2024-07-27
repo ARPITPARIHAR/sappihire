@@ -26,7 +26,7 @@
             <div class="card-block">
                 <form action="{{ route('trainingevent.update', $details->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+                
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>

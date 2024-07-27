@@ -38,7 +38,8 @@
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
                                 <td>{{ $detail->title }}</td>
-                                <td>{{ $detail->pdf_file }}</td>
+                                <td><img src="{{ asset($detail->pdf_file) }}" width="90"></td>
+                                
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
 
                                 <td>

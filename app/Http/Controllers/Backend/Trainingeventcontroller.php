@@ -72,19 +72,14 @@ class TrainingeventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+
     public function edit($id)
     {
-
-        $details = TrainingEvent::findOrFail($id);
-
-
+        $details = Trainingevent::findOrFail(decrypt($id));
         return view('backend.trainingevent.edit', compact('details'));
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
 
 
 
