@@ -55,9 +55,10 @@
 											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 												<li><a class="dropdown-item" href="/vision">Vision</a></li>
 												<li><a class="dropdown-item" href="/mission">Mision</a></li>
+                                                <li><a class="dropdown-item" href="/infastructure">Infrastructure</a></li>
 											</ul>
 										</li>
-										 <li class="nav-item"><a class="nav-link" href="/infastructure">Infrastructure</a></li>
+										 {{-- <li class="nav-item"><a class="nav-link" href="/infastructure">Infrastructure</a></li> --}}
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												Our Team

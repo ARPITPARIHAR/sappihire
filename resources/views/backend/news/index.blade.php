@@ -29,6 +29,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ __('News Description') }}</th>
+                                <th>{{ __('Hyper LInk') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -38,6 +39,7 @@
                             <tr>
                                 <td>{{ ($key + 1) + ($news->currentPage() - 1) * $news->perPage() }}</td>
                                 <td>{{ $single_news->news_description }}</td>
+                                <td>{{ $single_news->hyperlink }}</td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($single_news->updated_at)) }}</td>
                                 <td>
                                     <a href="{{ route('news.edit', encrypt($single_news->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
@@ -50,6 +52,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ __('News Description') }}</th>
+                                <th>{{ __('Hyper LInk') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>

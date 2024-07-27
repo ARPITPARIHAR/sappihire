@@ -159,17 +159,11 @@
                                     <td>{{ date('d-m-Y', strtotime($upcoming->from_date)) }} | {{ date('d-m-Y', strtotime($upcoming->to_date)) }}</td>
                                     <td>{{ $upcoming->venue }}</td>
                                     <td>
-                                        @if ($upcoming->pdf_file)
-                                        <a href="{{ route('document.download', $upcoming->pdf_file) }}" download="{{ $upcoming->title }}.pdf">
-                                            <img src="{{ asset('images/pdf.png') }}" alt="pdf">
-                                        </a>
+                                    <a href="{{  asset($upcoming->pdf_file) }}" download >
+                                        <img src="{{ asset('images/pdf.png') }}" alt="pdf">
+                                    </a>
+                                </td>
 
-
-
-                                        @else
-                                        No PDF available
-                                        @endif
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
