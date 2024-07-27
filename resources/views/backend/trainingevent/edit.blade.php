@@ -24,14 +24,14 @@
                 @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('trainingevent.update', $detail->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('trainingevent.update', $details->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title', $detail->title) }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="text" name="title" id="title" value="{{ old('title', $details->title) }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
                             <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>

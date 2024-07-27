@@ -15,7 +15,7 @@ class TrainingeventController extends Controller
      */
     public function index()
     {
-        $details = Trainingevent::paginate(15);
+        $details = Trainingevent::paginate(10);
         return view('backend.trainingevent.index', compact('details'));
     }
 
@@ -75,10 +75,10 @@ class TrainingeventController extends Controller
     public function edit($id)
     {
 
-        $detail = TrainingEvent::findOrFail($id);
+        $details = TrainingEvent::findOrFail($id);
 
 
-        return view('backend.trainingevent.edit', compact('detail'));
+        return view('backend.trainingevent.edit', compact('details'));
     }
 
 

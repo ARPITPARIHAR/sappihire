@@ -73,7 +73,7 @@ class NewsController extends Controller
         $request->validate([
 
          'news_description' => 'required|string',
-     
+
 
 
         ]);
@@ -83,7 +83,7 @@ class NewsController extends Controller
         $news->hyperlink = $request->hyperlink;
         $news->update();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Board of Directory updated successfully.');
+        return back()->with('success', 'News updated successfully.');
     }
 
     /**
@@ -93,6 +93,6 @@ class NewsController extends Controller
     {
         News::findOrFail(decrypt($id))->delete();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Board of Directory deleted successfully.');
+        return back()->with('success', 'News deleted successfully.');
     }
 }
