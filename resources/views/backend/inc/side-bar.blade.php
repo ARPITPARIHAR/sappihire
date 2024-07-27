@@ -57,6 +57,12 @@
            </a>
        </li>
        <li class="">
+        <a href="{{ route('tenderservice.index') }}">
+            <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+           <span class="pcoded-mtext">{{ __('Tender') }}</span>
+       </a>
+   </li>
+       <li class="">
         <a href="{{ route('management.index') }}">
             <span class="pcoded-micon"><i class="feather icon-file"></i></span>
            <span class="pcoded-mtext">{{ __('Management Desk') }}</span>

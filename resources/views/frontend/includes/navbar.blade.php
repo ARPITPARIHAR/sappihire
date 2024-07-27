@@ -82,6 +82,7 @@
 
 										 <li class="nav-item"><a class="nav-link" href="/room">Rooms</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('gallery')}}">Photo Gallery</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{route('tenders')}}">Tenders</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('placementservice')}}">Placement Services</a></li>
 										<li class="nav-item"><a class="nav-link" href="{{route('contact-us')}}">Contact Us</a></li>
 									</ul>

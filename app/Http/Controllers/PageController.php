@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Study;
 use App\Models\Relive;
+use App\Models\Tender;
 use Illuminate\Http\Request;
 use App\Models\Trainingevent;
 
@@ -52,6 +53,12 @@ class PageController extends Controller
     {
         return view('frontend.gallery');
     }
+
+    public function tenders(Request $request)
+    {
+        return view('frontend.tenders');
+    }
+
     public function placementservice(Request $request)
     {
         return view('frontend.placementservice');
@@ -108,5 +115,13 @@ class PageController extends Controller
 
     }
 
+    public function tender_show($id)
+    {
+
+        $trainingEvents = Tender::where('category_id',$id)->get();
+        return view('frontend.tendersshow', compact('trainingEvents'));
+
+
+    }
 
 }

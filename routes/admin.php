@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BoardController;
 use App\Http\Controllers\Backend\StudyController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\TenderController;
 use App\Http\Controllers\Backend\VisionController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\GalleryController;
@@ -300,7 +301,16 @@ Route::controller(ManagementController::class)->group(function () {
     });
 });
 
-
+Route::controller(TenderController::class)->group(function () {
+    Route::group(['prefix' => 'tenderservice', 'as' => 'tenderservice.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
 
 
 
