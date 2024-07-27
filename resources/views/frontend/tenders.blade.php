@@ -10,6 +10,7 @@
         <div class="row">
             <div class="col-md-12 no_padding">
                 <div class="inr_bnr">
+                  
                     @foreach (\App\Models\Tender::all() as $tenderService)
 
                             <img src="{{ asset($tenderService->header_image) }}" alt="{{ $tenderService->banner_alt ?? 'Default Alt Text' }}">

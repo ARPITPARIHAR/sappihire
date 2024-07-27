@@ -50,17 +50,18 @@ class TenderController extends Controller
         }
         if ($request->hasFile('pdf_file')) {
           $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
-          $filePath = $request->file('pdf_file')->storeAs('uploads/trainingevents', $fileName, 'public');
+          $filePath = $request->file('pdf_file')->storeAs('uploads/tenders', $fileName, 'public');
           $detail->pdf_file = '/public/storage/' . $filePath;
 
         }
 
-        if ($request->hasFile('header_image')) {
-            $imageName = time() . '-header-' . $request->file('header_image')->getClientOriginalName();
-            $imagePath = $request->file('header_image')->storeAs('uploads/header_images', $fileName, 'public');
-            $detail->header_image = '/public/storage/' . $$filePath;
+ if ($request->hasFile('header_image')) {
+            $fileName = time() . '-team-' . $request->file('header_image')->getClientOriginalName();
+            $filePath = $request->file('header_image')->storeAs('uploads/tenders', $fileName, 'public');
+            $detail->header_image = '/public/storage/' . $filePath;
         }
-        $detail->save();
+
+      $detail->save();
         Artisan::call('cache:clear');
         return back()->with('success', 'Tender added successfully.');
     }
@@ -108,9 +109,9 @@ class TenderController extends Controller
             $detail->pdf_file = '/public/storage/' . $filePath;
         }
         if ($request->hasFile('header_image')) {
-            $imageName = time() . '-header-' . $request->file('header_image')->getClientOriginalName();
-            $imagePath = $request->file('header_image')->storeAs('uploads/header_images', $fileName, 'public');
-            $detail->header_image = '/public/storage/' . $$filePath;
+            $fileName = time() . '-team-' . $request->file('header_image')->getClientOriginalName();
+            $filePath = $request->file('header_image')->storeAs('uploads/tenders', $fileName, 'public');
+            $detail->header_image = '/public/storage/' . $filePath;
         }
         $detail->title= $request->title;
         $detail->update();

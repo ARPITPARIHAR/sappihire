@@ -38,7 +38,8 @@
                             @foreach ($details as $key=>$detail)
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
-                                <td>{{ $detail->header_image }}</td>
+                                <td><img src="{{ asset($detail->header_image) }}" width="150"></td>
+                               
                                 <td>{{ $detail->title }}</td>
                                 <td><img src="{{ asset($detail->pdf_file) }}" width="90"></td>
 
