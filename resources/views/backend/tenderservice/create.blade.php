@@ -28,6 +28,20 @@
                 <form action="{{ route('tenderservice.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Header Image') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="header_image" class="form-control @error('header_image') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('header_image')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Month') }}</label>
                         <div class="col-sm-10">

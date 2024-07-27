@@ -37,6 +37,7 @@ class TenderController extends Controller
             'title' => 'required|string|max:255',
             'category_id' => 'nullable|integer',
             'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
+            'header_image' => 'nullable|file|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         $detail = new Tender;
@@ -53,9 +54,15 @@ class TenderController extends Controller
           $detail->pdf_file = '/public/storage/' . $filePath;
 
         }
+
+        if ($request->hasFile('header_image')) {
+            $imageName = time() . '-header-' . $request->file('header_image')->getClientOriginalName();
+            $imagePath = $request->file('header_image')->storeAs('uploads/header_images', $fileName, 'public');
+            $detail->header_image = '/public/storage/' . $$filePath;
+        }
         $detail->save();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Category added successfully.');
+        return back()->with('success', 'Tender added successfully.');
     }
 
     /**
@@ -89,6 +96,7 @@ class TenderController extends Controller
             'title' => 'required|string',
             'category_id' => 'nullable|integer',
             'pdf_file' => 'nullable|file|mimes:pdf|max:2048',
+            'header_image' => 'nullable|file|mimes:jpg,png,jpeg|max:2048',
 
         ]);
         $detail = Tender::findOrFail(decrypt($id));
@@ -99,10 +107,15 @@ class TenderController extends Controller
             $filePath = $request->file('pdf_file')->storeAs('uploads/trainingevents', $fileName, 'public');
             $detail->pdf_file = '/public/storage/' . $filePath;
         }
+        if ($request->hasFile('header_image')) {
+            $imageName = time() . '-header-' . $request->file('header_image')->getClientOriginalName();
+            $imagePath = $request->file('header_image')->storeAs('uploads/header_images', $fileName, 'public');
+            $detail->header_image = '/public/storage/' . $$filePath;
+        }
         $detail->title= $request->title;
         $detail->update();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Category updated successfully.');
+        return back()->with('success', ' Tender updated successfully.');
     }
 
     /**
@@ -110,8 +123,8 @@ class TenderController extends Controller
      */
     public function destroy($id)
     {
-        Trainingevent::findOrFail(decrypt($id))->delete();
+        Tender::findOrFail(decrypt($id))->delete();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Detail deleted successfully.');
+        return back()->with('success', 'Tender deleted successfully.');
     }
 }

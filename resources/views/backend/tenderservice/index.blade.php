@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>{{ __('Header_Image') }}</th>
                                 <th>{{ __('Month') }}</th>
                                 <th>{{ __('pdf') }}</th>
                                  <th>{{ __('Updated At') }}</th>
@@ -37,6 +38,7 @@
                             @foreach ($details as $key=>$detail)
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
+                                <td>{{ $detail->header_image }}</td>
                                 <td>{{ $detail->title }}</td>
                                 <td><img src="{{ asset($detail->pdf_file) }}" width="90"></td>
 
@@ -52,6 +54,7 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
+                                <th>{{ __('Header_Image') }}</th>
                                 <th>{{ __('Month') }}</th>
                                 <th>{{ __('pdf') }}</th>
                                 <th>{{ __('Updated At') }}</th>

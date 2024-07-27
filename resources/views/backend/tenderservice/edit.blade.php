@@ -26,8 +26,24 @@
             <div class="card-block">
                 <form action="{{ route('trainingevent.update', $details->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
-
+                  <!-- Ensure to use PUT method for updates -->
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">{{ __('Header Image') }}</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="header_image" class="form-control @error('header_image') form-control-danger @enderror">
+                        <span class="messages">
+                            @error('header_image')
+                                <p class="text-danger error">{{ $message }}</p>
+                            @enderror
+                        </span>
+                        <!-- Display the current header image if exists -->
+                        @if($details->header_image)
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $details->header_image) }}" alt="{{ __('Header Image') }}" style="max-width: 200px;">
+                            </div>
+                        @endif
+                    </div>
+                </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
@@ -40,8 +56,7 @@
                         </div>
                     </div>
 
-
-                     <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
                         <div class="col-sm-10">
                             <input type="text" name="category" id="category" value="{{ old('category', $details->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
@@ -64,6 +79,9 @@
                             </span>
                         </div>
                     </div>
+
+                    <!-- Header Image Field -->
+
 
                     <div class="form-group row">
                         <div class="col-sm-4"></div>

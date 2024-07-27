@@ -2,17 +2,17 @@
 @section('meta_title', 'rcem')
 @include('frontend.includes.navbar')
 
+
+
+
 <section class="inner_banner">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 no_padding">
                 <div class="inr_bnr">
                     @foreach (\App\Models\Tender::all() as $tenderService)
-                        @if ($tenderService->thumbnail_img)
-                            <img src="{{ asset($tenderService->thumbnail_img) }}" alt="{{ $tenderService->banner_alt ?? 'Default Alt Text' }}">
-                        @else
-                            <img src="{{ asset('images/default-thumbnail.png') }}" alt="Default Thumbnail">
-                        @endif
+
+                            <img src="{{ asset($tenderService->header_image) }}" alt="{{ $tenderService->banner_alt ?? 'Default Alt Text' }}">
                     @endforeach
                 </div>
             </div>
@@ -20,12 +20,17 @@
     </div>
 </section>
 
-<section>
-    <div class="ordr_list">
-        <h4>Tenders Details</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
+<section class="rlvng_ordrs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2>Tenders Details</h2>
+
+				<div class="ordr_list">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+
                     <tr>
                         <th>S.No.</th>
                         <th>Months</th>

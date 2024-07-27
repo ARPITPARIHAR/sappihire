@@ -38,11 +38,6 @@
 
 
 
-
-
-
-
-
 @include('frontend.includes.footer')
 
 @section('style')
