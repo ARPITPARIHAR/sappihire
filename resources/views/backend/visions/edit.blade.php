@@ -26,7 +26,22 @@
             <div class="card-block">
                 <form action="{{ route('visions.update', encrypt($detail->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
+                        <div class="col-sm-10">
+                            <textarea name="detail" id="detail" placeholder="{{ __('Enter Detail') }}" class="form-control @error('detail') form-control-danger @enderror">{{ old('detail', $detail->title) }}</textarea>
+
+                            <span class="messages">
+                                @error('detail')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @else
+                                    <p class="text-muted">{{ __('') }}</p>
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Image') }}</label>
                         <div class="col-sm-10">
@@ -36,20 +51,6 @@
                             @else
                                 <p class="text-muted">{{ __('') }}</p>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
-                        <div class="col-sm-10">
-                            <!-- Replace the input with a textarea for Summernote -->
-                            <textarea name="detail" id="detail" placeholder="{{ __('Enter Detail') }}" class="form-control @error('detail') form-control-danger @enderror">{{ old('detail', $detail->detail) }}</textarea>
-                            <span class="messages">
-                                @error('detail')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @else
-                                    <p class="text-muted">{{ __('') }}</p>
-                                @enderror
-                            </span>
                         </div>
                     </div>
 
@@ -68,7 +69,6 @@
 </div>
 @endsection
 @section('modal')
-
 @endsection
 @section('scripts')
     <script type="text/javascript" src="{{ asset('backend/plugins/i18next/js/i18next.min.js') }}"></script>

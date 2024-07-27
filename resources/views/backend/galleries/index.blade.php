@@ -37,8 +37,9 @@
                             @foreach ($details as $key=>$detail)
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
-                                <td>{{ $detail->title }}</td>
                                 <td><img src="{{ asset($detail->thumbnail_img) }}" width="150"></td>
+                                <td>{{ $detail->title }}</td>
+
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
 
                                 <td>

@@ -14,7 +14,6 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <!-- Basic Form Inputs card start -->
         <div class="card">
             <div class="card-header">
                @session('success')
@@ -26,18 +25,11 @@
             <div class="card-block">
                 <form action="{{ route('boardofdirectories.update',encrypt($management->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
-
-
-
-
-
-
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                         <div class="col-sm-10">
                             <input type="text" name="name" id="name" value="{{ old('name') ?? $management->name}}" placeholder="{{ __('Enter Name') }}" class="form-control @error('name') form-control-danger @enderror">
-                           <span class="messages">
+                            <span class="messages">
                                 @error('name')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @else
@@ -57,29 +49,17 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __(' Sub_Designation') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Sub Designation') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="subdesignation" id="designation" value="{{ old('Sub_designation') ?? $management->sub_designation }}" placeholder="{{ __('Enter Sub Designation') }}" class="form-control @error('designation') form-control-danger @enderror">
-                            @error('designation')
+                            <input type="text" name="sub_designation" id="subdesignation" value="{{ old('sub_designation') ?? $management->sub_designation }}" placeholder="{{ __('Enter Sub Designation') }}" class="form-control @error('sub_designation') form-control-danger @enderror">
+                            @error('sub_designation')
                                 <p class="text-danger error">{{ $message }}</p>
                             @else
                                 <p class="text-muted">{{ __('') }}</p>
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
-                        <div class="col-sm-10">
-                            <textarea name="brief_description" id="brief_description" placeholder="{{ __('Enter Brief Description') }}" class="form-control @error('brief_description') form-control-danger @enderror">{{ old('brief_description') ?? $board->brief_description }}</textarea>
-                            @error('brief_description')
-                                <p class="text-danger error">{{ $message }}</p>
-                            @else
-                                <p class="text-muted">{{ __('') }}</p>
-                            @enderror
-                        </div>
-                    </div> --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
                         <div class="col-sm-10">
@@ -91,8 +71,6 @@
                             @enderror
                         </div>
                     </div>
-
-
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Thumbnail Img') }}</label>
                         <div class="col-sm-10">
@@ -105,8 +83,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-4">
-                        </div>
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-8">
                             <div>
                                 <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
@@ -119,9 +96,10 @@
     </div>
 </div>
 @endsection
-@section('modal')
 
+@section('modal')
 @endsection
+
 @section('scripts')
     <script type="text/javascript" src="{{ asset('backend/plugins/i18next/js/i18next.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('backend/plugins/i18next-xhr-backend/js/i18nextXHRBackend.min.js') }}"></script>
@@ -130,10 +108,16 @@
     <script type="text/javascript" src="{{ asset('backend/plugins/summernote/summernote.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#description').summernote();
+            $('#brief_description').summernote({
+                height: 200,
+                minHeight: 100,
+                maxHeight: 300,
+                focus: true
+            });
         });
     </script>
 @endsection
+
 @section('styles')
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote.css') }}">
 @endsection

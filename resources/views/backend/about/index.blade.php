@@ -37,11 +37,10 @@
                             @foreach ($abouts as $key => $about)
                             <tr>
                                 <td>{{ ($key + 1) + ($abouts->currentPage() - 1) * $abouts->perPage() }}</td>
-                                <td>
-                                    <div class="brief-description">
-                                        {{ $about->brief_description }}
-                                    </div>
-                                </td>
+
+                                <td>{!! $about->brief_description !!}</td>
+
+
                                 <td>{{ date('d-m-Y h:iA', strtotime($about->updated_at)) }}</td>
                                 <td>
                                     <a href="{{ route('about.edit', encrypt($about->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>

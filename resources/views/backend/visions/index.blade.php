@@ -27,8 +27,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('Images') }}</th>
                                 <th>{{ __('Details') }}</th>
+                                <th>{{ __('Images') }}</th>
+
                                  <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -51,8 +52,9 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('Images') }}</th>
                                 <th>{{ __('Details') }}</th>
+                                <th>{{ __('Images') }}</th>
+
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>

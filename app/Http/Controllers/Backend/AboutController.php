@@ -43,10 +43,6 @@ class AboutController extends Controller
         $about->brief_description = $request->brief_description;
 
 
-
-        // Debugging: Stop the execution and dump the data
-
-
         $about->save();
         Artisan::call('cache:clear');
         return back()->with('success', 'About  added successfully.');
@@ -66,8 +62,8 @@ class AboutController extends Controller
     public function edit($id)
     {
 
-        $about = About::findOrFail(decrypt($id));
-        return view('backend.about.edit', compact('hostels'));
+        $abouts = About::findOrFail(decrypt($id));
+        return view('backend.about.edit', compact('abouts'));
     }
 
     /**

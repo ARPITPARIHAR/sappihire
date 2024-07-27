@@ -41,7 +41,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Detail') }}</label>
                         <div class="col-sm-10">
-                            <textarea name="detail" id="detail" placeholder="{{ __('Enter Detail') }}" class="form-control @error('detail') form-control-danger @enderror">{{ old('detail') ?? $detail->detail }}</textarea>
+                            <textarea name="detail" id="detail" placeholder="{{ __('Enter Detail') }}" class="form-control @error('detail') form-control-danger @enderror">{{ old('detail') ?? $detail->title }}</textarea>
                             <span class="messages">
                                 @error('detail')
                                     <p class="text-danger error">{{ $message }}</p>

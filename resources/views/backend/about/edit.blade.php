@@ -26,11 +26,10 @@
             <div class="card-block">
                 <form action="{{ route('about.update',encrypt($abouts->id)) }}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
                         <div class="col-sm-10">
-                            <textarea name="brief_description" id="brief_description" rows="5" placeholder="{{ __('Enter Brief Description') }}" class="form-control @error('brief_description') form-control-danger @enderror">{{ old('brief_description') ?? $hostels->brief_description }}</textarea>
+                            <textarea name="brief_description" id="brief_description" rows="5" placeholder="{{ __('Enter Brief Description') }}" class="form-control @error('brief_description') form-control-danger @enderror">{{ old('brief_description') ?? $abouts->brief_description }}</textarea>
                             @error('brief_description')
                                 <p class="text-danger error">{{ $message }}</p>
                             @else
