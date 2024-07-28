@@ -15,7 +15,7 @@ class TrainingeventController extends Controller
      */
     public function index()
     {
-        $details = Trainingevent::orderBy('category_id')->latest()->paginate(10);
+        $details = Trainingevent::orderBy('category_id')->latest()->paginate(15);
         return view('backend.trainingevent.index', compact('details'));
     }
 
