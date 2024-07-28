@@ -3,6 +3,7 @@
 @section('meta_description',$page->meta_description.' | '.env('APP_NAME'))
 
 @section('content')
+@if ($page->header_img)
 <section class="inner_banner">
 	<div class="container-fluid">
 		<div class="row">
@@ -14,6 +15,7 @@
 		</div>
 	</div>
 </section>
+@endif
 <section class="about">
 	<div class="container">
 		<div class="row">
