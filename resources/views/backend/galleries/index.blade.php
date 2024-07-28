@@ -28,6 +28,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ __('Images') }}</th>
+                                <th>{{ __('Total Image') }}</th>
                                 <th>{{ __('Title') }}</th>
                                  <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
@@ -37,11 +38,17 @@
                             @foreach ($details as $key=>$detail)
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
-                                <td><img src="{{ asset($detail->thumbnail_img) }}" width="150"></td>
+                                <td>
+                                    @php
+                                        $images = json_decode($detail->thumbnail_img,true);
+                                    @endphp
+                                    <img src="{{ asset($images[0] ?? '') }}" width="100">
+                                </td>
+                                <td>
+                                    {{ count($images) }}
+                                </td>
                                 <td>{{ $detail->title }}</td>
-
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
-
                                 <td>
                                     <a href="{{ route('galleries.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
                                     <a href="{{ route('galleries.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
@@ -53,6 +60,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ __('Images') }}</th>
+                                <th>{{ __('Total Image') }}</th>
                                 <th>{{ __('Title') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
