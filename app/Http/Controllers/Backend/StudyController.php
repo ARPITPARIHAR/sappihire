@@ -22,17 +22,10 @@ class StudyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-
-
-
-
-
     public function create()
     {
         $categories = Study::where('category_id', 0)->get();
-
-
-        return view('backend.trainingevent.create', compact('categories'));
+        return view('backend.study.create', compact('categories'));
     }
 
     /**
@@ -46,7 +39,6 @@ class StudyController extends Controller
             'pdf_file' => 'nullable|file|mimes:pdf|max:2048'
 
         ]);
-
         $detail = new Study;
         $detail->title = $request->title;
         if ($request->category_id) {
