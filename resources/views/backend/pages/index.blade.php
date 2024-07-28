@@ -52,6 +52,7 @@
                                 </td>
                                 <td>
                                     <a onclick="copyToClipboard('{{ route('page',$page->slug) }}')" href="#">{{ route('page',$page->slug) }}</a>
+                                    <p class="text-muted" id="copyed-text"></p>
                                 </td>
                                 <td><img src="{{ asset($page->header_img) }}" width="150"></td>
                                 {{-- <td>{{ $page->slug }}</td> --}}
@@ -147,7 +148,7 @@
                     document.body.removeChild(textarea);
                 }
             }
-
+            $('#copyed-text').html('text copied to clipboard');
         }
     </script>
 @endsection
