@@ -53,9 +53,9 @@
 												About us
 											</a>
 											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-												<li><a class="dropdown-item" href="/vision">Vision</a></li>
-												<li><a class="dropdown-item" href="/mission">Mision</a></li>
-                                                <li><a class="dropdown-item" href="/infastructure">Infrastructure</a></li>
+												@foreach (App\Models\Page::where('parent_id', 1)->orderBy('position')->get(); as $page)
+                                                    <li><a class="dropdown-item" href="{{ route('page', $page->slug) }}">{{ $page->name }}</a></li>
+                                                @endforeach
 											</ul>
 										</li>
 										 {{-- <li class="nav-item"><a class="nav-link" href="/infastructure">Infrastructure</a></li> --}}

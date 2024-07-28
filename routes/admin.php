@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -26,17 +27,18 @@ use App\Http\Controllers\Backend\TeammemberController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\HostelserviceController;
 use App\Http\Controllers\Backend\InfastructureController;
+use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\Trainingeventcontroller;
 
 // Dashboard routes
 // Route::middleware(['auth', 'IsAdmin'])->group(function () {
-    Route::controller(DashboardController::class)->group(function () {
-        Route::get('/dashboard', 'dashboard')->name('dashboard');
-        Route::get('business-info', 'businessSettings')->name('business-setting');
-        Route::post('business-info', 'businessSettingsUpdate')->name('business-setting-update');
-        Route::get('profile', 'profile')->name('profile');
-        Route::post('profile', 'profileUpdate')->name('profile.update');
-    });
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('business-info', 'businessSettings')->name('business-setting');
+    Route::post('business-info', 'businessSettingsUpdate')->name('business-setting-update');
+    Route::get('profile', 'profile')->name('profile');
+    Route::post('profile', 'profileUpdate')->name('profile.update');
+});
 // });
 // Slider routes
 Route::controller(SliderController::class)->group(function () {
@@ -49,7 +51,16 @@ Route::controller(SliderController::class)->group(function () {
         Route::get('{id}/delete', 'destroy')->name('delete');
     });
 });
-
+Route::controller(PageController::class)->group(function () {
+    Route::group(['prefix' => 'pages', 'as' => 'admin.pages.'], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('{id}/edit', 'edit')->name('edit');
+        Route::post('{id}/edit', 'update')->name('update');
+        Route::get('{id}/delete', 'destroy')->name('delete');
+    });
+});
 // Board routes
 Route::controller(BoardController::class)->group(function () {
     Route::group(['prefix' => 'boardofdirectories', 'as' => 'boardofdirectories.'], function () {
@@ -320,4 +331,3 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/contacts', 'index')->name('contact.index');
     Route::delete('contacts/{id}/delete', 'delete')->name('contacts.delete');
 });
-

@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Study;
 use App\Models\Relive;
 use App\Models\Tender;
@@ -93,35 +95,30 @@ class PageController extends Controller
     public function training_show($id)
     {
 
-        $trainingEvents = Trainingevent::where('category_id',$id)->get();
+        $trainingEvents = Trainingevent::where('category_id', $id)->get();
         return view('frontend.show', compact('trainingEvents'));
     }
     public function reliving_show($id)
     {
-
-        $trainingEvents = Relive::where('category_id',$id)->get();
+        $trainingEvents = Relive::where('category_id', $id)->get();
         return view('frontend.relivingshow', compact('trainingEvents'));
-
-
     }
 
 
     public function study_show($id)
     {
-
-        $trainingEvents = Study::where('category_id',$id)->get();
+        $trainingEvents = Study::where('category_id', $id)->get();
         return view('frontend.studyshow', compact('trainingEvents'));
-
-
     }
 
     public function tender_show($id)
     {
-
-        $trainingEvents = Tender::where('category_id',$id)->get();
+        $trainingEvents = Tender::where('category_id', $id)->get();
         return view('frontend.tendersshow', compact('trainingEvents'));
-
-
     }
-
+    public function page($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        return view('frontend.page', compact('page'));
+    }
 }

@@ -6,7 +6,7 @@
 @section('page_description',__('Admin Dashboard'))
 @section('name')
     <li class="breadcrumb-item">
-        {{-- <a href="{{ route('admin.dashboard') }}"> <i class="feather icon-home"></i> </a> --}}
+        {{-- <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a> --}}
     </li>
 @endsection
 

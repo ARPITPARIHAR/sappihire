@@ -44,6 +44,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/reliving-show/{id}',  'reliving_show')->name('reliving.show');
     Route::get('/study-show/{id}',  'study_show')->name('studymaterial.show');
     Route::get('/tender/{id}',  'tender_show')->name('tender.show');
+    Route::get('/page/{slug}',  'page')->name('page');
 });
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
@@ -60,4 +61,3 @@ Route::post('/contact/store', [ContactController::class, 'store'])->name('contac
 
 
 Route::get('/download/{fileName}', [FileDownloadController::class, 'download'])->name('document.download');
-
