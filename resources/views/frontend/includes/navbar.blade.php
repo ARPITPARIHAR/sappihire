@@ -76,7 +76,7 @@
 												<li><a class="dropdown-item" href="{{route('traningprogramme')}}">Training Calender</a></li>
 												<li><a class="dropdown-item" href="{{route('studymaterial')}}">Study Material</a></li>
                                                 <li><a class="dropdown-item" href="{{route('relivingorders')}}">Reliving Orders</a></li>
-                                                <li><a class="dropdown-item" href="{{route('feedback')}}">Feedback/Suggestions</a></li>
+                                                {{-- <li><a class="dropdown-item" href="{{route('feedback')}}">Feedback/Suggestions</a></li> --}}
 											</ul>
 										</li>
 
