@@ -7,7 +7,7 @@
          <div class="ftr_logo">
          <img src="{{ asset(businessSetting(1)->header_logo) }}" alt="Logo">
          </div>
-                <span>Visitors 18061</span>
+                <span>Visitors {{ $uniqueVisitors = DB::table('visitors')->count() }}</span>
 					<p>Add:  {{ businessSetting(1)->address }}</p>
 					<p>Call: {{ businessSetting(1)->contact_numbers }}</p>
 					<p> Email: {{ businessSetting(1)->email }}</p>
