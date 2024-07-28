@@ -15,7 +15,7 @@ class TenderController extends Controller
      */
     public function index()
     {
-        $details = Tender::paginate(10);
+        $details = Tender::orderBy('category_id')->latest()->paginate(10);
         return view('backend.tenderservice.index', compact('details'));
     }
 
