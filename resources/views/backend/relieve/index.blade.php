@@ -28,8 +28,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ __('Category') }}</th>
-                                <th>{{ __('Details') }}</th>
-                                <th>{{ __('pdf') }}</th>
+                                <th>{{ __('Title') }}</th>
+                                <th>{{ __('Pdf') }}</th>
                                  <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -40,7 +40,11 @@
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
                                 <td>{{ optional($detail->category)->title }}</td>
                                 <td>{{ $detail->title }}</td>
-                                <td>{{ $detail->pdf_file }}</td>
+                                <td>
+                                    @if ($detail->pdf_file)
+                                        <a class="btn btn-sm btn-primary" href="{{ asset($detail->pdf_file) }}" download>Download</a>
+                                    @endif
+                                </td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
                                 <td>
                                     <a href="{{ route('relieve.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
@@ -53,8 +57,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ __('Category') }}</th>
-                                <th>{{ __('Details') }}</th>
-                                <th>{{ __('pdf') }}</th>
+                                <th>{{ __('Title') }}</th>
+                                <th>{{ __('Pdf') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
