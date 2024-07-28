@@ -42,7 +42,7 @@
                                 <td>{{ $detail->title }}</td>
                                 <td>
                                     @if ($detail->pdf_file)
-                                        <a class="btn btn-sm btn-primary" href="{{ asset($detail->pdf_file) }}" download></a>
+                                        <a class="btn btn-sm btn-primary" href="{{ asset($detail->pdf_file) }}" download>{{ __('Download') }}</a>
                                     @endif
                                 </td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
