@@ -29,11 +29,11 @@ class ContactController extends Controller
 
         // Optionally, you can process further logic here, like sending an email
 
-        try {
-            Mail::to('mangilalprajapat3@gmail.com')->send(new ContactUsMail($contact));
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        //try {
+        Mail::to('mangilalprajapat3@gmail.com')->send(new ContactUsMail($contact));
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        // }
 
         // Store the form data in a session for display in the view
         $request->session()->flash('contact_form_data', $request->only(['first_name', 'last_name', 'phone_number', 'email', 'message']));
