@@ -38,6 +38,7 @@
                             @foreach ($details as $key=>$detail)
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
+                                <td>{{ optional($detail->category)->title }}</td>
                                 <td>{{ $detail->title }}</td>
                                 <td>
                                     @if ($detail->pdf_file)
