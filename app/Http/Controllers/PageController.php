@@ -122,7 +122,7 @@ class PageController extends Controller
         $page = Page::where('slug', $slug)->first();
         return view('frontend.page', compact('page'));
     }
-    public function menagementDetail($slug)
+    public function managementDetail($slug)
     {
         $management = Management::where('slug', $slug)->first();
         return view('frontend.management-detail', compact('management'));
