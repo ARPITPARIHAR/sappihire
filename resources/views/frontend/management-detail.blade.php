@@ -9,9 +9,18 @@
 			<div class="col-lg-12">
 				<div class="head">
 					<h2>{{ $management->name }}</h2>
-					<h2>{{ $management->designation }}</h2>
-					<h2>{{ $management->sub_designation }}</h2>
-                    <p>{{ $management->brief_description }}</p>
+                    <div class="col-md-4">
+                        <div class="team_box">
+                            <div class="team_imag">
+                                <img src="{{ asset($management->thumbnail_img) }}" alt="team">
+                            </div>
+                            <div class="team_txt">
+                                <h3><strong>{{ $management->name }}</strong> {{ $management->designation }}</h3>
+                                <span>{{ $management->sub_designation }}</span>
+                                <p>{{ $management->brief_description }}</p>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 			</div>
 

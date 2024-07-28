@@ -27,7 +27,6 @@
                 <form action="{{ route('sliders.update', encrypt($slider->id)) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    {{-- Uncomment if Title is needed --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
@@ -39,8 +38,6 @@
                             @enderror
                         </div>
                     </div>
-
-                    {{-- Uncomment if Brief Description is needed --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
                         <div class="col-sm-10">
