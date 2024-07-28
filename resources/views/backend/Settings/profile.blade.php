@@ -24,7 +24,7 @@
                @endsession
             </div>
             <div class="card-block">
-                <form action="{{ route('admin.profile.update') }}" method="POST">
+                <form action="{{ route('profile.update') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
