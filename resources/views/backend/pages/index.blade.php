@@ -46,9 +46,9 @@
                                 <td>{{ $page->name }}</td>
                                 <td>{{ $page->title }}</td>
                                 <td>{{ $page->level }}</td>
-                                <div class="col-sm-12">
-                                    <input type="checkbox" class="js-small f-right"  value="1" onchange="featuredUnfeatured(this,'{{encrypt($page->id)}}')" @if($page->active) checked="" @endif>
-                                </div>
+                                <td>
+                                    <input type="checkbox" class="js-small f-right"  value="1" onchange="featuredUnfeatured(this,'{{encrypt($page->id)}}')" @if($page->featured) checked="" @endif>
+                                </td>
                                 <td><img src="{{ asset($page->header_img) }}" width="150"></td>
                                 {{-- <td>{{ $page->slug }}</td> --}}
                                 <td>{{ date('d-m-Y h:iA',strtotime($page->updated_at)) }}</td>
