@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\BusinessSetting;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Cache;
 
@@ -17,7 +18,7 @@ if (!function_exists('areActiveRoutes')) {
     function areActiveRoutes(array $routes, $output = "active")
     {
         foreach ($routes as $route) {
-            if (Route::currentRouteName() == $route) return $output;
+            if (request()->route()->getName() == $route) return $output;
         }
     }
 }
