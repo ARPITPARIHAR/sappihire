@@ -28,24 +28,10 @@
                 <form action="{{ route('tenderservice.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Header Image') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="file" name="header_image" class="form-control @error('header_image') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('header_image')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Month') }}</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Category') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
                             <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -53,37 +39,26 @@
                             </span>
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Detail Month') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
                         <div class="col-sm-10">
-                            <select name="category_id" class="form-control @error('category_id') form-control-danger @enderror">
+                            <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
                                 <option value="" disabled selected>Select Category</option>
                                 @foreach($details as $category)
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
-
                             <span class="messages">
                                 @error('category_id')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @enderror
                             </span>
+                            <p class="text-muted">{{ __("If you want to create a category, leave it blank.") }}</p>
                         </div>
                     </div>
+                    <div class="form-group row" id="pdf">
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('pdf_file')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
-                        </div>
                     </div>
-
                     <div class="form-group row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-8">
@@ -109,6 +84,21 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote();
+        });
+        $('#category_id').change(function() {
+            if($('#category_id').val() == ""){
+                $('#pdf').html('');
+            } else{
+                $('#pdf').html(`<label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('pdf_file')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </span>
+                        </div>`);
+            }
         });
     </script>
 @endsection

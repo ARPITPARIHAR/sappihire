@@ -24,29 +24,12 @@
                 @endif
             </div>
             <div class="card-block">
-                <form action="{{ route('tenderservice.update', $details->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('tenderservice.update', $tender->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-               <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">{{ __('Header Image') }}</label>
-                    <div class="col-sm-10">
-                        <input type="file" name="header_image" class="form-control @error('header_image') form-control-danger @enderror">
-                        <span class="messages">
-                            @error('header_image')
-                                <p class="text-danger error">{{ $message }}</p>
-                            @enderror
-                        </span>
-                        <!-- Display the current header image if exists -->
-                        @if($details->header_image)
-                            <div class="mt-2">
-                                <img src="{{ asset('storage/' . $details->header_image) }}" alt="{{ __('Header Image') }}" style="max-width: 200px;">
-                            </div>
-                        @endif
-                    </div>
-                </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title', $details->title) }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="text" name="title" id="title" value="{{ old('title', $tender->title) }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
                             <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -55,33 +38,35 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="category" id="category" value="{{ old('category', $details->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('category')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
+                    @if ($tender->category_id)
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                            <div class="col-sm-10">
+                                <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
+                                    <option value="" disabled selected>Select Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" @if($tender->category_id == $category->id)>{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="messages">
+                                    @error('category_id')
+                                        <p class="text-danger error">{{ $message }}</p>
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('pdf_file')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                                <span class="messages">
+                                    @error('pdf_file')
+                                        <p class="text-danger error">{{ $message }}</p>
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Header Image Field -->
-
-
+                    @endif
                     <div class="form-group row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-8">

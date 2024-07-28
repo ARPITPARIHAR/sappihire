@@ -24,10 +24,8 @@ class TenderController extends Controller
      */
     public function create()
     {
-        $details =Tender::all();
-
-
-        return view('backend.tenderservice.create', compact('details'));
+        $categories = Tender::where('category_id', 0)->get();
+        return view('backend.tenderservice.create', compact('categories'));
     }
 
 
@@ -45,23 +43,22 @@ class TenderController extends Controller
         $detail->title = $request->title;
         if ($request->category_id) {
             $detail->category_id = $request->category_id;
-        }else{
+        } else {
             $detail->category_id = 0;
         }
         if ($request->hasFile('pdf_file')) {
-          $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
-          $filePath = $request->file('pdf_file')->storeAs('uploads/tenders', $fileName, 'public');
-          $detail->pdf_file = '/public/storage/' . $filePath;
-
+            $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+            $filePath = $request->file('pdf_file')->storeAs('uploads/tenders', $fileName, 'public');
+            $detail->pdf_file = '/public/storage/' . $filePath;
         }
 
- if ($request->hasFile('header_image')) {
+        if ($request->hasFile('header_image')) {
             $fileName = time() . '-team-' . $request->file('header_image')->getClientOriginalName();
             $filePath = $request->file('header_image')->storeAs('uploads/tenders', $fileName, 'public');
             $detail->header_image = '/public/storage/' . $filePath;
         }
 
-      $detail->save();
+        $detail->save();
         Artisan::call('cache:clear');
         return back()->with('success', 'Tender added successfully.');
     }
@@ -70,12 +67,12 @@ class TenderController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-{
-    $trainingEvents = Tender::where('category_id',$id)->get();
+    {
+        $trainingEvents = Tender::where('category_id', $id)->get();
 
-   dd($trainingEvents);
-    return view('frontend.show', compact('trainingEvents'));
-}
+        dd($trainingEvents);
+        return view('frontend.show', compact('trainingEvents'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -84,8 +81,9 @@ class TenderController extends Controller
 
     public function edit($id)
     {
-        $details = Tender::findOrFail(decrypt($id));
-        return view('backend.tenderservice.edit', compact('details'));
+        $tender = Tender::findOrFail(decrypt($id));
+        $categories = Tender::where('category_id', 0)->get();
+        return view('backend.tenderservice.edit', compact('categories', 'tender'));
     }
 
 
@@ -101,7 +99,7 @@ class TenderController extends Controller
 
         ]);
         $detail = Tender::findOrFail(decrypt($id));
-        $detail->title= $request->title;
+        $detail->title = $request->title;
         $detail->category_id = $request->category_id ?? 0;
         if ($request->hasFile('pdf_file')) {
             $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
@@ -113,7 +111,7 @@ class TenderController extends Controller
             $filePath = $request->file('header_image')->storeAs('uploads/tenders', $fileName, 'public');
             $detail->header_image = '/public/storage/' . $filePath;
         }
-        $detail->title= $request->title;
+        $detail->title = $request->title;
         $detail->update();
         Artisan::call('cache:clear');
         return back()->with('success', ' Tender updated successfully.');
