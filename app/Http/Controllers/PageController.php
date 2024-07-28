@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Management;
 use App\Models\Page;
 use App\Models\Study;
 use App\Models\Relive;
@@ -120,5 +121,10 @@ class PageController extends Controller
     {
         $page = Page::where('slug', $slug)->first();
         return view('frontend.page', compact('page'));
+    }
+    public function menagementDetail($slug)
+    {
+        $management = Management::where('slug', $slug)->first();
+        return view('frontend.management-detail', compact('management'));
     }
 }

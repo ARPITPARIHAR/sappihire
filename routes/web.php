@@ -45,6 +45,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/study-show/{id}',  'study_show')->name('studymaterial.show');
     Route::get('/tender/{id}',  'tender_show')->name('tender.show');
     Route::get('/page/{slug}',  'page')->name('page');
+    Route::get('/management/{slug}',  'managementDetail')->name('management.detail');
 });
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');

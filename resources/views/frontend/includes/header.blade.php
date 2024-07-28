@@ -35,7 +35,7 @@
                             <h3><strong>{{ $member->name }}</strong> {{ $member->designation }}</h3>
                             <span>{{ $member->sub_designation }}</span>
                             <p>{{ $member->brief_description }}</p>
-                            <a href="#" class="btn">Read More</a>
+                            <a href="{{ route('management.detail', $member->slug) } }}" class="btn">Read More</a>
                         </div>
                     </div>
                 </div>
