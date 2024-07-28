@@ -1,42 +1,15 @@
 <section class="hm_about">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-                <div class="abt_instut">
-                    <h2>About Institute</h2>
-                    @foreach (\App\Models\About::all() as $aboutService)
-                        @php
-                            $brief_description = Str::limit($aboutService->brief_description, 250, '...');
-                        @endphp
-                        <p>{{ $brief_description }}</p>
-                    @endforeach
-                    <a href="{{ route('abouts') }}" class="btn">View More ></a>
+            @foreach (\App\Models\Page::where('parent_id',0)->get() as $page)
+                <div class="col-md-12">
+                    <div class="abt_instut">
+                        <h2>{{ $page->title }}</h2>
+                        <p>{{ $page->brief_description }}</p>
+                        <a href="{{ route('page', $page->slug) }}" class="btn">View More ></a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="abt_instut">
-                <h2>Placement Services</h2>
-                @foreach (\App\Models\Placementservice::all() as $placementService)
-                    @php
-                        $brief_description = Str::limit($placementService->brief_description, 250, '...');
-                    @endphp
-                    <p>{{ $brief_description }}</p>
-                @endforeach
-                <a href="{{ route('placementservice') }}" class="btn">View More ></a>
-            </div>
-
-            <div class="abt_instut">
-                <h2>Hostel Facility</h2>
-                @foreach (\App\Models\Hostelservice::all() as $hostelService)
-                    @php
-                        $brief_description = Str::limit($hostelService->brief_description, 250, '...');
-                    @endphp
-                    <p>{{ $brief_description }}</p>
-                @endforeach
-                <a href="{{ route('hostelservice') }}" class="btn">View More ></a>
-            </div>
-
-			</div>
+            @endforeach
 		</div>
 	</div>
 </section>
@@ -49,11 +22,9 @@
                     <h2>The Management Desk</h2>
                 </div>
             </div>
-
             @php
                 $managements = \App\Models\Management::all();
             @endphp
-
             @foreach ($managements as $member)
                 <div class="col-md-4">
                     <div class="team_box">
