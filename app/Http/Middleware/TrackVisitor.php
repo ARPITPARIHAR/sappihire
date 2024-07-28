@@ -20,11 +20,11 @@ class TrackVisitor
 
         if (!$visitorId) {
             $visitorId = (string) \Illuminate\Support\Str::uuid();
-            DB::table('visitors')->insert(['visitor_id' => $visitorId]);
+            DB::table('visitors')->insert(['visitor_id' => $visitorId, 'created_at' => date('Y-m-d H:i:s')]);
         } else {
             $exists = DB::table('visitors')->where('visitor_id', $visitorId)->exists();
             if (!$exists) {
-                DB::table('visitors')->insert(['visitor_id' => $visitorId]);
+                DB::table('visitors')->insert(['visitor_id' => $visitorId, 'updated_at' => date('Y-m-d H:i:s')]);
             }
         }
 
