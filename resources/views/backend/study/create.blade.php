@@ -50,12 +50,12 @@
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
-
                             <span class="messages">
                                 @error('category_id')
                                     <p class="text-danger error">{{ $message }}</p>
                                 @enderror
                             </span>
+                            <p class="text-muted">{{ __("If you want to create a category, leave it blank.") }}</p>
                         </div>
                     </div>
 

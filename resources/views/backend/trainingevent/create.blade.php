@@ -53,6 +53,7 @@
                                     <p class="text-danger error">{{ $message }}</p>
                                 @enderror
                             </span>
+                            <p class="text-muted">{{ __("If you want to create a category, leave it blank.") }}</p>
                         </div>
                     </div>
                     <div class="form-group row" id="pdf">
