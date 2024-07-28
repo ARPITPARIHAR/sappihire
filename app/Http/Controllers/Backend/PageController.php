@@ -23,7 +23,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        $pages = Page::orderBy('parent_id', 0)->orderByAsc('name')->get();
+        $pages = Page::where('parent_id', 0)->orderBy('name')->get();
         return view('backend.pages.create', compact('pages'));
     }
 
@@ -85,7 +85,7 @@ class PageController extends Controller
     public function edit(Request $request, $id)
     {
         $page = Page::find(decrypt($id));
-        $pages = Page::orderBy('parent_id', 0)->orderByAsc('name')->get();
+        $pages = Page::where('parent_id', 0)->orderBy('name')->get();
         return view('backend.pages.edit', compact('page', 'pages'));
     }
 
