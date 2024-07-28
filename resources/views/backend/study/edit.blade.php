@@ -49,7 +49,7 @@
                             <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
                                 <option value="" disabled>Select Category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->category_id }}" {{ $detail->category_id == $category->category_id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                                    <option value="{{ $category->category_id }}" @if($detail->category_id == $category->id) selected @endif>{{ $category->category_name }}</option>
                                 @endforeach
                             </select>
                             <span class="messages">

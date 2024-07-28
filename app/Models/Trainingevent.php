@@ -13,4 +13,8 @@ class Trainingevent extends Model
     {
         return $this->belongsTo(Trainingevent::class, 'category_id');
     }
+    public function categories()
+    {
+        return $this->belongsTo(Relive::class, 'category_id');
+    }
 }

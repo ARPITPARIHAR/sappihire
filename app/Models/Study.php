@@ -11,4 +11,8 @@ class Study extends Model
     {
         return $this->belongsTo(Study::class, 'category_id');
     }
+    public function categories()
+    {
+        return $this->belongsTo(Relive::class, 'category_id');
+    }
 }
