@@ -27,9 +27,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('Header_Image') }}</th>
-                                <th>{{ __('Month') }}</th>
-                                <th>{{ __('pdf') }}</th>
+                                <th>{{ __('Title') }}</th>
+                                <th>{{ __('Pdf') }}</th>
                                  <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -39,12 +38,13 @@
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
                                 <td><img src="{{ asset($detail->header_image) }}" width="150"></td>
-                               
                                 <td>{{ $detail->title }}</td>
-                                <td><img src="{{ asset($detail->pdf_file) }}" width="90"></td>
-
+                                <td>
+                                    @if ($detail->pdf_file)
+                                        <a class="btn btn-sm btn-primary" href="{{ asset($detail->pdf_file) }}" download></a>
+                                    @endif
+                                </td>
                                 <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
-
                                 <td>
                                     <a href="{{ route('tenderservice.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
                                     <a href="{{ route('tenderservice.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
@@ -55,9 +55,8 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>{{ __('Header_Image') }}</th>
-                                <th>{{ __('Month') }}</th>
-                                <th>{{ __('pdf') }}</th>
+                                <th>{{ __('Title') }}</th>
+                                <th>{{ __('Pdf') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
