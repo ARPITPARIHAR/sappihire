@@ -1,3 +1,5 @@
+
+</style>
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/lightbox.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
@@ -6,6 +8,22 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
 
 
+<style>
+    .marquee {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            animation: marquee 10s linear infinite;
+        }
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+    </style>
 
 <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
