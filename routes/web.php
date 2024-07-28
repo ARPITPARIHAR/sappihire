@@ -14,9 +14,9 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 
 
-Route::get('/clear', function () {
-    Artisan::call('storage:link');
-    dd('Done');
+Route::get('/clear/{command}', function ($command) {
+    $response = Artisan::call($command);
+    dd($response);
 });
 
 
