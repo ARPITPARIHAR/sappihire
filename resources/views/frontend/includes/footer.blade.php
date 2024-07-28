@@ -47,7 +47,7 @@
 					<p>Enter your email address to register to our newslatter subscription</p>
 					<form method="post" action="">
 						<input type="email" name="email" value="" placeholder="Email">
-						<button type="submit" class="button">Subscribe</button>
+						<button type="button" class="button">Subscribe</button>
 					</form>
 					<ul class="ftr_scl">
 						<li><a href="#"><img src="images/scl001.png" alt="scl"></a></li>
