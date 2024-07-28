@@ -135,6 +135,15 @@ class PageController extends Controller
         return back()->with('success', 'Page updated successfully.');
     }
 
+    public function featured(Request $request)
+    {
+        $page = Page::findOrFail(decrypt($request->id));
+        $page->status = $request->status;
+        $page->update();
+        Artisan::call('cache:clear');
+        return $request->status;
+    }
+
     /**
      * Remove the specified resource from storage.
      */

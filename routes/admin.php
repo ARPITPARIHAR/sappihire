@@ -59,6 +59,7 @@ Route::controller(PageController::class)->group(function () {
         Route::get('{id}/edit', 'edit')->name('edit');
         Route::post('{id}/edit', 'update')->name('update');
         Route::get('{id}/delete', 'destroy')->name('delete');
+        Route::post('featured', 'featured')->name('featured');
     });
 });
 // Board routes
