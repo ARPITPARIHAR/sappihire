@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Relive extends Model
 {
-    use HasFactory;
+    public function category()
+    {
+        return $this->belongsTo(Relive::class, 'category_id');
+    }
 }

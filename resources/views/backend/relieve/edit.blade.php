@@ -42,6 +42,8 @@
                             </span>
                         </div>
                     </div>
+                    @if ($relive->category_id)
+
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Detail Category') }}</label>
@@ -74,7 +76,7 @@
                             @endif
                         </div>
                     </div>
-
+                    @endif
                     <div class="form-group row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-8">

@@ -59,16 +59,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('pdf_file')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
-                        </div>
+                    <div class="form-group row" id="pdf">
+
                     </div>
 
 
@@ -98,6 +90,21 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote();
+        });
+        $('#category_id').change(function() {
+            if($('#category_id').val() == ""){
+                $('#pdf').html('');
+            } else{
+                $('#pdf').html(`<label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('pdf_file')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </span>
+                        </div>`);
+            }
         });
     </script>
 @endsection

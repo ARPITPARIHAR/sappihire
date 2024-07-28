@@ -42,6 +42,7 @@
                         </div>
                     </div>
 
+                    @if ($detail->category_id )
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Detail Category') }}</label>
                         <div class="col-sm-10">
@@ -58,7 +59,6 @@
                             </span>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
                         <div class="col-sm-10">
@@ -73,7 +73,7 @@
                             @endif
                         </div>
                     </div>
-
+                    @endif
                     <div class="form-group row">
                         <div class="col-sm-4">
                         </div>

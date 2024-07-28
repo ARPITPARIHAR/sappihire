@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Study extends Model
 {
-    use HasFactory;
+    public function category()
+    {
+        return $this->belongsTo(Study::class, 'category_id');
+    }
 }

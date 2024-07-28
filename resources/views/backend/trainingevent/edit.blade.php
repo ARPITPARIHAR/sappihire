@@ -26,7 +26,7 @@
             <div class="card-block">
                 <form action="{{ route('trainingevent.update', $details->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                
+
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
@@ -39,36 +39,34 @@
                             </span>
                         </div>
                     </div>
-
-
-                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="category" id="category" value="{{ old('category', $details->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('category')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
+                    @if ($details->category_id !=0)
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="category" id="category" value="{{ old('category', $details->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
+                                <span class="messages">
+                                    @error('category')
+                                        <p class="text-danger error">{{ $message }}</p>
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
-                            <span class="messages">
-                                @error('pdf_file')
-                                    <p class="text-danger error">{{ $message }}</p>
-                                @enderror
-                            </span>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                                <span class="messages">
+                                    @error('pdf_file')
+                                        <p class="text-danger error">{{ $message }}</p>
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
-                    </div>
-
+                    @endif
                     <div class="form-group row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-8">
-                            <button type="submit" class="btn btn-primary float-sm-right">{{ __('Save') }}</button>
+                            <button type="submit" class="btn btn-primary float-sm-right">{{ __('Update') }}</button>
                         </div>
                     </div>
                 </form>
