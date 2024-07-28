@@ -121,7 +121,7 @@
 				</div>
 
                 <div class="nws_evnt">
-                    <ul class="marquee">
+                    <ul class="marquee"  onMouseOver="this.stop()" onMouseOut="this.start()">
                         @foreach (\App\Models\News::all() as $newsItem)
 
                              <a href="{{ $newsItem->hyperlink }}" target="_blank">

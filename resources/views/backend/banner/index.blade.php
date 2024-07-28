@@ -27,9 +27,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-
+                                <th>{{ __('Title') }}</th>
                                 <th>{{ __('Banner') }}</th>
-
+                                <th>{{ __('Hyperlink') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -38,8 +38,10 @@
                             @foreach ($banners as $key=>$banner)
                             <tr>
                                 <td>{{ ($key+1) + ($banners->currentPage() - 1)*$banners->perPage() }}</td>
+                                <td>{{ $banner->title }}</td>
+                                <td>{{ $banner->hyperlink }}</td>
                                 <td><img src="{{ asset($banner->thumbnail_img) }}" width="90"></td>
-                                
+
 
                                 <td>{{ date('d-m-Y h:iA',strtotime($banner->updated_at)) }}</td>
                                 <td>
@@ -52,9 +54,9 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-
+                                <th>{{ __('Title') }}</th>
                                 <th>{{ __('Baneer') }}</th>
-
+                                <th>{{ __('Hyperlink') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>

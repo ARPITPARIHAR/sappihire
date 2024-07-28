@@ -33,7 +33,9 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
+            'title' => 'required|string',
+            'brief_description' => 'nullable|string',
+            'hyperlink' => 'nullable|url', // Validate the hyperlink
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $banners = new Banner;
@@ -62,7 +64,7 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banners= Banner::findOrFail(decrypt($id));
+        $banners = Banner::findOrFail(decrypt($id));
         return view('backend.banner.edit', compact('banners'));
     }
 
@@ -72,10 +74,12 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-
+            'title' => 'required|string',
+            'brief_description' => 'nullable|string',
+            'hyperlink' => 'nullable|url', // Validate the hyperlink
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $banners= Banner::findOrFail(decrypt($id));
+        $banners = Banner::findOrFail(decrypt($id));
 
         if ($request->hasFile('logo')) {
             $fileName = time() . '-logo-' . $request->file('logo')->getClientOriginalName();
