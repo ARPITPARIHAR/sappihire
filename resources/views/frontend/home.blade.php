@@ -78,7 +78,7 @@
                         <h3>Latest News & Highlights</h3>
                     </div>
                     <div class="nws_evnt">
-                        <ul class="marquee"  onMouseOver="this.stop()" onMouseOut="this.start()">
+                        <ul class="marquee">
                             @foreach (\App\Models\News::all() as $newsItem)
                                 <li><a href="{{ $newsItem->hyperlink }}" target="_blank">{{ $newsItem->news_description }}</a></li>
                             @endforeach

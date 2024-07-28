@@ -32,6 +32,7 @@
                                 <th>{{ __('Title') }}</th>
                                 <th>{{ __('Level') }}</th>
                                 <th>{{ __('Featured') }}</th>
+                                <th>{{ __('Page Url') }}</th>
                                 <th>{{ __('Header Image') }}</th>
                                 {{-- <th>{{ __('Slug') }}</th> --}}
                                 <th>{{ __('Updated At') }}</th>
@@ -48,6 +49,9 @@
                                 <td>{{ $page->level }}</td>
                                 <td>
                                     <input type="checkbox" class="js-small f-right"  value="1" onchange="featuredUnfeatured(this,'{{encrypt($page->id)}}')" @if($page->featured) checked="" @endif>
+                                </td>
+                                <td>
+                                    <a onclick="copyToClipboard('{{ route('page.show',$page->slug) }}')">{{ route('page.show',$page->slug) }}</a>
                                 </td>
                                 <td><img src="{{ asset($page->header_img) }}" width="150"></td>
                                 {{-- <td>{{ $page->slug }}</td> --}}
@@ -69,6 +73,7 @@
                                 <th>{{ __('Title') }}</th>
                                 <th>{{ __('Level') }}</th>
                                 <th>{{ __('Featured') }}</th>
+                                <th>{{ __('Page Url') }}</th>
                                 <th>{{ __('Header Image') }}</th>
                                 {{-- <th>{{ __('Slug') }}</th> --}}
                                 <th>{{ __('Updated At') }}</th>
@@ -122,6 +127,27 @@
                    console.log('Inactive Successfully');
                 }
             });
+        }
+        function copyToClipboard(text) {
+            if (window.clipboardData && window.clipboardData.setData) {
+                // IE specific code path to prevent textarea being shown while dialog is visible.
+                return window.clipboardData.setData("Text", text);
+            } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                var textarea = document.createElement("textarea");
+                textarea.textContent = text;
+                textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+                } catch (ex) {
+                    console.warn("Copy to clipboard failed.", ex);
+                    return false;
+                } finally {
+                    document.body.removeChild(textarea);
+                }
+            }
+
         }
     </script>
 @endsection
