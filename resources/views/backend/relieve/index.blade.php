@@ -41,8 +41,7 @@
                                 <td>{{ optional($detail->category)->title }}</td>
                                 <td>{{ $detail->title }}</td>
                                 <td>{{ $detail->pdf_file }}</td>
-                                <td>{{ date('d-m-Y H:iA', strtotime($detail->updated_at)) }}</td>
-
+                                <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
                                 <td>
                                     <a href="{{ route('relieve.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
                                     <a href="{{ route('relieve.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>

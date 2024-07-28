@@ -41,9 +41,7 @@
                                 <td>{{ optional($detail->category)->title }}</td>
                                 <td>{{ $detail->title }}</td>
                                 <td><img src="{{ asset($detail->pdf_file) }}" width="90"></td>
-
-                                <td>{{ date('d-m-Y H:iA', strtotime($detail->updated_at)) }}</td>
-
+                                <td>{{ date('d-m-Y h:iA', strtotime($detail->updated_at)) }}</td>
                                 <td>
                                     <a href="{{ route('trainingevent.edit',encrypt($detail->id)) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
                                     <a href="{{ route('trainingevent.delete',encrypt($detail->id)) }}" class="btn btn-sm btn-danger">{{ __('Delete') }}</a>
