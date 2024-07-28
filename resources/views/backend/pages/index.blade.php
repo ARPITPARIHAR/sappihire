@@ -47,7 +47,7 @@
                                 <td>{{ $page->title }}</td>
                                 <td>{{ $page->level }}</td>
                                 <div class="col-sm-12">
-                                    <input type="checkbox" class="js-small f-right"  value="1" onchange="active(this,'{{encrypt($page->id)}}')" @if($page->active) checked="" @endif>
+                                    <input type="checkbox" class="js-small f-right"  value="1" onchange="featuredUnfeatured(this,'{{encrypt($page->id)}}')" @if($page->active) checked="" @endif>
                                 </div>
                                 <td><img src="{{ asset($page->header_img) }}" width="150"></td>
                                 {{-- <td>{{ $page->slug }}</td> --}}
@@ -109,12 +109,12 @@
                 size: 'small'
             });
         });
-        function featured(el,id) {
+        function featuredUnfeatured(el,id) {
             var status = 0;
             if (el.checked) {
                 status = 1;
             }
-             $.post("{{ route('admin.pages.featured') }}", {_token:"{{ csrf_token() }}", id:id,status:status}, function(data){
+             $.post("{{ route('admin.pages.featured-unfeatured') }}", {_token:"{{ csrf_token() }}", id:id,status:status}, function(data){
                 if(data == 1){
                     console.log('Active Successfully');
                 }
