@@ -8,7 +8,6 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="head">
-					<h2>{{ $management->name }}</h2>
                     <div class="col-md-4">
                         <div class="team_box">
                             <div class="team_imag">
