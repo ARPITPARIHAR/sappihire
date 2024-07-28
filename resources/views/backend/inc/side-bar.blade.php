@@ -32,67 +32,22 @@
                 </a>
             </li>
             <li class="">
-                <a href="{{ route('management.index') }}">
+                <a href="{{ route('trainingevent.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                    <span class="pcoded-mtext">{{ __('Management Desk') }}</span>
-                </a>
-            </li>
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)">
-                    <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                     <span class="pcoded-mtext">{{ __('Tranining') }}</span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="{{ route('trainingevent.index') }}">
-                            <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                            <span class="pcoded-mtext">{{ __('Categries') }}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{ route('trainingevent.index') }}">
-                            <span class="pcoded-mtext">{{ __('Trainings') }}</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)">
-                    <span class="pcoded-micon"><i class="feather icon-user"></i></span>
-                    <span class="pcoded-mtext">{{ __('Study') }}</span>
+            <li class="">
+                <a href="{{ route('study.index') }}">
+                    <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                    <span class="pcoded-mtext">{{ __('Study Matirials') }}</span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="{{ route('study.index') }}">
-                            <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                            <span class="pcoded-mtext">{{ __('Categries') }}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{ route('study.index') }}">
-                            <span class="pcoded-mtext">{{ __('Studies') }}</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)">
-                    <span class="pcoded-micon"><i class="feather icon-user"></i></span>
-                    <span class="pcoded-mtext">{{ __('Reliving') }}</span>
+            <li class="">
+                <a href="{{ route('relieve.index') }}">
+                    <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                    <span class="pcoded-mtext">{{ __('Reliving Orders') }}</span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="{{ route('relieve.index') }}">
-                            <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                            <span class="pcoded-mtext">{{ __('Categries') }}</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{ route('relieve.index') }}">
-                            <span class="pcoded-mtext">{{ __('Reliving Orders') }}</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="">
                 <a href="{{ route('training.index') }}">
