@@ -45,40 +45,19 @@
     </div>
 </section>
 
-
 <section class="vsn_msn">
 	<div class="container-fluid">
 		<div class="row align-items-center">
-			<div class="col-md-6 no_padding">
-
-
-				<div class="vision">
-					<div class="vision_txt">
-						<h3>Vision</h3>
-
-                        @foreach (\App\Models\Vision::all() as $aboutService)
-                        @php
-                            $title = Str::limit($aboutService->title, 150, '...');
-                        @endphp
-                        <p>{{  $title}}</p>
-
-                    @endforeach
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 no_padding">
-				<div class="mision">
-					<h3>Mision</h3>
-                    @foreach (\App\Models\Mission::all() as $aboutService)
-                    @php
-                    $title = Str::limit($aboutService->title, 150, '...');
-                @endphp
-                <p>{{ $title}}</p>
-
+            @foreach (\App\Models\Page::where('parent_id',1)->where('featured',1)->get() as $page)
+                <div class="col-md-6 no_padding">
+                    <div class="vision">
+                        <div class="vision_txt">
+                            <h3>{{ $page->title }}</h3>
+                            <p>{{ $page->brief_description }}</p>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
@@ -90,18 +69,15 @@
 				<div class="head">
 					<h3>Latest News & Highlights</h3>
 				</div>
-
                 <div class="nws_evnt">
                     <ul class="marquee"  onMouseOver="this.stop()" onMouseOut="this.start()">
                         @foreach (\App\Models\News::all() as $newsItem)
-
                              <a href="{{ $newsItem->hyperlink }}" target="_blank">
                                 <li>{{ $newsItem->news_description }}</li>
                             </a>
                         @endforeach
                     </ul>
                 </div>
-
 			</div>
             <div class="col-md-8">
                 <div class="upcmng_trng">
@@ -121,7 +97,7 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $upcomings = \App\Models\Upcoming::all();
+                                    $upcomings = \App\Models\Upcoming::latest()->get();
                                 @endphp
                                 @foreach ($upcomings as $upcoming)
                                 <tr>
