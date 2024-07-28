@@ -51,8 +51,8 @@
                                     <input type="checkbox" class="js-small f-right"  value="1" onchange="featuredUnfeatured(this,'{{encrypt($page->id)}}')" @if($page->featured) checked="" @endif>
                                 </td>
                                 <td>
-                                    <a onclick="copyToClipboard('{{ route('page',$page->slug) }}')" href="#">{{ route('page',$page->slug) }}</a>
-                                    <p class="text-muted" id="copyed-text"></p>
+                                    <a onclick="copyToClipboard('{{ route('page',$page->slug) }}','{{encrypt($page->id)}}')" href="#">{{ route('page',$page->slug) }}</a>
+                                    <p class="text-muted" id="copyed-text-{{encrypt($page->id)}}"></p>
                                 </td>
                                 <td><img src="{{ asset($page->header_img) }}" width="150"></td>
                                 {{-- <td>{{ $page->slug }}</td> --}}
@@ -129,7 +129,7 @@
                 }
             });
         }
-        function copyToClipboard(text) {
+        function copyToClipboard(text,id) {
             if (window.clipboardData && window.clipboardData.setData) {
                 // IE specific code path to prevent textarea being shown while dialog is visible.
                 return window.clipboardData.setData("Text", text);
@@ -148,7 +148,7 @@
                     document.body.removeChild(textarea);
                 }
             }
-            $('#copyed-text').html('text copied to clipboard');
+            $('#copyed-text'+id).html('text copied to clipboard');
         }
     </script>
 @endsection
