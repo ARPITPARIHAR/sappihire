@@ -98,7 +98,7 @@
                     <span class="pcoded-mtext">{{ __('Contact Table') }}</span>
                 </a>
             </li>
-            <li class="pcoded-hasmenu">
+            <li class="pcoded-hasmenu {{ areActiveRoutes(['boardofdirectories.index','boardofdirectories.create','boardofdirectories.edit','teammembers.index','teammembers.create','teammembers.edit'])}}">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                     <span class="pcoded-mtext">{{ __('Our team') }}</span>
