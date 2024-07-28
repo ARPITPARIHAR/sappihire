@@ -167,7 +167,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12 no_padding">
-                @foreach (\App\Models\Slider::orderBy('id', 'desc')->get() as $banner)
+                @foreach (\App\Models\Slider::orderBy('id', 'desc')->take(1)->get() as $banner)
 				<div class="crtfct_bnr">
                     <img src="{{asset($banner->thumbnail_img)}}" alt="banner">
 				</div>
