@@ -24,7 +24,7 @@ class TrainingeventController extends Controller
      */
     public function create()
     {
-        $categories = Trainingevent::where('parent_id', 0)->get();
+        $categories = Trainingevent::where('category_id', 0)->get();
 
 
         return view('backend.trainingevent.create', compact('categories'));
