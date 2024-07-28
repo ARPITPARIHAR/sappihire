@@ -51,7 +51,7 @@
                                     <input type="checkbox" class="js-small f-right"  value="1" onchange="featuredUnfeatured(this,'{{encrypt($page->id)}}')" @if($page->featured) checked="" @endif>
                                 </td>
                                 <td>
-                                    <a onclick="copyToClipboard('{{ route('page.show',$page->slug) }}')">{{ route('page.show',$page->slug) }}</a>
+                                    <a onclick="copyToClipboard('{{ route('page',$page->slug) }}')">{{ route('page.show',$page->slug) }}</a>
                                 </td>
                                 <td><img src="{{ asset($page->header_img) }}" width="150"></td>
                                 {{-- <td>{{ $page->slug }}</td> --}}
