@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title', 'rcem')
+@section('meta_title','Our Gallery | '.env('APP_NAME'))
+@section('meta_description','Our Gallery | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 <section class="gallery">

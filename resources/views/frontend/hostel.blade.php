@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title','rcem')
+@section('meta_title','Hostel Facility | '.env('APP_NAME'))
+@section('meta_description','Hostel Facility | '.env('APP_NAME'))
 
 @include('frontend.includes.navbar')
 

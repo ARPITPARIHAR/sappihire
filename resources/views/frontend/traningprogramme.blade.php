@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title','rcem')
+@section('meta_title','Training Programs | '.env('APP_NAME'))
+@section('meta_description','Training Programs | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 <section class="rlvng_ordrs">

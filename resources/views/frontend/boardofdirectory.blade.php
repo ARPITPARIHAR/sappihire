@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title','rcem')
+@section('meta_title','Board Of directors | '.env('APP_NAME'))
+@section('meta_description','Board Of directors | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 <section class="core_team">

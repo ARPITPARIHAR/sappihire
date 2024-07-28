@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title','rcem')
+@section('meta_title','Team Member | '.env('APP_NAME'))
+@section('meta_description','Team Member | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 <section class="hm_team tm_mmbr">

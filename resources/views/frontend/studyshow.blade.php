@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title', $trainingEvent->title)
+@section('meta_title','Study Material | '.env('APP_NAME'))
+@section('meta_description','Study Material | '.env('APP_NAME'))
 
 @include('frontend.includes.navbar')
 
@@ -9,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ordr_list">
-             
+
 
 
                  <div class="table-responsive">

@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title', '')
+@section('meta_title','Training Events | '.env('APP_NAME'))
+@section('meta_description','Training Events | '.env('APP_NAME'))
 
 @include('frontend.includes.navbar')
 

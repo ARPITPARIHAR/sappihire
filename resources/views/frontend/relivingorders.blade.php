@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title','rcem')
+@section('meta_title','Relieving Orders | '.env('APP_NAME'))
+@section('meta_description','Relieving Orders | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 <section class="rlvng_ordrs">

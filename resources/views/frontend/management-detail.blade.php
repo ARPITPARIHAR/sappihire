@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title',$management->name)
-
+@section('meta_title',$management->name.' | '.env('APP_NAME'))
+@section('meta_description',$management->name.' | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 <section class="about">

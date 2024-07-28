@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
-@section('meta_title', 'rcem')
+@section('meta_title','Tenders | '.env('APP_NAME'))
+@section('meta_description','Tenders | '.env('APP_NAME'))
 @include('frontend.includes.navbar')
 
 
@@ -10,7 +11,7 @@
         <div class="row">
             <div class="col-md-12 no_padding">
                 <div class="inr_bnr">
-                  
+
                     @foreach (\App\Models\Tender::all() as $tenderService)
 
                             <img src="{{ asset($tenderService->header_image) }}" alt="{{ $tenderService->banner_alt ?? 'Default Alt Text' }}">
