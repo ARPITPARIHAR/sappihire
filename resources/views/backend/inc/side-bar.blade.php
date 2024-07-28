@@ -19,6 +19,13 @@
                     <span class="pcoded-mtext">{{ __('Silders') }}</span>
                 </a>
             </li>
+            <li class="{{ areActiveRoutes(['banner.index','banner.create','banner.edit']) }}">
+                <a href="{{ route('banner.index') }}">
+                    <span class="pcoded-micon"><i class="feather icon-file"></i></span>
+                    <span class="pcoded-mtext">{{ __('Banner') }}</span>
+                </a>
+            </li>
+
             <li class="{{ areActiveRoutes(['galleries.index','galleries.create','galleries.edit']) }}">
                 <a href="{{ route('galleries.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-file"></i></span>
@@ -71,24 +78,6 @@
                 <a href="{{ route('information.index') }}">
                     <span class="pcoded-micon"><i class="feather icon-file"></i></span>
                     <span class="pcoded-mtext">{{ __('Other Useful Information') }}</span>
-                </a>
-            </li>
-            <li class="{{ areActiveRoutes(['placement.index','placement.create','placement.edit']) }}">
-                <a href="{{ route('placement.index') }}">
-                    <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                    <span class="pcoded-mtext">{{ __('Placement Service') }}</span>
-                </a>
-            </li>
-            <li class="{{ areActiveRoutes(['hostelfacility.index','hostelfacility.create','hostelfacility.edit']) }}">
-                <a href="{{ route('hostelfacility.index') }}">
-                    <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                    <span class="pcoded-mtext">{{ __('Hostel Facility') }}</span>
-                </a>
-            </li>
-            <li class="{{ areActiveRoutes(['banner.index','banner.create','banner.edit']) }}">
-                <a href="{{ route('banner.index') }}">
-                    <span class="pcoded-micon"><i class="feather icon-file"></i></span>
-                    <span class="pcoded-mtext">{{ __('Banner') }}</span>
                 </a>
             </li>
 
