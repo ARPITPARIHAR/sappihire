@@ -15,7 +15,7 @@ class StudyController extends Controller
      */
     public function index()
     {
-        $details = Study::paginate(15);
+        $details = Study::orderBy('category_id')->latest()->paginate(15);
         return view('backend.study.index', compact('details'));
     }
 

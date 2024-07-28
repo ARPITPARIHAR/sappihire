@@ -14,7 +14,7 @@ class RelivingController extends Controller
      */
     public function index()
     {
-        $details = Relive::paginate(15);
+        $details = Relive::orderBy('category_id')->latest()->paginate(15);
         return view('backend.relieve.index', compact('details'));
     }
 
