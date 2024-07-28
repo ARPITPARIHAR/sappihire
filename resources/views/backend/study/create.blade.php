@@ -30,9 +30,9 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">{{ __('Topics') }}</label>
+                        <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Topic') }}" class="form-control @error('title') form-control-danger @enderror">
+                            <input type="text" name="title" id="title" value="{{ old('title')}}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
                             <span class="messages">
                                 @error('title')
                                     <p class="text-danger error">{{ $message }}</p>
@@ -45,7 +45,7 @@
                         <label class="col-sm-2 col-form-label">{{ __('Detail Category') }}</label>
                         <div class="col-sm-10">
                             <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
-                                <option value="" disabled selected>Select Category</option>
+                                <option value="">Select Category</option>
                                 @foreach($details as $category)
                                     <option value="{{ $category->id }}">{{ $detail->title }}</option>
                                 @endforeach
