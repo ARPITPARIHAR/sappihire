@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Contact Us | '.env('APP_NAME'))
 @section('meta_description','Contact Us | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 <section class="section-cntct">
 	<div class="container">
 		<div class="row">
@@ -97,7 +97,7 @@
 	</div>
 </section>
 
-
+@endsection
 @include('frontend.includes.footer')
 
 @section('style')

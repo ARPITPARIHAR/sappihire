@@ -2,7 +2,7 @@
 @section('meta_title','Hostel Facility | '.env('APP_NAME'))
 @section('meta_description','Hostel Facility | '.env('APP_NAME'))
 
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="about">
 	<div class="container">
@@ -20,7 +20,7 @@
 	</div>
 </section>
 
-@include('frontend.includes.footer')
+@endsection
 @section('style')
 
 @endsection

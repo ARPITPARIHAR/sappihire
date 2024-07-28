@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Placement Services | '.env('APP_NAME'))
 @section('meta_description','Placement Services | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="about">
     <div class="container">
@@ -19,7 +19,7 @@
         </div>
     </div>
 </section>
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 

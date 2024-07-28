@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Tenders | '.env('APP_NAME'))
 @section('meta_description','Tenders | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 
 
 
@@ -57,7 +57,7 @@
     </div>
 </section>
 
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 @endsection

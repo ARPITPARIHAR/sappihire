@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Our Gallery | '.env('APP_NAME'))
 @section('meta_description','Our Gallery | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="gallery">
     <div class="container">
@@ -36,7 +36,7 @@
     </div>
 </section>
 
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">

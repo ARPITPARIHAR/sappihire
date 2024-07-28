@@ -3,7 +3,7 @@
 @section('meta_title','Relieving Orders | '.env('APP_NAME'))
 @section('meta_description','Relieving Orders | '.env('APP_NAME'))
 
-@include('frontend.includes.navbar')
+@section('content')
 
 <section style="margin-top: 30px; margin-bottom: 30px;">
     <div class="container">
@@ -43,7 +43,7 @@
     </div>
 </section>
 
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 <!-- Add any additional styles specific to this page -->

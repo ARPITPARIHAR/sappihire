@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Study Material | '.env('APP_NAME'))
 @section('meta_description','Study Material | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="rlvng_ordrs">
 	<div class="container">
@@ -69,7 +69,7 @@
 
 
 
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 

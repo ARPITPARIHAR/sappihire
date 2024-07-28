@@ -2,7 +2,7 @@
 @section('meta_title',$page->meta_title.' | '.env('APP_NAME'))
 @section('meta_description',$page->meta_description.' | '.env('APP_NAME'))
 
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="about">
 	<div class="container">
@@ -18,7 +18,7 @@
 	</div>
 </section>
 
-@include('frontend.includes.footer')
+@endsection
 @section('style')
 
 @endsection

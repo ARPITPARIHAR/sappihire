@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Room | '.env('APP_NAME'))
 @section('meta_description','Room | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="inner_banner">
     <div class="container-fluid">
@@ -40,7 +40,7 @@
 
 
 
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 

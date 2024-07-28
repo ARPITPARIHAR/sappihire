@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Team Member | '.env('APP_NAME'))
 @section('meta_description','Team Member | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
+@section('content')
 
 <section class="hm_team tm_mmbr">
     <div class="container">
@@ -31,7 +31,7 @@
     </div>
 </section>
 
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 @endsection

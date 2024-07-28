@@ -1,8 +1,7 @@
 @extends('frontend.layouts.app')
 @section('meta_title','Board Of directors | '.env('APP_NAME'))
 @section('meta_description','Board Of directors | '.env('APP_NAME'))
-@include('frontend.includes.navbar')
-
+@section('content')
 <section class="core_team">
 	<div class="container">
 		<div class="row">
@@ -34,7 +33,7 @@
 		</div>
 	</div>
 </section>
-@include('frontend.includes.footer')
+@endsection
 
 @section('style')
 @endsection
