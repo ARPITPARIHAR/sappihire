@@ -148,7 +148,7 @@
                     document.body.removeChild(textarea);
                 }
             }
-            $('#copyed-text'+id).html('text copied to clipboard');
+            $('#copyed-text-'+id).html('text copied to clipboard');
         }
     </script>
 @endsection
