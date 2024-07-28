@@ -30,7 +30,7 @@ class ContactController extends Controller
         // Optionally, you can process further logic here, like sending an email
 
         try {
-            Mail::to('jaipurricem@gmail.com')->send(new ContactUsMail($contact));
+            Mail::to('mangilalprajapat3@gmail.com')->send(new ContactUsMail($contact));
         } catch (\Throwable $th) {
             //throw $th;
         }
