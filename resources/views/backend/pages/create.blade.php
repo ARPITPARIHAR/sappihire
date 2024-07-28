@@ -31,7 +31,7 @@
                         <div class="col-sm-10">
                             <select name="page" class="form-control @error('page') form-control-danger @enderror">
                                 <option value="">{{ __('Select Parent Page') }}</option>
-                                @foreach (App\Models\Page::where('parent_id',0)->orderBy('name')->get() as $page)
+                                @foreach ($pages as $page)
                                     <option value="{{ $page->id }}" @selected($page->id==old('page'))>{{ $page->name }}</option>
                                 @endforeach
                             </select>

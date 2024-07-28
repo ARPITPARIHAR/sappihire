@@ -29,9 +29,9 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Select Page') }}</label>
                         <div class="col-sm-10">
-                            <select name="page" class="form-control @error('page') form-control-danger @enderror">
+                            <select name="page" class="form-control @error('page') form-control-danger @enderror" aria-readonly="">
                                 <option value="">{{ __('Select Parent Page') }}</option>
-                                @foreach (App\Models\Page::whereIn('id',[2])->orderBy('name')->get() as $parent_page)
+                                @foreach ($pages as $parent_page)
                                     <option value="{{ $parent_page->id }}" @selected($parent_page->id==(old('page') || $page->parent_id))>{{ $parent_page->name }}</option>
                                 @endforeach
                             </select>

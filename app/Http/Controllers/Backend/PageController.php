@@ -23,7 +23,8 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.create');
+        $pages = Page::orderBy('parent_id', 0)->orderBy('name')->get();
+        return view('backend.pages.create', compact('pages'));
     }
 
     /**
@@ -84,7 +85,8 @@ class PageController extends Controller
     public function edit(Request $request, $id)
     {
         $page = Page::find(decrypt($id));
-        return view('backend.pages.edit', compact('page'));
+        $pages = Page::orderBy('parent_id', 0)->orderBy('name')->get();
+        return view('backend.pages.edit', compact('page', 'pages'));
     }
 
     /**
@@ -104,14 +106,14 @@ class PageController extends Controller
             'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $page = Page::findOrFail(decrypt($id));
-        if ($request->page) {
-            $page->parent_id = $request->page;
-            $parent_page = Page::findOrFail($request->page);
-            $page->level = ($parent_page->level + 1);
-        } else {
-            $page->parent_id = 0;
-            $page->level = 0;
-        }
+        // if ($request->page) {
+        //     $page->parent_id = $request->page;
+        //     $parent_page = Page::findOrFail($request->page);
+        //     $page->level = ($parent_page->level + 1);
+        // } else {
+        //     $page->parent_id = 0;
+        //     $page->level = 0;
+        // }
         $page->name = $request->name;
         $page->title = $request->title ?? $request->name;
         $page->meta_title = $request->meta_title;
