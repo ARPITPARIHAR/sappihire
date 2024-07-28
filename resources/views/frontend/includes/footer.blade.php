@@ -5,7 +5,7 @@
 				<div class="ftr_box frst">
 				<!-- Header Logo -->
          <div class="ftr_logo">
-         <img src="{{ asset(businessSetting(1)->header_logo) }}" alt="Logo">
+         <img src="{{ asset(businessSetting(1)->footer_logo) }}" alt="Logo">
          </div>
                 <span>Visitors {{ $uniqueVisitors = DB::table('visitors')->count() }}</span>
 					<p>Add:  {{ businessSetting(1)->address }}</p>
