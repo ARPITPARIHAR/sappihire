@@ -24,7 +24,7 @@ class TrackVisitor
         } else {
             $exists = DB::table('visitors')->where('visitor_id', $visitorId)->exists();
             if (!$exists) {
-                DB::table('visitors')->insert(['visitor_id' => $visitorId, 'updated_at' => date('Y-m-d H:i:s')]);
+                DB::table('visitors')->insert(['visitor_id' => $visitorId, 'created_at' => date('Y-m-d H:i:s')]);
             }
         }
 
