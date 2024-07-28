@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>{{ __('Category') }}</th>
                                 <th>{{ __('Title') }}</th>
                                 <th>{{ __('Pdf') }}</th>
                                  <th>{{ __('Updated At') }}</th>
@@ -37,7 +38,6 @@
                             @foreach ($details as $key=>$detail)
                             <tr>
                                 <td>{{ ($key+1) + ($details->currentPage() - 1)*$details->perPage() }}</td>
-                                <td><img src="{{ asset($detail->header_image) }}" width="150"></td>
                                 <td>{{ $detail->title }}</td>
                                 <td>
                                     @if ($detail->pdf_file)
@@ -55,6 +55,7 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
+                                <th>{{ __('Category') }}</th>
                                 <th>{{ __('Title') }}</th>
                                 <th>{{ __('Pdf') }}</th>
                                 <th>{{ __('Updated At') }}</th>

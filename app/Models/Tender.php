@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tender extends Model
 {
-    use HasFactory;
+    public function category()
+    {
+        return $this->belongsTo(Tender::class, 'category_id');
+    }
+    public function categories()
+    {
+        return $this->belongsTo(Tender::class, 'category_id');
+    }
 }
