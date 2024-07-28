@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('meta_title')</title>
-
+        <link rel="icon" type="image/x-icon" href="{{ asset('frontend/images/favicon.ico')}}">
         <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/lightbox.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
