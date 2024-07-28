@@ -1,7 +1,7 @@
 <section class="hm_about">
 	<div class="container">
 		<div class="row">
-            @foreach (\App\Models\Page::where('parent_id',0)->get() as $page)
+            @foreach (\App\Models\Page::where('parent_id',0)->where('featured',1)->get() as $page)
                 <div class="col-md-12">
                     <div class="abt_instut">
                         <h2>{{ $page->title }}</h2>
