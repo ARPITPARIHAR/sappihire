@@ -43,7 +43,7 @@
                             <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
                             <div class="col-sm-10">
                                 <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
-                                    <option value="" disabled selected>Select Category</option>
+                                    <option value="">Select Category</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" @if($tender->category_id == $category->id)>{{ $category->title }}</option>
                                     @endforeach
