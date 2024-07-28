@@ -24,13 +24,10 @@ class RelivingController extends Controller
     public function create()
     {
 
-        $categories =Relive::all();
+        $categories = Relive::all();
 
 
         return view('backend.relieve.create', compact('categories'));
-
-
-
     }
 
     /**
@@ -50,14 +47,13 @@ class RelivingController extends Controller
 
         if ($request->category_id) {
             $detail->category_id = $request->category_id;
-        }else{
+        } else {
             $detail->category_id = 0;
         }
         if ($request->hasFile('pdf_file')) {
-          $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
-          $filePath = $request->file('pdf_file')->storeAs('uploads/relivingorders', $fileName, 'public');
-          $detail->pdf_file = '/public/storage/' . $filePath;
-
+            $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+            $filePath = $request->file('pdf_file')->storeAs('uploads/relivingorders', $fileName, 'public');
+            $detail->pdf_file = '/public/storage/' . $filePath;
         }
         $detail->save();
         Artisan::call('cache:clear');
@@ -76,16 +72,16 @@ class RelivingController extends Controller
      * Show the form for editing the specified resource.
      */
 
-     public function edit($id)
-     {
+    public function edit($id)
+    {
         // Decrypt the ID if necessary
 
 
 
-         $categories = Relive::distinct()->pluck('category_id');
-
-         return view('backend.relieve.edit', compact('trainingEvent', 'categories'));
-     }
+        $relieve = Relive::findOrFail(decrypt($id));
+        $categories = Relive::distinct()->pluck('category_id');
+        return view('backend.relieve.edit', compact('relieve', 'categories'));
+    }
 
 
 
@@ -96,15 +92,15 @@ class RelivingController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-             'category_id' => 'nullable|integer',
+            'category_id' => 'nullable|integer',
             'pdf_file' => 'nullable|file|mimes:pdf|max:2048'
 
         ]);
         $detail = Relive::findOrFail(decrypt($id));
-        $detail->title= $request->title;
+        $detail->title = $request->title;
         if ($request->category_id) {
             $detail->category_id = $request->category_id;
-        }else{
+        } else {
             $detail->category_id = 0;
         }
         if ($request->hasFile('pdf_file')) {

@@ -27,13 +27,13 @@ class StudyController extends Controller
 
 
 
-     public function create()
-     {
-         $details =Study::all();
+    public function create()
+    {
+        $details = Study::all();
 
 
-         return view('backend.trainingevent.create', compact('details'));
-     }
+        return view('backend.trainingevent.create', compact('details'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,7 +42,7 @@ class StudyController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-             'category_id' => 'nullable|integer',
+            'category_id' => 'nullable|integer',
             'pdf_file' => 'nullable|file|mimes:pdf|max:2048'
 
         ]);
@@ -51,14 +51,13 @@ class StudyController extends Controller
         $detail->title = $request->title;
         if ($request->category_id) {
             $detail->category_id = $request->category_id;
-        }else{
+        } else {
             $detail->category_id = 0;
         }
         if ($request->hasFile('pdf_file')) {
-          $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
-          $filePath = $request->file('pdf_file')->storeAs('uploads/studymaterials', $fileName, 'public');
-          $detail->pdf_file = '/public/storage/' . $filePath;
-
+            $fileName = time() . '-trainingevent-' . $request->file('pdf_file')->getClientOriginalName();
+            $filePath = $request->file('pdf_file')->storeAs('uploads/studymaterials', $fileName, 'public');
+            $detail->pdf_file = '/public/storage/' . $filePath;
         }
 
         $detail->save();
@@ -80,8 +79,8 @@ class StudyController extends Controller
     public function edit($id)
     {
         $detail = Study::findOrFail($id);
-
-        return view('backend.study.edit', compact('detail' ));
+        $categories = Study::where('category_id', 0)->get();
+        return view('backend.study.edit', compact('detail', 'categories'));
     }
 
 
@@ -97,10 +96,10 @@ class StudyController extends Controller
 
         ]);
         $detail = Study::findOrFail(decrypt($id));
-        $detail->title= $request->title;
+        $detail->title = $request->title;
         if ($request->category_id) {
             $detail->category_id = $request->category_id;
-        }else{
+        } else {
             $detail->category_id = 0;
         }
         if ($request->hasFile('pdf_file')) {

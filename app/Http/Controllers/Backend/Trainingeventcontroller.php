@@ -76,7 +76,7 @@ class TrainingeventController extends Controller
     public function edit($id)
     {
         $detail = Trainingevent::findOrFail(decrypt($id));
-        $categories = Trainingevent::where('parent_id', 0)->get();
+        $categories = Trainingevent::where('category_id', 0)->get();
         return view('backend.trainingevent.edit', compact('detail', 'categories'));
     }
 
