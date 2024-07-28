@@ -43,15 +43,20 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">{{ __('Category') }}</label>
                             <div class="col-sm-10">
-                                <input type="text" name="category" id="category" value="{{ old('category', $details->category) }}" placeholder="{{ __('Enter Category') }}" class="form-control @error('category') form-control-danger @enderror">
+                                <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
+                                    <option value="" >Select Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="messages">
-                                    @error('category')
+                                    @error('category_id')
                                         <p class="text-danger error">{{ $message }}</p>
                                     @enderror
                                 </span>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" id="pdf">
                             <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
                             <div class="col-sm-10">
                                 <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
@@ -88,6 +93,24 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote();
+        });
+        $(document).ready(function() {
+            $('#description').summernote();
+        });
+        $('#category_id').change(function() {
+            if($('#category_id').val() == ""){
+                $('#pdf').html('');
+            } else{
+                $('#pdf').html(`<label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('pdf_file')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </span>
+                        </div>`);
+            }
         });
     </script>
 @endsection

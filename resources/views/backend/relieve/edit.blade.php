@@ -48,7 +48,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Detail Category') }}</label>
                         <div class="col-sm-10">
-                            <select name="category_id" class="form-control @error('category_id') form-control-danger @enderror">
+                            <select name="category_id" id="category_id" class="form-control @error('category_id') form-control-danger @enderror">
                                 <option value="" disabled>Select Category</option>
                                 @foreach($relieve->categories as $category)
                                     <option value="{{ $category->id }}" {{ $relieve->category_id == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row" id="pdf">
                         <label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
                         <div class="col-sm-10">
                             <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
@@ -102,6 +102,24 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote();
+        });
+        $(document).ready(function() {
+            $('#description').summernote();
+        });
+        $('#category_id').change(function() {
+            if($('#category_id').val() == ""){
+                $('#pdf').html('');
+            } else{
+                $('#pdf').html(`<label class="col-sm-2 col-form-label">{{ __('PDF File') }}</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pdf_file" class="form-control @error('pdf_file') form-control-danger @enderror">
+                            <span class="messages">
+                                @error('pdf_file')
+                                    <p class="text-danger error">{{ $message }}</p>
+                                @enderror
+                            </span>
+                        </div>`);
+            }
         });
     </script>
 @endsection
