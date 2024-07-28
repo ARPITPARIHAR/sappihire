@@ -28,7 +28,7 @@
                     @csrf
                     @method('PUT')
                     {{-- Uncomment if Title is needed --}}
-                    {{-- <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                         <div class="col-sm-10">
                             <input type="text" name="title" id="title" value="{{ old('title') ?? $slider->title }}" placeholder="{{ __('Enter Title') }}" class="form-control @error('title') form-control-danger @enderror">
@@ -38,10 +38,10 @@
                                 <p class="text-muted">{{ __('') }}</p>
                             @enderror
                         </div>
-                    </div> --}}
+                    </div>
 
                     {{-- Uncomment if Brief Description is needed --}}
-                    {{-- <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Brief Description') }}</label>
                         <div class="col-sm-10">
                             <textarea name="brief_description" id="brief_description" placeholder="{{ __('Enter Brief Description') }}" class="form-control @error('brief_description') form-control-danger @enderror">{{ old('brief_description') ?? $slider->brief_description }}</textarea>
@@ -51,7 +51,7 @@
                                 <p class="text-muted">{{ __('') }}</p>
                             @enderror
                         </div>
-                    </div> --}}
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ __('Image') }}</label>

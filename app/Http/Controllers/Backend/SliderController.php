@@ -32,6 +32,8 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'title' => 'required|string',
+            'brief_description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'hyperlink' => 'nullable|url', // Validate the hyperlink
         ]);
@@ -43,7 +45,8 @@ class SliderController extends Controller
             $filePath = $request->file('image')->storeAs('uploads/sliders', $fileName, 'public');
             $slider->thumbnail_img = '/public/storage/' . $filePath; // Fixed path
         }
-
+        $slider->title = $request->title;
+        $slider->brief_description = $request->brief_description;
         $slider->hyperlink = $request->input('hyperlink'); // Save the hyperlink
 
         $slider->save();
@@ -66,6 +69,8 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'title' => 'required|string',
+            'brief_description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'hyperlink' => 'nullable|url', // Validate the hyperlink
         ]);
