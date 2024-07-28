@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\BusinessSetting;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Cache;
 
 if (!function_exists('businessSetting')) {
@@ -9,6 +10,15 @@ if (!function_exists('businessSetting')) {
         return Cache::remember('business-setting-' . $id, 86400, function () use ($id) {
             return BusinessSetting::find($id);
         });
+    }
+}
+
+if (!function_exists('areActiveRoutes')) {
+    function areActiveRoutes(array $routes, $output = "active")
+    {
+        foreach ($routes as $route) {
+            if (Route::currentRouteName() == $route) return $output;
+        }
     }
 }
 
