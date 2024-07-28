@@ -29,10 +29,10 @@ class StudyController extends Controller
 
     public function create()
     {
-        $details = Study::all();
+        $categories = Study::where('category_id', 0)->get();
 
 
-        return view('backend.trainingevent.create', compact('details'));
+        return view('backend.trainingevent.create', compact('categories'));
     }
 
     /**

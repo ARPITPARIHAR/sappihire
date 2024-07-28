@@ -24,8 +24,7 @@ class RelivingController extends Controller
     public function create()
     {
 
-        $categories = Relive::all();
-
+        $categories = Relive::where('category_id', 0)->get();
 
         return view('backend.relieve.create', compact('categories'));
     }
