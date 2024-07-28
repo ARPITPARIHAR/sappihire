@@ -129,7 +129,7 @@
     <script type="text/javascript" src="{{ asset('backend/plugins/summernote/summernote.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#description').summernote();
+            $('#brief_description').summernote();
         });
     </script>
 @endsection
