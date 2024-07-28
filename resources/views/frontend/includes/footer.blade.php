@@ -61,4 +61,3 @@
 		</div>
 	</div>
 </footer>
-<div class="copyright">Copyright © 2024 <a href="#">RICEM</a>. All Rights Reserved</div>

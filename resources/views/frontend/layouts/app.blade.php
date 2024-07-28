@@ -16,13 +16,14 @@
                     animation-play-state: paused;
                 }
         </style>
+        @yield('style')
     </head>
 <body>
     @include('frontend.includes.navbar')
-    @yield('content')
+        @yield('content')
     @include('frontend.includes.footer')
-    @yield('style')
-    @yield('script')
+    <div class="copyright">Copyright © {{ date('Y') }} <a href="{{ route('home') }}">{{ __('RICEM') }}</a>. All Rights Reserved</div>
+@yield('script')
 <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
 <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
