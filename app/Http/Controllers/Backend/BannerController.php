@@ -16,6 +16,7 @@ class BannerController extends Controller
     public function index()
     {
         $banners = Banner::paginate(15);
+
         return view('backend.banner.index', compact('banners'));
     }
 
@@ -39,7 +40,9 @@ class BannerController extends Controller
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $banners = new Banner;
-
+        $banners->title = $request->title;
+        $banners->brief_description = $request->brief_description;
+        $banners->hyperlink = $request->input('hyperlink'); // Save the hyperlink
         if ($request->hasFile('logo')) {
             $fileName = time() . '-logo-' . $request->file('logo')->getClientOriginalName();
             $filePath = $request->file('logo')->storeAs('uploads/banners', $fileName, 'public');
@@ -80,7 +83,9 @@ class BannerController extends Controller
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $banners = Banner::findOrFail(decrypt($id));
-
+        $banners->title = $request->title;
+        $banners->brief_description = $request->brief_description;
+        $banners->hyperlink = $request->input('hyperlink'); // Save the hyperlink
         if ($request->hasFile('logo')) {
             $fileName = time() . '-logo-' . $request->file('logo')->getClientOriginalName();
             $filePath = $request->file('logo')->storeAs('uploads/banners', $fileName, 'public');
