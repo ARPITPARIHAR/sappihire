@@ -93,7 +93,7 @@ class BannerController extends Controller
         }
         $banners->save();
         Artisan::call('cache:clear');
-        return back()->with('success', 'Banner  update successfully.');
+        return back()->with('success', 'Banner update successfully.');
     }
 
     /**
