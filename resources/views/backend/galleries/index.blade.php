@@ -45,6 +45,7 @@
                                     <img src="{{ asset($images[0] ?? '') }}" width="100">
                                 </td>
                                 <td>
+                                    @dd($images)
                                     {{ count($images) }}
                                 </td>
                                 <td>{{ $detail->title }}</td>
