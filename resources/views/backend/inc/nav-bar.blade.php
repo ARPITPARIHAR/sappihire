@@ -5,9 +5,9 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="feather icon-menu"></i>
             </a>
-            <a href="{{ route('home') }}">
+            {{-- <a href="{{ route('home') }}">
                   <img class="img-fluid" src="{{businessSetting(1)->admin_logo}}" width="150" alt="Theme-Logo">
-            </a>
+            </a> --}}
             <a class="mobile-options">
                 <i class="feather icon-more-horizontal"></i>
             </a>
@@ -33,14 +33,14 @@
             <ul class="nav-right">
                 <li class="header-notification">
                     <div class="dropdown-primary dropdown">
-                        @php
+                        {{-- @php
                             $total_notifications=App\Models\Notification::where('view',0)->count();
-                        @endphp
-                        <div class="dropdown-toggle" @if($total_notifications>0) data-toggle="dropdown" @endif>
+                        @endphp --}}
+                        {{-- <div class="dropdown-toggle" @if($total_notifications>0) data-toggle="dropdown" @endif>
                             <i class="feather icon-bell"></i>
                             <span class="badge bg-c-pink">{{ $total_notifications }}</span>
-                        </div>
-                        <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        </div> --}}
+                        {{-- <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                             <li>
                                 <h6>Notifications</h6>
                                 <label class="label label-danger">New</label>
@@ -72,14 +72,14 @@
                                 <a href="{{ route('business-setting') }}">
                                     <i class="feather icon-settings"></i> Settings
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ route('profile') }}">
                                     <i class="feather icon-user"></i> Profile
                                 </a>
                             </li>
                             <li>
-                                 <a href="{{ route('logout') }}"> 
+                                 <a href="{{ route('logout') }}">
                                     <i class="feather icon-log-out"></i> Logout
                                 </a>
                             </li>

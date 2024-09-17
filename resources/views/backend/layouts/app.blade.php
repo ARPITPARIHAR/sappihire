@@ -128,6 +128,8 @@
 <!-- custom js -->
 <script src="{{ asset('backend/assets/js/vartical-layout.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/assets/js/script.min.js') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 @yield('scripts')
 </body>
 

@@ -15,26 +15,38 @@ class LoginController extends Controller
     public function backend_login() {
         return view('backend.login');
     }
+
+    public function registerform() {
+
+        return view('frontend.register');
+    }
+
+
     public function register(Request $request) {
         $request->validate([
             'name' => 'required|string|min:3',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|digits:10',
+            'phone' => 'required|string|min:10|max:15',
             'address' => 'required|string',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6|confirmed'
         ]);
+
+        // dd($errors); // Check for any validation errors
+
         $user = new User;
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->phone=$request->phone;
-        $user->address=$request->address;
-        $user->password=Hash::make($request->password);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = Hash::make($request->password);
+
         if ($user->save()) {
-            return back()->with('success','You are successfully register. login your account');
-        } else{
-            return back()->with('error','Something went wrong');
+            return back()->with('success', 'You are successfully registered. Login to your account.');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
+
     public function login(Request $request) {
         $request->validate([
             'email' => 'required|email',
@@ -56,7 +68,7 @@ class LoginController extends Controller
         }
     }
     public function logout(){
-    
+
         Auth::logout();
 
         if ( $user_type='admin') {

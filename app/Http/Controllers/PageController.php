@@ -17,44 +17,44 @@ class PageController extends Controller
         return view('frontend.home');
     }
 
-    public function vision(Request $request)
+    public function ourstory(Request $request)
     {
-        return view('frontend.vision');
+        return view('frontend.ourstory');
     }
-    public function room(Request $request)
+    public function sample(Request $request)
     {
-        return view('frontend.room');
+        return view('frontend.sample');
     }
-    public function infastructure(Request $request)
+    public function product(Request $request)
     {
-        return view('frontend.infastructure');
-    }
-
-    public function mission(Request $request)
-    {
-        return view('frontend.mission');
+        return view('frontend.products');
     }
 
-    public function contact_us(Request $request)
+    public function fabric(Request $request)
     {
-        return view('frontend.contact');
+        return view('frontend.fabric');
     }
 
-    public function hostel_facility(Request $request)
+    public function garment(Request $request)
     {
-        return view('frontend.hostel');
+        return view('frontend.garment');
     }
 
-    public function about(Request $request)
+    public function buyer(Request $request)
     {
-        return view('frontend.about');
+        return view('frontend.buyer');
+    }
+
+    public function vendor(Request $request)
+    {
+        return view('frontend.vendor');
     }
 
 
 
-    public function gallery(Request $request)
+    public function team(Request $request)
     {
-        return view('frontend.gallery');
+        return view('frontend.team');
     }
 
     public function tenders(Request $request)

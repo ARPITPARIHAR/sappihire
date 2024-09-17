@@ -1,63 +1,44 @@
 <footer>
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
-				<div class="ftr_box frst">
-				<!-- Header Logo -->
-         <div class="ftr_logo">
-         <img src="{{ asset(businessSetting(1)->footer_logo) }}" alt="Logo">
-         </div>
-                <span>Visitors {{ $uniqueVisitors = DB::table('visitors')->count() }}</span>
-					<p>Add:  {{ businessSetting(1)->address }}</p>
-					<p>Call: {{ businessSetting(1)->contact_numbers }}</p>
-					<p> Email: {{ businessSetting(1)->email }}</p>
-
-
+			<div class="col-lg-4 col-md-12">
+				<div class="ftr_abt">
+					<img src="images/logo.png" alt="ftr_logo">
+					<h4>Our Story</h4>
+					<p>Since 2009, Sapphire Fashions is a premium apparel export house based in Jaipur, Rajasthan India. The company specializes in the production of high fashion ladies and men’s garments and is today dealing with some of the top designers and fashion houses across the globe especially from France, UK and the United States of America</p>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="ftr_box">
-					<h4>Online Platform</h4>
+			<div class="col-lg-4 col-md-6">
+				<div class="ftr_abt lnks">
+					<h4>Services</h4>
 					<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Courses</a></li>
-						<li><a href="#">Instructor</a></li>
-						<li><a href="#">Events</a></li>
-						<li><a href="#">Instructor Profile</a></li>
-						<li><a href="#">Purchase Guide</a></li>
+						<li><a href="#">Garment Manufacturing</a></li>
+						<li><a href="#">Fabric & Trim Sourcing</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="ftr_box">
-					<h4>Links</h4>
-					<ul>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Gallery</a></li>
-						<li><a href="#">News & Articles</a></li>
-						<li><a href="#">FAQ's</a></li>
-						<li><a href="#">Sign In/Registration</a></li>
-						<li><a href="#">Coming Soon</a></li>
+			<div class="col-lg-4 col-md-6">
+				<div class="ftr_abt lnks">
+					<h4>Contact Us</h4>
+					<div class="adrs">
+						<div class="adrs_box">
+							<div class="adrs_icn"><img src="images/adrs01.png" alt="adrs"></div>
+							<p>H1-64, RIICO industrial Area, Mansarovar, Jaipur, Rajasthan-302020</p>
+						</div>
+						<div class="adrs_box">
+							<div class="adrs_icn"><img src="images/adrs02.png" alt="adrs"></div>
+							<p><a href="tel:+91 8829-005-037">+91 8829-005-037</a></p>
+						</div>
+						<div class="adrs_box">
+							<div class="adrs_icn"><img src="images/adrs03.png" alt="adrs"></div>
+							<p><a href="mailto:ea@sapphirefashions.in">ea@sapphirefashions.in</a></p>
+						</div>
 					</ul>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="ftr_box">
-					<h4>Contacts</h4>
-					<p>Enter your email address to register to our newslatter subscription</p>
-					<form method="post" action="">
-						<input type="email" name="email" value="" placeholder="Email">
-						<button type="button" class="button">Subscribe</button>
-					</form>
-					<ul class="ftr_scl">
-						<li><a href="#"><img src="images/scl001.png" alt="scl"></a></li>
-						<li><a href="#"><img src="images/scl002.png" alt="scl"></a></li>
-						<li><a href="#"><img src="images/scl003.png" alt="scl"></a></li>
-						<li><a href="#"><img src="images/scl004.png" alt="scl"></a></li>
-						<li><a href="#"><img src="images/scl005.png" alt="scl"></a></li>
-					<ul>
 				</div>
 			</div>
 		</div>
 	</div>
 </footer>
+<div class="copyright">
+	<p>Copyright © 2024 Sapphirefashions - All rights reserved.</p>
+</div>

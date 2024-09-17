@@ -1,16 +1,7 @@
 <section class="main_banner">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="bnr_slide owl-carousel owl-theme">
-                @foreach (\App\Models\Slider::take(5)->latest()->get() as $slider)
-                <div class="item">
-                    <a href="{{ $slider->hyperlink }}" target="_blank">
-                        <img src="{{ asset($slider->thumbnail_img) }}" alt="{{ $slider->alt_text }}">
-                    </a>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
+	<div class="banner-video">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width:100% ; object-fit: cover; height: 100vh; " class="video-play">
+          <source src="images/main_video.mp4" type="video/mp4">
+		</video>
+	</div>
 </section>
-
